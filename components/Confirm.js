@@ -136,7 +136,6 @@ export default function Confirm() {
 
   const handleCitizen = (val) => {
     setCitizen(val);
-    console.log(val);
   }
 
   const clearFirstName = () => setFirstName(EMPTY_STRING);

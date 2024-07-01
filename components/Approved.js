@@ -174,8 +174,21 @@ export default function Approved() {
         <Image  
         source={{ uri: 'https://t4.ftcdn.net/jpg/03/27/87/41/360_F_327874197_zaMWlrLxEw8sbjn4jnVsmqu3K3ZB1Jur.jpg' }}
         style={styles.centeredImage}/>
-        </View> 
-    
+        
+        <View style = {styles.row}>
+        <Text style = {styles.title}> 16 %</Text> 
+        <Text style = {[styles.rightAlignedText, styles.title]} > $10.000 </Text>
+        </View>
+        <View style = {styles.row}>
+        <Text style = {styles.miniTitle}> Purchase APR </Text>
+        <Text style = {[styles.rightAlignedText, styles.miniTitle]}> Credit Limit </Text> 
+        </View>
+
+        <Text>Lorem ipsum dolor sit amet, consectetur{'\n'}
+        adipiscing elit, sed do eiusmod tempor</Text>
+
+        </View>
+     
     </View>
   	</SafeAreaView>
 	</PaperProvider>

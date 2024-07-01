@@ -70,6 +70,16 @@ const styles = StyleSheet.create({
       width: 200,
       height: 200,
       resizeMode: 'contain',
+    },
+    rightAlignedText : {
+      alignSelf : 'right',
+      textAlign : 'right',
+    },
+    row : {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      paddingHorizontal: 16, 
+      paddingVertical: 8,
     }
   });
 
