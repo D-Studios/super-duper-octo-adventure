@@ -171,7 +171,7 @@ export default function Approved() {
 
         <View style = {styles.boxContainer}>
         <Text style = {styles.centeredTitle}>You are Approved{'\n'}</Text>
-        <Image 
+        <Image  
         source={{ uri: 'https://t4.ftcdn.net/jpg/03/27/87/41/360_F_327874197_zaMWlrLxEw8sbjn4jnVsmqu3K3ZB1Jur.jpg' }}
         style={styles.centeredImage}/>
         </View> 
