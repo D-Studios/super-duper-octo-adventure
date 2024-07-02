@@ -37,6 +37,8 @@ export default function VerifyInformation() {
   };
 
   const EMPTY_STRING = '';
+  const DEFAULT_PHONE = '_ _ _ - _ _ _ - _ _ _ _';
+  const DEFAULT_SSN = '_ _ _ - _ _ - _ _ _ _';
   const [phone, setPhone] = useState(EMPTY_STRING);
   const [ssn, setSsn] = useState(EMPTY_STRING);
 
@@ -44,8 +46,7 @@ export default function VerifyInformation() {
   const PHONE_NUMBER_LENGTH = 10;
   const PHONE_HYPHEN_FIRST_POS = 3;
   const PHONE_HYPHEN_SECOND_POS = 6;
-  const SSN_HYPHEN_FIRST_POS = 3;
-  const SSN_HYPHEN_SECOND_POS = 5;
+  const NO_VISIBLE_HYPHEN = Infinity;
   const HYPHEN = '-';
   const SSN_LENGTH = 9;
   const PHONE_MAX_LENGTH = 20; // Adjusted to account for '-' characters
@@ -74,7 +75,7 @@ export default function VerifyInformation() {
   };
 
   const handleSsnChange = (text) => {
-    setSsn(inputBoxHelper(text, SSN_LENGTH, SSN_HYPHEN_FIRST_POS, SSN_HYPHEN_SECOND_POS));
+    setSsn(inputBoxHelper(text, SSN_LENGTH, NO_VISIBLE_HYPHEN, NO_VISIBLE_HYPHEN));
   };
 
   return (
@@ -96,7 +97,7 @@ export default function VerifyInformation() {
               style={styles.input}
               keyboardType="numeric"
               maxLength={PHONE_MAX_LENGTH}
-              placeholder={EMPTY_STRING}
+              placeholder={DEFAULT_PHONE}
             />
             {phone !== EMPTY_STRING && (
               <TouchableOpacity style={styles.clearButton} onPress={clearPhone}>
@@ -121,7 +122,7 @@ export default function VerifyInformation() {
               style={styles.input}
               keyboardType="numeric"
               maxLength={SSN_MAX_LENGTH}
-              placeholder={EMPTY_STRING}
+              placeholder={DEFAULT_SSN}
               secureTextEntry={true}
             />
             {ssn !== EMPTY_STRING && (

@@ -28,8 +28,13 @@ export default function Confirm() {
 
   const EMPTY_STRING = '';
 
+  const DEFAULT_PHONE = '_ _ _ - _ _ _ - _ _ _ _';
+  const DEFAULT_SSN = '_ _ _ - _ _ - _ _ _ _';
+  const DEFAULT_DATE = 'mm/dd/yyyy';
+
   const [firstName, setFirstName] = useState(EMPTY_STRING);
   const [middleName, setMiddleName] = useState(EMPTY_STRING);
+  const NO_VISIBLE_HYPHEN = Infinity;
   const [lastName, setLastName] = useState(EMPTY_STRING);
   const [ssn, setSsn] = useState(EMPTY_STRING);
   const [phone, setPhone] = useState(EMPTY_STRING);
@@ -47,8 +52,6 @@ export default function Confirm() {
   const PHONE_NUMBER_LENGTH = 10;
   const PHONE_HYPHEN_FIRST_POS = 3;
   const PHONE_HYPHEN_SECOND_POS = 6;
-  const SSN_HYPHEN_FIRST_POS = 3;
-  const SSN_HYPHEN_SECOND_POS = 5;
   const HYPHEN = '-';
   const SLASH = '/';
   const SSN_LENGTH = 9;
@@ -87,7 +90,7 @@ export default function Confirm() {
   };
 
   const handleSsn = (text) => {
-    setSsn(inputBoxHelper(text, SSN_LENGTH, HYPHEN, SSN_HYPHEN_FIRST_POS, SSN_HYPHEN_SECOND_POS));
+    setSsn(inputBoxHelper(text, SSN_LENGTH, HYPHEN, NO_VISIBLE_HYPHEN, NO_VISIBLE_HYPHEN));
   };
 
   const handlePhone = (text) => {
@@ -205,7 +208,8 @@ export default function Confirm() {
                 onChangeText={handleSsn}
                 keyboardType="numeric"
                 maxLength={SSN_MAX_LENGTH}
-                placeholder={EMPTY_STRING}
+                placeholder={DEFAULT_SSN}
+                secureTextEntry={true} 
                 onClear={clearSsn}
               />
               <InputField
@@ -214,7 +218,7 @@ export default function Confirm() {
                 onChangeText={handlePhone}
                 keyboardType="numeric"
                 maxLength={PHONE_MAX_LENGTH}
-                placeholder={EMPTY_STRING}
+                placeholder={DEFAULT_PHONE}
                 onClear={clearPhone}
               />
               <InputField
@@ -222,7 +226,8 @@ export default function Confirm() {
                 value={dob}
                 onChangeText={handleDOB}
                 keyboardType="numeric"
-                placeholder={EMPTY_STRING}
+                placeholder={DEFAULT_DATE}
+                maxLength = {DATE_MAX_LENGTH}
                 onClear={clearDOB}
               />
             </Card>

@@ -52,7 +52,7 @@ export default function OTP() {
         <ProgressBar progress={0.33} style={styles.progressBar} />
 
         <View style={styles.content}>
-          <Text>Please enter the code sent to your{'\n'}mobile phone number.{'\n'}</Text>
+          <Text style = {styles.title}>Please enter the code sent to your{'\n'}mobile phone number.{'\n'}</Text>
         </View>
 
         {/* Input for OTP */}

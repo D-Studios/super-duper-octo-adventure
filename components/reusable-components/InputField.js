@@ -4,7 +4,7 @@ import { View, TouchableOpacity } from 'react-native';
 import { TextInput } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-const InputField = ({ label, value, onChangeText, keyboardType, maxLength, placeholder, onClear }) => (
+const InputField = ({ label, value, onChangeText, keyboardType, maxLength, placeholder, onClear, secureTextEntry}) => (
   <View style={styles.inputContainer}>
     <TextInput
       label={label}
@@ -14,6 +14,7 @@ const InputField = ({ label, value, onChangeText, keyboardType, maxLength, place
       keyboardType={keyboardType}
       maxLength={maxLength}
       placeholder={placeholder}
+      secureTextEntry = {secureTextEntry}
     />
     {value !== '' && (
       <TouchableOpacity style={styles.clearButton} onPress={onClear}>
