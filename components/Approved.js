@@ -20,7 +20,7 @@ export default function Approved() {
   const [menuVisible, setMenuVisible] = useState(false);
   const [iconButtonPosition, setIconButtonPosition] = useState(null);
   const X_OFFSET = 10;
-
+  const Y_OFFSET = 50;
   const openMenu = () => setMenuVisible(true);
   const closeMenu = () => setMenuVisible(false);
 
@@ -62,7 +62,7 @@ export default function Approved() {
                 <Menu
                   visible={menuVisible}
                   onDismiss={closeMenu}
-                  anchor={{ x: iconButtonPosition.x + X_OFFSET, y: iconButtonPosition.y + iconButtonPosition.height }}
+                  anchor={{ x: iconButtonPosition.x + X_OFFSET, y: iconButtonPosition.y + iconButtonPosition.height + Y_OFFSET }}
                 >
                   <Menu.Item onPress={() => {}} title="Item 1" />
                   <Menu.Item onPress={() => {}} title="Item 2" />
