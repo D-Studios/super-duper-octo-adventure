@@ -202,7 +202,6 @@ export default function Confirm() {
           placeholder={EMPTY_STRING}
           onClear={clearLastName}
         />
-
       </View>
 
         {/* Identity box */}
