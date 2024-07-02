@@ -2,10 +2,7 @@ import React, { useState, useCallback } from 'react';
 import {View, ScrollView} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import styles from './styles';
-import { SegmentedControl } from 'react-native-paper';
 import { SegmentedButtons } from 'react-native-paper';
-import { ToggleButton } from 'react-native-paper';
-import SegmentedControlTab from "react-native-segmented-control-tab";
 
 import {
   Provider as PaperProvider,
@@ -16,9 +13,8 @@ import {
   ProgressBar,
 } from 'react-native-paper';
 
-import Slider from '@react-native-community/slider';
-
 import { SafeAreaView } from 'react-native';
+import InputField from './reusable-components/InputField';
 
 export default function Confirm() {
 
@@ -60,6 +56,7 @@ export default function Confirm() {
    const HYPHEN = '-';
    const SLASH = '/';
    const SSN_LENGTH = 9;
+   const TEXT_MAX_LENGTH = 100;
    const PHONE_MAX_LENGTH = 20; // Adjusted to account for '-' characters
    const SSN_MAX_LENGTH = 18; // Adjusted to account for '-' characters
    const DATE_MAX_LENGTH = 10; // Adjusted to account for '/' characters
@@ -169,46 +166,44 @@ export default function Confirm() {
         {/* Basic box */}
         <View style = {styles.boxContainer}>
         <Text style = {styles.title}>Basic</Text>
-      	<View style={styles.inputContainer}>
-            {/* First Name */}
-        	<TextInput
-          	label="First Name"
-          	value={firstName}
-          	onChangeText={handleFirstName}
-          	style={styles.input}
-          	keyboardType="text"
-          	placeholder={EMPTY_STRING}
-        	/>
-        	{/*Clear First Name*/}
-        	<Button icon="close" onPress={clearFirstName} />
-        </View>
+
+        {/* First Name */}
+        <InputField
+          label="First Name"
+          value={firstName}
+          onChangeText={handleFirstName}
+          style={styles.input}
+          keyboardType="text"
+          maxLength={TEXT_MAX_LENGTH}
+          placeholder={EMPTY_STRING}
+          onClear={clearFirstName}
+        />
+
         {/* Middle Name */}
-        <View style={styles.inputContainer}>
-        	<TextInput
-          	label="Middle Name"
-          	value={middleName}
-          	onChangeText={handleMiddleName}
-          	style={styles.input}
-          	keyboardType="text"
-          	placeholder={EMPTY_STRING}
-        	/>
-        	{/*Clear middle name*/}
-        	<Button icon="close" onPress={clearMiddleName} />
-        </View>
-         {/* Last Name */}
-        <View style={styles.inputContainer}>
-        	<TextInput
-          	label="Last Name"
-          	value={lastName}
-          	onChangeText={handleLastName}
-          	style={styles.input}
-          	keyboardType="text"
-          	placeholder={EMPTY_STRING}
-        	/>
-        	{/*Clear last name*/}
-        	<Button icon="close" onPress={clearLastName} />
-        </View>
-      	</View>
+        <InputField
+          label="Middle Name"
+          value={middleName}
+          onChangeText={handleMiddleName}
+          style={styles.input}
+          keyboardType="text"
+          maxLength={TEXT_MAX_LENGTH}
+          placeholder={EMPTY_STRING}
+          onClear={clearMiddleName}
+        />
+
+        {/* Last Name */}
+        <InputField
+          label="Last Name"
+          value={lastName}
+          onChangeText={handleLastName}
+          style={styles.input}
+          keyboardType="text"
+          maxLength={TEXT_MAX_LENGTH}
+          placeholder={EMPTY_STRING}
+          onClear={clearLastName}
+        />
+
+      </View>
 
         {/* Identity box */}
         <View style = {styles.boxContainer}>
