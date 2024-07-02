@@ -343,15 +343,15 @@ export default function Confirm() {
            values = {housing}
            onValueChange={handleHousing}
            buttons = {[
-             {
+             { 
                value : false, 
                label : 'Rent',
-               style : {backgroundColor : housing? '#9c9c9c' : 'white'}
+               style : {backgroundColor : housing? 'white' : '#9c9c9c'}
              }, {
                value : true,
                label : 'Own',
                showSelectedCheck : true,
-               style : {backgroundColor : housing? 'white' : '#9c9c9c'}
+               style : {backgroundColor : housing? '#9c9c9c' : 'white'}
              }
            ]} 
           />
