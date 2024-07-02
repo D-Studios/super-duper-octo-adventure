@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { View, Image, ScrollView, findNodeHandle } from 'react-native';
-import { Menu, Divider, IconButton, List, Appbar, Text, ProgressBar, Provider as PaperProvider } from 'react-native-paper';
+import { Menu, Divider, IconButton, List, Appbar, Text, Card, ProgressBar, Provider as PaperProvider } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native';
 import styles from './styles';
@@ -20,7 +20,7 @@ export default function Approved() {
   const [menuVisible, setMenuVisible] = useState(false);
   const [iconButtonPosition, setIconButtonPosition] = useState(null);
   const X_OFFSET = 10;
-
+  const Y_OFFSET = 50;
   const openMenu = () => setMenuVisible(true);
   const closeMenu = () => setMenuVisible(false);
 
@@ -51,7 +51,7 @@ export default function Approved() {
           <ProgressBar progress={1} style={styles.progressBar} />
 
           <View style={styles.content}>
-            <View style={styles.boxContainer}>
+          <Card mode = 'elevated' style = {styles.boxContainer}>
               <IconButton
                 icon="dots-vertical"
                 onPress={(event) => measureIconButton(event)}
@@ -62,7 +62,7 @@ export default function Approved() {
                 <Menu
                   visible={menuVisible}
                   onDismiss={closeMenu}
-                  anchor={{ x: iconButtonPosition.x + X_OFFSET, y: iconButtonPosition.y + iconButtonPosition.height }}
+                  anchor={{ x: iconButtonPosition.x + X_OFFSET, y: iconButtonPosition.y + iconButtonPosition.height + Y_OFFSET }}
                 >
                   <Menu.Item onPress={() => {}} title="Item 1" />
                   <Menu.Item onPress={() => {}} title="Item 2" />
@@ -87,7 +87,7 @@ export default function Approved() {
                 Lorem ipsum dolor sit amet, consectetur{'\n'}
                 adipiscing elit, sed do eiusmod tempor
               </Text>
-            </View>
+            </Card>
 
             <View style={styles.container}>
               <List.Section>

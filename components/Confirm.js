@@ -1,19 +1,17 @@
 import React, { useState, useCallback } from 'react';
-import { View, ScrollView, TouchableOpacity } from 'react-native';
+import { View, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import styles from './styles';
-import { SegmentedButtons } from 'react-native-paper';
+import { SegmentedButtons, Card } from 'react-native-paper';
 import {
   Provider as PaperProvider,
   Appbar,
   Text,
-  TextInput,
-  Button,
   ProgressBar,
-  useTheme,
+  Button,
 } from 'react-native-paper';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { SafeAreaView } from 'react-native';
+import InputField from './reusable-components/InputField';
 
 export default function Confirm() {
   const navigation = useNavigation();
@@ -54,6 +52,7 @@ export default function Confirm() {
   const HYPHEN = '-';
   const SLASH = '/';
   const SSN_LENGTH = 9;
+  const TEXT_MAX_LENGTH = 100;
   const PHONE_MAX_LENGTH = 20; // Adjusted to account for '-' characters
   const SSN_MAX_LENGTH = 18; // Adjusted to account for '-' characters
   const DATE_MAX_LENGTH = 10; // Adjusted to account for '/' characters
@@ -144,8 +143,6 @@ export default function Confirm() {
   const clearZip = () => setZip(EMPTY_STRING);
   const clearIncome = () => setIncome(EMPTY_STRING);
 
-  const theme = useTheme();
-
   return (
     <ScrollView contentContainerStyle={styles.scrollViewContent}>
       <PaperProvider>
@@ -162,217 +159,130 @@ export default function Confirm() {
 
           <View style={styles.content}>
             {/* Basic box */}
-            <View style={styles.boxContainer}>
+            <Card mode='elevated' style={styles.boxContainer}>
               <Text style={styles.title}>Basic</Text>
-              <View style={styles.inputContainer}>
-                {/* First Name */}
-                <TextInput
-                  label="First Name"
-                  value={firstName}
-                  onChangeText={handleFirstName}
-                  style={styles.input}
-                  keyboardType="default"
-                  placeholder={EMPTY_STRING}
-                />
-                {firstName !== EMPTY_STRING && (
-                  <TouchableOpacity style={styles.clearButton} onPress={clearFirstName}>
-                    <Icon name="close" size={20} color="gray" />
-                  </TouchableOpacity>
-                )}
-              </View>
+
+              {/* First Name */}
+              <InputField
+                label="First Name"
+                value={firstName}
+                onChangeText={handleFirstName}
+                keyboardType="default"
+                maxLength={TEXT_MAX_LENGTH}
+                placeholder={EMPTY_STRING}
+                onClear={clearFirstName}
+              />
+
               {/* Middle Name */}
-              <View style={styles.inputContainer}>
-                <TextInput
-                  label="Middle Name"
-                  value={middleName}
-                  onChangeText={handleMiddleName}
-                  style={styles.input}
-                  keyboardType="default"
-                  placeholder={EMPTY_STRING}
-                />
-                {middleName !== EMPTY_STRING && (
-                  <TouchableOpacity style={styles.clearButton} onPress={clearMiddleName}>
-                    <Icon name="close" size={20} color="gray" />
-                  </TouchableOpacity>
-                )}
-              </View>
+              <InputField
+                label="Middle Name"
+                value={middleName}
+                onChangeText={handleMiddleName}
+                keyboardType="default"
+                maxLength={TEXT_MAX_LENGTH}
+                placeholder={EMPTY_STRING}
+                onClear={clearMiddleName}
+              />
+
               {/* Last Name */}
-              <View style={styles.inputContainer}>
-                <TextInput
-                  label="Last Name"
-                  value={lastName}
-                  onChangeText={handleLastName}
-                  style={styles.input}
-                  keyboardType="default"
-                  placeholder={EMPTY_STRING}
-                />
-                {lastName !== EMPTY_STRING && (
-                  <TouchableOpacity style={styles.clearButton} onPress={clearLastName}>
-                    <Icon name="close" size={20} color="gray" />
-                  </TouchableOpacity>
-                )}
-              </View>
-            </View>
+              <InputField
+                label="Last Name"
+                value={lastName}
+                onChangeText={handleLastName}
+                keyboardType="default"
+                maxLength={TEXT_MAX_LENGTH}
+                placeholder={EMPTY_STRING}
+                onClear={clearLastName}
+              />
+            </Card>
 
             {/* Identity box */}
-            <View style={styles.boxContainer}>
+            <Card mode='elevated' style={styles.boxContainer}>
               <Text style={styles.title}>Identity</Text>
-              <View style={styles.inputContainer}>
-                {/* Social Security Number */}
-                <TextInput
-                  label="Social Security Number"
-                  value={ssn}
-                  onChangeText={handleSsn}
-                  style={styles.input}
-                  keyboardType="numeric"
-                  maxLength={SSN_MAX_LENGTH}
-                  placeholder={EMPTY_STRING}
-                />
-                {ssn !== EMPTY_STRING && (
-                  <TouchableOpacity style={styles.clearButton} onPress={clearSsn}>
-                    <Icon name="close" size={20} color="gray" />
-                  </TouchableOpacity>
-                )}
-              </View>
-              <View style={styles.inputContainer}>
-                {/* Mobile Phone Number */}
-                <TextInput
-                  label="Mobile Phone Number"
-                  value={phone}
-                  onChangeText={handlePhone}
-                  style={styles.input}
-                  keyboardType="numeric"
-                  maxLength={PHONE_MAX_LENGTH}
-                  placeholder={EMPTY_STRING}
-                />
-                {phone !== EMPTY_STRING && (
-                  <TouchableOpacity style={styles.clearButton} onPress={clearPhone}>
-                    <Icon name="close" size={20} color="gray" />
-                  </TouchableOpacity>
-                )}
-              </View>
-              <View style={styles.inputContainer}>
-                {/* Date Of Birth */}
-                <TextInput
-                  label="Date of Birth"
-                  value={dob}
-                  onChangeText={handleDOB}
-                  style={styles.input}
-                  keyboardType="numeric"
-                  placeholder={EMPTY_STRING}
-                />
-                {dob !== EMPTY_STRING && (
-                  <TouchableOpacity style={styles.clearButton} onPress={clearDOB}>
-                    <Icon name="close" size={20} color="gray" />
-                  </TouchableOpacity>
-                )}
-              </View>
-            </View>
+              <InputField
+                label="Social Security Number"
+                value={ssn}
+                onChangeText={handleSsn}
+                keyboardType="numeric"
+                maxLength={SSN_MAX_LENGTH}
+                placeholder={EMPTY_STRING}
+                onClear={clearSsn}
+              />
+              <InputField
+                label="Mobile Phone Number"
+                value={phone}
+                onChangeText={handlePhone}
+                keyboardType="numeric"
+                maxLength={PHONE_MAX_LENGTH}
+                placeholder={EMPTY_STRING}
+                onClear={clearPhone}
+              />
+              <InputField
+                label="Date of Birth"
+                value={dob}
+                onChangeText={handleDOB}
+                keyboardType="numeric"
+                placeholder={EMPTY_STRING}
+                onClear={clearDOB}
+              />
+            </Card>
 
             {/* Address Box */}
-            <View style={styles.boxContainer}>
+            <Card mode='elevated' style={styles.boxContainer}>
               <Text style={styles.title}>Address</Text>
-              <View style={styles.inputContainer}>
-                {/* Address 1 */}
-                <TextInput
-                  label="Address 1"
-                  value={addr1}
-                  onChangeText={handleAddr1}
-                  style={styles.input}
-                  keyboardType="default"
-                  placeholder={EMPTY_STRING}
-                />
-                {addr1 !== EMPTY_STRING && (
-                  <TouchableOpacity style={styles.clearButton} onPress={clearAddr1}>
-                    <Icon name="close" size={20} color="gray" />
-                  </TouchableOpacity>
-                )}
-              </View>
-              <View style={styles.inputContainer}>
-                {/* Address 2 */}
-                <TextInput
-                  label="Address 2"
-                  value={addr2}
-                  onChangeText={handleAddr2}
-                  style={styles.input}
-                  keyboardType="default"
-                  placeholder={EMPTY_STRING}
-                />
-                {addr2 !== EMPTY_STRING && (
-                  <TouchableOpacity style={styles.clearButton} onPress={clearAddr2}>
-                    <Icon name="close" size={20} color="gray" />
-                  </TouchableOpacity>
-                )}
-              </View>
-              <View style={styles.inputContainer}>
-                {/* City */}
-                <TextInput
-                  label="City"
-                  value={city}
-                  onChangeText={handleCity}
-                  style={styles.input}
-                  keyboardType="default"
-                  placeholder={EMPTY_STRING}
-                />
-                {city !== EMPTY_STRING && (
-                  <TouchableOpacity style={styles.clearButton} onPress={clearCity}>
-                    <Icon name="close" size={20} color="gray" />
-                  </TouchableOpacity>
-                )}
-              </View>
-              <View style={styles.inputContainer}>
-                {/* State */}
-                <TextInput
-                  label="State"
-                  value={state}
-                  onChangeText={handleState}
-                  style={styles.input}
-                  keyboardType="default"
-                  placeholder={EMPTY_STRING}
-                />
-                {state !== EMPTY_STRING && (
-                  <TouchableOpacity style={styles.clearButton} onPress={clearState}>
-                    <Icon name="close" size={20} color="gray" />
-                  </TouchableOpacity>
-                )}
-              </View>
-              <View style={styles.inputContainer}>
-                {/* Zip */}
-                <TextInput
-                  label="Zip"
-                  value={zip}
-                  onChangeText={handleZip}
-                  style={styles.input}
-                  keyboardType="numeric"
-                  placeholder={EMPTY_STRING}
-                />
-                {zip !== EMPTY_STRING && (
-                  <TouchableOpacity style={styles.clearButton} onPress={clearZip}>
-                    <Icon name="close" size={20} color="gray" />
-                  </TouchableOpacity>
-                )}
-              </View>
-            </View>
+              <InputField
+                label="Address 1"
+                value={addr1}
+                onChangeText={handleAddr1}
+                keyboardType="default"
+                placeholder={EMPTY_STRING}
+                onClear={clearAddr1}
+              />
+              <InputField
+                label="Address 2"
+                value={addr2}
+                onChangeText={handleAddr2}
+                keyboardType="default"
+                placeholder={EMPTY_STRING}
+                onClear={clearAddr2}
+              />
+              <InputField
+                label="City"
+                value={city}
+                onChangeText={handleCity}
+                keyboardType="default"
+                placeholder={EMPTY_STRING}
+                onClear={clearCity}
+              />
+              <InputField
+                label="State"
+                value={state}
+                onChangeText={handleState}
+                keyboardType="default"
+                placeholder={EMPTY_STRING}
+                onClear={clearState}
+              />
+              <InputField
+                label="Zip"
+                value={zip}
+                onChangeText={handleZip}
+                keyboardType="numeric"
+                placeholder={EMPTY_STRING}
+                onClear={clearZip}
+              />
+            </Card>
 
             {/* Other Box */}
-            <View style={styles.boxContainer}>
+            <Card mode='elevated' style={styles.boxContainer}>
               <Text style={styles.title}>Other</Text>
-              <View style={styles.inputContainer}>
-                {/* Annual Income (in Thousands) */}
-                <TextInput
-                  label="Annual Income (In Thousands)"
-                  value={income}
-                  onChangeText={handleIncome}
-                  style={styles.input}
-                  keyboardType="numeric"
-                  placeholder={EMPTY_STRING}
-                />
-                {income !== EMPTY_STRING && (
-                  <TouchableOpacity style={styles.clearButton} onPress={clearIncome}>
-                    <Icon name="close" size={20} color="gray" />
-                  </TouchableOpacity>
-                )}
-              </View>
+              <InputField
+                label="Annual Income (In Thousands)"
+                value={income}
+                onChangeText={handleIncome}
+                keyboardType="numeric"
+                placeholder={EMPTY_STRING}
+                onClear={clearIncome}
+              />
               <View>
                 <Text style={styles.miniTitle}>Housing</Text>
                 <SegmentedButtons
@@ -380,16 +290,16 @@ export default function Confirm() {
                   onValueChange={handleHousing}
                   buttons={[
                     {
-                      value: 'yes',
-                      label: 'Yes',
-                      style: { backgroundColor: housing === 'yes' ? '#6750a4' : 'white' },
-                      labelStyle: { color: housing === 'yes' ? 'white' : '#6750a4' },
+                      value: 'rent',
+                      label: 'Rent',
+                      style: { backgroundColor: housing === 'rent' ? '#6750a4' : 'white' },
+                      labelStyle: { color: housing === 'rent' ? 'white' : '#6750a4' },
                     },
                     {
-                      value: 'no',
-                      label: 'No',
-                      style: { backgroundColor: housing === 'no' ? '#6750a4' : 'white' },
-                      labelStyle: { color: housing === 'no' ? 'white' : '#6750a4' },
+                      value: 'own',
+                      label: 'Own',
+                      style: { backgroundColor: housing === 'own' ? '#6750a4' : 'white' },
+                      labelStyle: { color: housing === 'own' ? 'white' : '#6750a4' },
                     },
                   ]}
                 />
@@ -415,7 +325,7 @@ export default function Confirm() {
                   ]}
                 />
               </View>
-            </View>
+            </Card>
 
             {/* Next button */}
             <Button mode="contained" style={styles.button} onPress={handleNextPress}>
