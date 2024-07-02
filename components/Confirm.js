@@ -2,7 +2,7 @@ import React, { useState, useCallback } from 'react';
 import {View, ScrollView} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import styles from './styles';
-import { SegmentedButtons } from 'react-native-paper';
+import { SegmentedButtons, Card} from 'react-native-paper';
 
 import {
   Provider as PaperProvider,
@@ -164,7 +164,7 @@ export default function Confirm() {
 
     	<View style={styles.content}>
         {/* Basic box */}
-        <View style = {styles.boxContainer}>
+        <Card mode = 'elevated' style = {styles.boxContainer}>
         <Text style = {styles.title}>Basic</Text>
 
         {/* First Name */}
@@ -202,10 +202,11 @@ export default function Confirm() {
           placeholder={EMPTY_STRING}
           onClear={clearLastName}
         />
-      </View>
+        </Card>
+      {/* </View> */}
 
         {/* Identity box */}
-        <View style = {styles.boxContainer}>
+        <Card mode = 'elevated' style = {styles.boxContainer}>
         <Text style = {styles.title}>Identity</Text>
       	<View style={styles.inputContainer}>
             {/*Social Security Number*/}
@@ -248,10 +249,10 @@ export default function Confirm() {
         	{/*Clear Date Of Birth*/}
         	<Button icon="close" onPress={clearDOB} />
         </View>
-      	</View>
+      	</Card>
 
         {/*Address Box*/}
-        <View style = {styles.boxContainer}>
+        <Card mode = 'elevated' style = {styles.boxContainer}>
         <Text style = {styles.title}>Address</Text>
       	<View style={styles.inputContainer}>
             {/*Address 1*/}
@@ -318,11 +319,12 @@ export default function Confirm() {
         	{/*Clear Zip*/}
         	<Button icon="close" onPress={clearZip} />
         </View>
-      	</View>
+      	</Card>
 
         {/*Other Box*/}
-        <View style = {styles.boxContainer}>
+        <Card mode = 'elevated' style = {styles.boxContainer}>
         <Text style = {styles.title}>Other</Text>
+        <Text style = {styles.miniTitle} >Annual Income (In Thousands)</Text>
         <View style={styles.inputContainer}>
             {/*Annual Income (in Thousands)*/}
         	<TextInput
@@ -342,12 +344,12 @@ export default function Confirm() {
            onValueChange={handleHousing}
            buttons = {[
              {
-               value : true,
-               label : 'Yes',
+               value : false, 
+               label : 'Rent',
                style : {backgroundColor : housing? '#9c9c9c' : 'white'}
              }, {
-               value : false,
-               label : 'No',
+               value : true,
+               label : 'Own',
                showSelectedCheck : true,
                style : {backgroundColor : housing? 'white' : '#9c9c9c'}
              }
@@ -373,7 +375,7 @@ export default function Confirm() {
            ]} 
           />
         </View>
-        </View>  
+        </Card>
 
         {/*Next button*/}
       	<Button mode="contained" style={styles.button} onPress = {handleNextPress}>
