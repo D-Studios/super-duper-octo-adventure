@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
-    container: {
+    container: { 
       flex: 1,
     },
     url : {
@@ -80,6 +80,11 @@ const styles = StyleSheet.create({
       justifyContent: 'space-between',
       paddingHorizontal: 16, 
       paddingVertical: 8,
+    },
+    top_right :  {
+      position : 'absolute',
+      top : 0,
+      right : 0,
     }
   });
 

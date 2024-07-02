@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import {View, Image, ScrollView} from 'react-native';
-import { Card, Title, Paragraph } from 'react-native-paper';
+import {Menu, Divider, Provider, IconButton, Card, Title, Paragraph } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
 import styles from './styles';
 import { SegmentedControl } from 'react-native-paper';
@@ -10,6 +10,7 @@ import SegmentedControlTab from "react-native-segmented-control-tab";
 
 import {
   Provider as PaperProvider,
+  List,
   Appbar,
   Text,
   TextInput,
@@ -31,127 +32,33 @@ export default function Approved() {
        navigation.navigate('Confirm'); 
     }, [navigation]);
 
-   //Next screen.
-   const handleNextPress = useCallback(() => {
-      navigation.navigate('Approved'); 
-   }, [navigation]);
+  const EMPTY_STRING = ''; 
+  const [cardHolderAgreement, setCardHolderAgreement] = useState(false);
+  const [privacyNotice, setPrivacyNotice] = useState(false);
+  const [rewardsAgreement, setRewardsAgreement] = useState(false);
+  const [menuVisible, setMenuVisible] = useState(false);
 
-   const EMPTY_STRING = '';
-
-   const [firstName, setFirstName] = useState(EMPTY_STRING);
-   const [middleName, setMiddleName] = useState(EMPTY_STRING);
-   const [lastName, setLastName] = useState(EMPTY_STRING);
-   const [ssn, setSsn] = useState(EMPTY_STRING);
-   const [phone, setPhone] = useState(EMPTY_STRING);
-   const [dob, setDOB] = useState(EMPTY_STRING);
-   const [addr1, setAddr1] = useState(EMPTY_STRING);
-   const [addr2, setAddr2] = useState(EMPTY_STRING);
-   const [city, setCity] = useState(EMPTY_STRING);
-   const [state, setState] = useState(EMPTY_STRING);
-   const [zip, setZip] = useState(EMPTY_STRING);
-   const [income, setIncome] = useState(EMPTY_STRING);
-   const [housing, setHousing] = useState(EMPTY_STRING);
-   const [citizen, setCitizen] = useState(EMPTY_STRING);
-
-   const ONLY_DIGITS = /[^\d]/g;
-   const PHONE_NUMBER_LENGTH = 10;
-   const PHONE_HYPHEN_FIRST_POS = 3;
-   const PHONE_HYPHEN_SECOND_POS = 6;
-   const SSN_HYPHEN_FIRST_POS = 3;
-   const SSN_HYPHEN_SECOND_POS = 5;
-   const HYPHEN = '-';
-   const SLASH = '/';
-   const SSN_LENGTH = 9;
-   const PHONE_MAX_LENGTH = 20; // Adjusted to account for '-' characters
-   const SSN_MAX_LENGTH = 18; // Adjusted to account for '-' characters
-   const DATE_MAX_LENGTH = 10; // Adjusted to account for '/' characters
-   const DATE_SLASH_FIRST_POS = 2;
-   const DATE_SLASH_SECOND_POS = 4;
-
-   const inputBoxHelper = (text, length, symbol, symbolFirstPos, symbolSecondPos) => {
-    //Get only the digits entered.
-    const formattedText = text.replace(ONLY_DIGITS, EMPTY_STRING);
-    let formattedOutput = EMPTY_STRING;
-
-    //Loop through all the digits, adding hyphens where appropiate.
-    for(let i = 0; i < formattedText.length && i < length; i++){
-      if(i==symbolFirstPos || i == symbolSecondPos){
-        formattedOutput += symbol;
-      }
-      formattedOutput += formattedText[i];
-    }
-    return formattedOutput;
- }
-
-
-   const handleFirstName = (text) => {
-	setFirstName(text);
-  };
-
-  const handleMiddleName = (text) => {
-	setMiddleName(text);
-  };
-
-  const handleLastName = (text) => {
-	setLastName(text);
-  };
-
-  const handleSsn = (text) => {
-	setSsn(inputBoxHelper(text, SSN_LENGTH, HYPHEN, SSN_HYPHEN_FIRST_POS, SSN_HYPHEN_SECOND_POS));
-  };
-
-  const handlePhone = (text) => {
-	setPhone(inputBoxHelper(text, PHONE_NUMBER_LENGTH, HYPHEN, PHONE_HYPHEN_FIRST_POS, PHONE_HYPHEN_SECOND_POS));
-  };
-
-  const handleDOB = (text) => {
-    setDOB(inputBoxHelper(text, DATE_MAX_LENGTH, SLASH, DATE_SLASH_FIRST_POS, DATE_SLASH_SECOND_POS));
-  };
-
-  const handleAddr1 = (text) => {
-      setAddr1(text);
+  const openMenu = () => {
+    console.log("Opened menu");
+    setMenuVisible(true);
+  }
+  const closeMenu = () => {
+    console.log("Closed menu"); 
+    setMenuVisible(false);
   }
 
-  const handleAddr2 = (text) => {
-      setAddr2(text);
+  const handleCardHolderAgreement = () => {
+    //console.log(cardHolderAgreement);
+    setCardHolderAgreement(!cardHolderAgreement);
   }
 
-  const handleCity = (text) => {
-      setCity(text);
+  const handlePrivacyNotice = () => {
+    setPrivacyNotice(!privacyNotice);
   }
 
-  const handleState = (text) => {
-      setState(text);
+  const handleRewardsAgreement = () => {
+    setRewardsAgreement(!rewardsAgreement);
   }
-
-  const handleZip = (text) => {
-      setZip(text);
-  }
-
-  const handleIncome = (val) => {
-      setIncome(val);
-  }
-
-  const handleHousing = (val) => {
-    setHousing(val);
-  }
-
-  const handleCitizen = (val) => {
-    setCitizen(val);
-  }
-
-  const clearFirstName = () => setFirstName(EMPTY_STRING);
-  const clearMiddleName = () => setMiddleName(EMPTY_STRING);
-  const clearLastName = () => setLastName(EMPTY_STRING);
-  const clearSsn = () => setSsn(EMPTY_STRING);
-  const clearPhone = () => setPhone(EMPTY_STRING);
-  const clearDOB = () => setDOB(EMPTY_STRING);
-  const clearAddr1 = () => setAddr1(EMPTY_STRING);
-  const clearAddr2 = () => setAddr2(EMPTY_STRING);
-  const clearCity = () => setCity(EMPTY_STRING);
-  const clearState = () => setState(EMPTY_STRING);
-  const clearZip = () => setZip(EMPTY_STRING);
-  const clearIncome = () => setIncome(EMPTY_STRING);
 
   return (
     <ScrollView contentContainerStyle={styles.scrollViewContent}>
@@ -170,11 +77,21 @@ export default function Approved() {
     	<View style={styles.content}>
 
         <View style = {styles.boxContainer}>
-        <Text style = {styles.centeredTitle}>You are Approved{'\n'}</Text>
+{/* 
+          <Menu 
+          visible = {true}
+          onDismiss = {closeMenu}
+          anchor={<IconButton icon = "dots-vertical" size={24} style = {styles.top_right} onPress = {openMenu}></IconButton>}>
+         <Menu.Item onPress = {() => {}} title = "Item 1" /> 
+         <Menu.Item onPress = {() => {}} title = "Item 2" /> 
+         <Divider /> 
+        <Menu.Item onPress = {() => {}} title = "Item 3" />
+        </Menu>
+        <Text style = {styles.centeredTitle}>You are Approved{'\n'}</Text> */}
         <Image  
         source={{ uri: 'https://t4.ftcdn.net/jpg/03/27/87/41/360_F_327874197_zaMWlrLxEw8sbjn4jnVsmqu3K3ZB1Jur.jpg' }}
-        style={styles.centeredImage}/>
-        
+        style={styles.centeredImage}/> 
+         
         <View style = {styles.row}>
         <Text style = {styles.title}> 16 %</Text> 
         <Text style = {[styles.rightAlignedText, styles.title]} > $10.000 </Text>
@@ -186,9 +103,40 @@ export default function Approved() {
 
         <Text>Lorem ipsum dolor sit amet, consectetur{'\n'}
         adipiscing elit, sed do eiusmod tempor</Text>
-
         </View>
-     
+
+        <View style = {styles.container}>
+        <List.Section>
+          <List.Accordion
+            title="Card Holder Agreement"
+            expanded={cardHolderAgreement}
+            onPress={handleCardHolderAgreement}> 
+            <List.Item title= "This is some expandable text 1." />
+          </List.Accordion>
+          </List.Section>
+        </View>
+
+        <View style = {styles.container}>
+        <List.Section>
+          <List.Accordion
+            title="Privacy Notice"
+            expanded={privacyNotice}
+            onPress={handlePrivacyNotice}> 
+            <List.Item title= "This is some expandable text 2." />
+          </List.Accordion>
+          </List.Section>
+        </View>
+
+        <View style = {styles.container}>
+        <List.Section>
+          <List.Accordion
+            title="Rewards Agreement"
+            expanded={rewardsAgreement}
+            onPress={handleRewardsAgreement}> 
+            <List.Item title= "This is some expandable text 3." />
+          </List.Accordion>
+          </List.Section>
+        </View>
     </View>
   	</SafeAreaView>
 	</PaperProvider>
