@@ -2,6 +2,7 @@ import React, { useState, useCallback } from 'react';
 import { View, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import styles from './reusable-components/styles';
+import constants from './reusable-components/GlobalConstants';
 
 import {
   Provider as PaperProvider,
@@ -28,11 +29,10 @@ export default function OTP() {
     navigation.navigate('Confirm');
   }, [navigation]);
 
-  const EMPTY_STRING = '';
-  const [otp, setOTP] = useState(EMPTY_STRING);
+  const [otp, setOTP] = useState(constants.EMPTY_STRING);
 
   // Clear OTP entered.
-  const clearOTP = () => setOTP(EMPTY_STRING);
+  const clearOTP = () => setOTP(constants.EMPTY_STRING);
 
   const handleOTPChange = (text) => {
     setOTP(text);
@@ -63,10 +63,10 @@ export default function OTP() {
               value={otp}
               style={styles.input}
               keyboardType="numeric"
-              placeholder={EMPTY_STRING}
+              placeholder={constants.EMPTY_STRING}
               onChangeText={handleOTPChange}
             />
-            {otp !== EMPTY_STRING && (
+            {otp !== constants.EMPTY_STRING && (
               <TouchableOpacity style={styles.clearButton} onPress={clearOTP}>
                 <Icon name="close" size={20} color="gray" />
               </TouchableOpacity>

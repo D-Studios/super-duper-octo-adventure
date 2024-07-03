@@ -12,6 +12,7 @@ import {
 } from 'react-native-paper';
 import { SafeAreaView } from 'react-native';
 import InputField from './reusable-components/InputField';
+import constants from './reusable-components/GlobalConstants';
 
 export default function Confirm() {
   const navigation = useNavigation();

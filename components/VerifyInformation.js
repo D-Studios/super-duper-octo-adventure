@@ -2,6 +2,7 @@ import React, { useState, useCallback } from 'react';
 import { View, Linking, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import styles from './reusable-components/styles';
+import constants from './reusable-components/GlobalConstants';
 import {
   Provider as PaperProvider,
   Appbar,
@@ -36,34 +37,34 @@ export default function VerifyInformation() {
     }
   };
 
-  const EMPTY_STRING = '';
-  const DEFAULT_PHONE = '_ _ _ - _ _ _ - _ _ _ _';
-  const DEFAULT_SSN = '_ _ _ - _ _ - _ _ _ _';
-  const [phone, setPhone] = useState(EMPTY_STRING);
-  const [ssn, setSsn] = useState(EMPTY_STRING);
+  // const EMPTY_STRING = '';
+  // const DEFAULT_PHONE = '_ _ _ - _ _ _ - _ _ _ _';
+  // const DEFAULT_SSN = '_ _ _ - _ _ - _ _ _ _';
+  const [phone, setPhone] = useState(constants.EMPTY_STRING);
+  const [ssn, setSsn] = useState(constants.EMPTY_STRING);
 
-  const ONLY_DIGITS = /[^\d]/g;
-  const PHONE_NUMBER_LENGTH = 10;
-  const PHONE_HYPHEN_FIRST_POS = 3;
-  const PHONE_HYPHEN_SECOND_POS = 6;
-  const NO_VISIBLE_HYPHEN = Infinity;
-  const HYPHEN = '-';
-  const SSN_LENGTH = 9;
-  const PHONE_MAX_LENGTH = 20; // Adjusted to account for '-' characters
-  const SSN_MAX_LENGTH = 18; // Adjusted to account for '-' characters
+  // const ONLY_DIGITS = /[^\d]/g;
+  // const PHONE_NUMBER_LENGTH = 10;
+  // const PHONE_HYPHEN_FIRST_POS = 3;
+  // const PHONE_HYPHEN_SECOND_POS = 6;
+  // const NO_VISIBLE_HYPHEN = Infinity;
+  // const HYPHEN = '-';
+  // const SSN_LENGTH = 9;
+  // const PHONE_MAX_LENGTH = 20; // Adjusted to account for '-' characters
+  // const SSN_MAX_LENGTH = 18; // Adjusted to account for '-' characters
 
-  const clearPhone = () => setPhone(EMPTY_STRING);
-  const clearSsn = () => setSsn(EMPTY_STRING);
+  const clearPhone = () => setPhone(constants.EMPTY_STRING);
+  const clearSsn = () => setSsn(constants.EMPTY_STRING);
 
   const inputBoxHelper = (text, length, hyphenFirstPos, hyphenSecondPos) => {
     // Get only the digits entered.
-    const formattedText = text.replace(ONLY_DIGITS, EMPTY_STRING);
-    let formattedOutput = EMPTY_STRING;
+    const formattedText = text.replace(constants.ONLY_DIGITS, constants.EMPTY_STRING);
+    let formattedOutput = constants.EMPTY_STRING;
 
     // Loop through all the digits, adding hyphens where appropriate.
     for (let i = 0; i < formattedText.length && i < length; i++) {
       if (i === hyphenFirstPos || i === hyphenSecondPos) {
-        formattedOutput += HYPHEN;
+        formattedOutput += constants.HYPHEN;
       }
       formattedOutput += formattedText[i];
     }
@@ -71,11 +72,11 @@ export default function VerifyInformation() {
   };
 
   const handlePhoneChange = (text) => {
-    setPhone(inputBoxHelper(text, PHONE_NUMBER_LENGTH, PHONE_HYPHEN_FIRST_POS, PHONE_HYPHEN_SECOND_POS));
+    setPhone(inputBoxHelper(text, constants.PHONE_NUMBER_LENGTH, constants.PHONE_HYPHEN_FIRST_POS, constants.PHONE_HYPHEN_SECOND_POS));
   };
 
   const handleSsnChange = (text) => {
-    setSsn(inputBoxHelper(text, SSN_LENGTH, NO_VISIBLE_HYPHEN, NO_VISIBLE_HYPHEN));
+    setSsn(inputBoxHelper(text, constants.SSN_LENGTH, constants.NO_VISIBLE_HYPHEN, constants.NO_VISIBLE_HYPHEN));
   };
 
   return (
@@ -96,10 +97,10 @@ export default function VerifyInformation() {
               onChangeText={handlePhoneChange}
               style={styles.input}
               keyboardType="numeric"
-              maxLength={PHONE_MAX_LENGTH}
-              placeholder={DEFAULT_PHONE}
+              maxLength={constants.PHONE_MAX_LENGTH}
+              placeholder={constants.DEFAULT_PHONE}
             />
-            {phone !== EMPTY_STRING && (
+            {phone !== constants.EMPTY_STRING && (
               <TouchableOpacity style={styles.clearButton} onPress={clearPhone}>
                 <Icon name="close" size={20} color="gray" />
               </TouchableOpacity>
@@ -121,11 +122,11 @@ export default function VerifyInformation() {
               onChangeText={handleSsnChange}
               style={styles.input}
               keyboardType="numeric"
-              maxLength={SSN_MAX_LENGTH}
-              placeholder={DEFAULT_SSN}
+              maxLength={constants.SSN_MAX_LENGTH}
+              placeholder={constants.DEFAULT_SSN}
               secureTextEntry={true}
             />
-            {ssn !== EMPTY_STRING && (
+            {ssn !== constants.EMPTY_STRING && (
               <TouchableOpacity style={styles.clearButton} onPress={clearSsn}>
                 <Icon name="close" size={20} color="gray" />
               </TouchableOpacity>
