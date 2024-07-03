@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { View, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import styles from './styles';
+import styles from './reusable-components/styles';
 import { SegmentedButtons, Card } from 'react-native-paper';
 import {
   Provider as PaperProvider,

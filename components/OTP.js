@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { View, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import styles from './styles';
+import styles from './reusable-components/styles';
 
 import {
   Provider as PaperProvider,

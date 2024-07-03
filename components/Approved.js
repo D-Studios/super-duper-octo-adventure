@@ -3,7 +3,7 @@ import { View, Image, ScrollView, findNodeHandle } from 'react-native';
 import { Menu, Divider, IconButton, List, Appbar, Text, Card, ProgressBar, Provider as PaperProvider } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native';
-import styles from './styles';
+import styles from './reusable-components/styles';
 
 export default function Approved() {
 

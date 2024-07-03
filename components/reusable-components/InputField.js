@@ -1,4 +1,4 @@
-import styles from '../styles';
+import styles from './styles';
 import React from 'react';
 import { View, TouchableOpacity } from 'react-native';
 import { TextInput } from 'react-native-paper';
