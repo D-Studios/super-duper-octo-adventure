@@ -13,6 +13,7 @@ import {
 } from 'react-native-paper';
 import { SafeAreaView } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import formatInputBox from './reusable-components/FormatInputBox';
 
 export default function VerifyInformation() {
   const navigation = useNavigation();
@@ -37,46 +38,19 @@ export default function VerifyInformation() {
     }
   };
 
-  // const EMPTY_STRING = '';
-  // const DEFAULT_PHONE = '_ _ _ - _ _ _ - _ _ _ _';
-  // const DEFAULT_SSN = '_ _ _ - _ _ - _ _ _ _';
+
   const [phone, setPhone] = useState(constants.EMPTY_STRING);
   const [ssn, setSsn] = useState(constants.EMPTY_STRING);
-
-  // const ONLY_DIGITS = /[^\d]/g;
-  // const PHONE_NUMBER_LENGTH = 10;
-  // const PHONE_HYPHEN_FIRST_POS = 3;
-  // const PHONE_HYPHEN_SECOND_POS = 6;
-  // const NO_VISIBLE_HYPHEN = Infinity;
-  // const HYPHEN = '-';
-  // const SSN_LENGTH = 9;
-  // const PHONE_MAX_LENGTH = 20; // Adjusted to account for '-' characters
-  // const SSN_MAX_LENGTH = 18; // Adjusted to account for '-' characters
 
   const clearPhone = () => setPhone(constants.EMPTY_STRING);
   const clearSsn = () => setSsn(constants.EMPTY_STRING);
 
-  const inputBoxHelper = (text, length, hyphenFirstPos, hyphenSecondPos) => {
-    // Get only the digits entered.
-    const formattedText = text.replace(constants.ONLY_DIGITS, constants.EMPTY_STRING);
-    let formattedOutput = constants.EMPTY_STRING;
-
-    // Loop through all the digits, adding hyphens where appropriate.
-    for (let i = 0; i < formattedText.length && i < length; i++) {
-      if (i === hyphenFirstPos || i === hyphenSecondPos) {
-        formattedOutput += constants.HYPHEN;
-      }
-      formattedOutput += formattedText[i];
-    }
-    return formattedOutput;
-  };
-
   const handlePhoneChange = (text) => {
-    setPhone(inputBoxHelper(text, constants.PHONE_NUMBER_LENGTH, constants.PHONE_HYPHEN_FIRST_POS, constants.PHONE_HYPHEN_SECOND_POS));
+    setPhone(formatInputBox(text, constants.PHONE_NUMBER_LENGTH, constants.HYPHEN, constants.PHONE_HYPHEN_FIRST_POS, constants.PHONE_HYPHEN_SECOND_POS));
   };
 
   const handleSsnChange = (text) => {
-    setSsn(inputBoxHelper(text, constants.SSN_LENGTH, constants.NO_VISIBLE_HYPHEN, constants.NO_VISIBLE_HYPHEN));
+    setSsn(formatInputBox(text, constants.SSN_LENGTH, constants.HYPHEN, constants.NO_VISIBLE_HYPHEN, constants.NO_VISIBLE_HYPHEN));
   };
 
   return (
@@ -135,10 +109,10 @@ export default function VerifyInformation() {
 
           <View style={styles.content}>
             <Text>
-              By providing your number, you agree to receive a one-time text message from Wells Fargo{'\n'}
+              By providing your number, you agree to receive a one-time text message from ***** *****{'\n'}
               with a link to verify your identity. Message and data rates may apply.{'\n'}
               You authorize your wireless carrier to use or disclose information about your account and{'\n'}
-              your wireless device, if available, to Wells Fargo, its Affiliates, or its service provider for the{'\n'}
+              your wireless device, if available, to ***** *****, its Affiliates, or its service provider for the{'\n'}
               duration of your business relationship, solely to help them identify you or your wireless{'\n'}
               device and to prevent fraud. See our <Text style={styles.url} onPress={handlePrivacyPolicy}>Privacy Policy</Text> for how we treat your data.{'\n'}
             </Text>

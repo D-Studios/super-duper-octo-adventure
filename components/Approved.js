@@ -29,7 +29,6 @@ export default function Approved() {
   const handleRewardsAgreement = () => setRewardsAgreement(!rewardsAgreement);
 
   const measureIconButton = (event) => {
-    const handle = findNodeHandle(event.target);
     event.target.measureInWindow((x, y, width, height) => {
       setIconButtonPosition({ x, y, width, height });
       openMenu();

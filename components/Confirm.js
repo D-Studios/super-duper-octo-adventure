@@ -13,6 +13,7 @@ import {
 import { SafeAreaView } from 'react-native';
 import InputField from './reusable-components/InputField';
 import constants from './reusable-components/GlobalConstants';
+import formatInputBox from './reusable-components/FormatInputBox';
 
 export default function Confirm() {
   const navigation = useNavigation();
@@ -27,56 +28,26 @@ export default function Confirm() {
     navigation.navigate('Approved');
   }, [navigation]);
 
-  const EMPTY_STRING = '';
+  const [firstName, setFirstName] = useState(constants.EMPTY_STRING);
+  const [middleName, setMiddleName] = useState(constants.EMPTY_STRING);
+  const [lastName, setLastName] = useState(constants.EMPTY_STRING);
+  const [ssn, setSsn] = useState(constants.EMPTY_STRING);
+  const [phone, setPhone] = useState(constants.EMPTY_STRING);
+  const [dob, setDOB] = useState(constants.EMPTY_STRING);
+  const [addr1, setAddr1] = useState(constants.EMPTY_STRING);
+  const [addr2, setAddr2] = useState(constants.EMPTY_STRING);
+  const [city, setCity] = useState(constants.EMPTY_STRING);
+  const [state, setState] = useState(constants.EMPTY_STRING);
+  const [zip, setZip] = useState(constants.EMPTY_STRING);
+  const [income, setIncome] = useState(constants.EMPTY_STRING);
+  const [housing, setHousing] = useState(constants.EMPTY_STRING);
+  const [citizen, setCitizen] = useState(constants.EMPTY_STRING);
 
-  const DEFAULT_PHONE = '_ _ _ - _ _ _ - _ _ _ _';
-  const DEFAULT_SSN = '_ _ _ - _ _ - _ _ _ _';
-  const DEFAULT_DATE = 'mm/dd/yyyy';
-
-  const [firstName, setFirstName] = useState(EMPTY_STRING);
-  const [middleName, setMiddleName] = useState(EMPTY_STRING);
-  const NO_VISIBLE_HYPHEN = Infinity;
-  const [lastName, setLastName] = useState(EMPTY_STRING);
-  const [ssn, setSsn] = useState(EMPTY_STRING);
-  const [phone, setPhone] = useState(EMPTY_STRING);
-  const [dob, setDOB] = useState(EMPTY_STRING);
-  const [addr1, setAddr1] = useState(EMPTY_STRING);
-  const [addr2, setAddr2] = useState(EMPTY_STRING);
-  const [city, setCity] = useState(EMPTY_STRING);
-  const [state, setState] = useState(EMPTY_STRING);
-  const [zip, setZip] = useState(EMPTY_STRING);
-  const [income, setIncome] = useState(EMPTY_STRING);
-  const [housing, setHousing] = useState('');
-  const [citizen, setCitizen] = useState('');
-
-  const ONLY_DIGITS = /[^\d]/g;
-  const PHONE_NUMBER_LENGTH = 10;
-  const PHONE_HYPHEN_FIRST_POS = 3;
-  const PHONE_HYPHEN_SECOND_POS = 6;
-  const HYPHEN = '-';
   const SLASH = '/';
-  const SSN_LENGTH = 9;
-  const TEXT_MAX_LENGTH = 100;
-  const PHONE_MAX_LENGTH = 20; // Adjusted to account for '-' characters
-  const SSN_MAX_LENGTH = 18; // Adjusted to account for '-' characters
+  const DEFAULT_DATE = 'mm/dd/yyyy';
   const DATE_MAX_LENGTH = 10; // Adjusted to account for '/' characters
   const DATE_SLASH_FIRST_POS = 2;
   const DATE_SLASH_SECOND_POS = 4;
-
-  const inputBoxHelper = (text, length, symbol, symbolFirstPos, symbolSecondPos) => {
-    // Get only the digits entered.
-    const formattedText = text.replace(ONLY_DIGITS, EMPTY_STRING);
-    let formattedOutput = EMPTY_STRING;
-
-    // Loop through all the digits, adding hyphens where appropriate.
-    for (let i = 0; i < formattedText.length && i < length; i++) {
-      if (i === symbolFirstPos || i === symbolSecondPos) {
-        formattedOutput += symbol;
-      }
-      formattedOutput += formattedText[i];
-    }
-    return formattedOutput;
-  };
 
   const handleFirstName = (text) => {
     setFirstName(text);
@@ -91,15 +62,15 @@ export default function Confirm() {
   };
 
   const handleSsn = (text) => {
-    setSsn(inputBoxHelper(text, SSN_LENGTH, HYPHEN, NO_VISIBLE_HYPHEN, NO_VISIBLE_HYPHEN));
+    setSsn(formatInputBox(text, constants.SSN_LENGTH, constants.HYPHEN, constants.NO_VISIBLE_HYPHEN, constants.NO_VISIBLE_HYPHEN));
   };
 
   const handlePhone = (text) => {
-    setPhone(inputBoxHelper(text, PHONE_NUMBER_LENGTH, HYPHEN, PHONE_HYPHEN_FIRST_POS, PHONE_HYPHEN_SECOND_POS));
+    setPhone(formatInputBox(text, constants.PHONE_NUMBER_LENGTH, constants.HYPHEN, constants.PHONE_HYPHEN_FIRST_POS, constants.PHONE_HYPHEN_SECOND_POS));
   };
 
   const handleDOB = (text) => {
-    setDOB(inputBoxHelper(text, DATE_MAX_LENGTH, SLASH, DATE_SLASH_FIRST_POS, DATE_SLASH_SECOND_POS));
+    setDOB(formatInputBox(text, DATE_MAX_LENGTH, SLASH, DATE_SLASH_FIRST_POS, DATE_SLASH_SECOND_POS));
   };
 
   const handleAddr1 = (text) => {
@@ -134,18 +105,18 @@ export default function Confirm() {
     setCitizen(val);
   };
 
-  const clearFirstName = () => setFirstName(EMPTY_STRING);
-  const clearMiddleName = () => setMiddleName(EMPTY_STRING);
-  const clearLastName = () => setLastName(EMPTY_STRING);
-  const clearSsn = () => setSsn(EMPTY_STRING);
-  const clearPhone = () => setPhone(EMPTY_STRING);
-  const clearDOB = () => setDOB(EMPTY_STRING);
-  const clearAddr1 = () => setAddr1(EMPTY_STRING);
-  const clearAddr2 = () => setAddr2(EMPTY_STRING);
-  const clearCity = () => setCity(EMPTY_STRING);
-  const clearState = () => setState(EMPTY_STRING);
-  const clearZip = () => setZip(EMPTY_STRING);
-  const clearIncome = () => setIncome(EMPTY_STRING);
+  const clearFirstName = () => setFirstName(constants.EMPTY_STRING);
+  const clearMiddleName = () => setMiddleName(constants.EMPTY_STRING);
+  const clearLastName = () => setLastName(constants.EMPTY_STRING);
+  const clearSsn = () => setSsn(constants.EMPTY_STRING);
+  const clearPhone = () => setPhone(constants.EMPTY_STRING);
+  const clearDOB = () => setDOB(constants.EMPTY_STRING);
+  const clearAddr1 = () => setAddr1(constants.EMPTY_STRING);
+  const clearAddr2 = () => setAddr2(constants.EMPTY_STRING);
+  const clearCity = () => setCity(constants.EMPTY_STRING);
+  const clearState = () => setState(constants.EMPTY_STRING);
+  const clearZip = () => setZip(constants.EMPTY_STRING);
+  const clearIncome = () => setIncome(constants.EMPTY_STRING);
 
   return (
     <ScrollView contentContainerStyle={styles.scrollViewContent}>
@@ -172,8 +143,7 @@ export default function Confirm() {
                 value={firstName}
                 onChangeText={handleFirstName}
                 keyboardType="default"
-                maxLength={TEXT_MAX_LENGTH}
-                placeholder={EMPTY_STRING}
+                placeholder={constants.EMPTY_STRING}
                 onClear={clearFirstName}
               />
 
@@ -183,8 +153,7 @@ export default function Confirm() {
                 value={middleName}
                 onChangeText={handleMiddleName}
                 keyboardType="default"
-                maxLength={TEXT_MAX_LENGTH}
-                placeholder={EMPTY_STRING}
+                placeholder={constants.EMPTY_STRING}
                 onClear={clearMiddleName}
               />
 
@@ -194,8 +163,7 @@ export default function Confirm() {
                 value={lastName}
                 onChangeText={handleLastName}
                 keyboardType="default"
-                maxLength={TEXT_MAX_LENGTH}
-                placeholder={EMPTY_STRING}
+                placeholder={constants.EMPTY_STRING}
                 onClear={clearLastName}
               />
             </Card>
@@ -208,8 +176,8 @@ export default function Confirm() {
                 value={ssn}
                 onChangeText={handleSsn}
                 keyboardType="numeric"
-                maxLength={SSN_MAX_LENGTH}
-                placeholder={DEFAULT_SSN}
+                maxLength={constants.SSN_MAX_LENGTH}
+                placeholder={constants.DEFAULT_SSN}
                 secureTextEntry={true} 
                 onClear={clearSsn}
               />
@@ -218,8 +186,8 @@ export default function Confirm() {
                 value={phone}
                 onChangeText={handlePhone}
                 keyboardType="numeric"
-                maxLength={PHONE_MAX_LENGTH}
-                placeholder={DEFAULT_PHONE}
+                maxLength={constants.PHONE_MAX_LENGTH}
+                placeholder={constants.DEFAULT_PHONE}
                 onClear={clearPhone}
               />
               <InputField
@@ -241,7 +209,7 @@ export default function Confirm() {
                 value={addr1}
                 onChangeText={handleAddr1}
                 keyboardType="default"
-                placeholder={EMPTY_STRING}
+                placeholder={constants.EMPTY_STRING}
                 onClear={clearAddr1}
               />
               <InputField
@@ -249,7 +217,7 @@ export default function Confirm() {
                 value={addr2}
                 onChangeText={handleAddr2}
                 keyboardType="default"
-                placeholder={EMPTY_STRING}
+                placeholder={constants.EMPTY_STRING}
                 onClear={clearAddr2}
               />
               <InputField
@@ -257,7 +225,7 @@ export default function Confirm() {
                 value={city}
                 onChangeText={handleCity}
                 keyboardType="default"
-                placeholder={EMPTY_STRING}
+                placeholder={constants.EMPTY_STRING}
                 onClear={clearCity}
               />
               <InputField
@@ -265,7 +233,7 @@ export default function Confirm() {
                 value={state}
                 onChangeText={handleState}
                 keyboardType="default"
-                placeholder={EMPTY_STRING}
+                placeholder={constants.EMPTY_STRING}
                 onClear={clearState}
               />
               <InputField
@@ -273,7 +241,7 @@ export default function Confirm() {
                 value={zip}
                 onChangeText={handleZip}
                 keyboardType="numeric"
-                placeholder={EMPTY_STRING}
+                placeholder={constants.EMPTY_STRING}
                 onClear={clearZip}
               />
             </Card>
@@ -286,7 +254,7 @@ export default function Confirm() {
                 value={income}
                 onChangeText={handleIncome}
                 keyboardType="numeric"
-                placeholder={EMPTY_STRING}
+                placeholder={constants.EMPTY_STRING}
                 onClear={clearIncome}
               />
               <View>
