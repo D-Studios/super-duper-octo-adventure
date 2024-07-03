@@ -57,14 +57,18 @@ export default function VerifyInformation() {
     <PaperProvider>
       <SafeAreaView style={styles.container}>
         <Appbar.Header>
+          {/* This is the back button */}
           <Appbar.BackAction onPress={handlePreviousPress} />
+           {/* This is the title */}
           <Appbar.Content title="Verify and Pre-fill Application" />
         </Appbar.Header>
 
+        {/* Progress bar. */}
         <ProgressBar progress={0} style={styles.progressBar} />
 
         <View style={styles.content}>
           <View style={styles.inputContainer}>
+            {/* Input for Mobile Phone Number */}
             <TextInput
               label="Mobile Phone Number"
               value={phone}
@@ -82,6 +86,7 @@ export default function VerifyInformation() {
           </View>
 
           <View style={styles.content}>
+            {/*Consent and Disclosure Text*/}
             <Text>
               We ask for your Social Security number or Individual Tax Identification Number (ITIN) to{'\n'}
               help prefill your information in this application process, verify your identity, and obtain your{'\n'}
@@ -90,6 +95,7 @@ export default function VerifyInformation() {
           </View>
 
           <View style={styles.inputContainer}>
+             {/* Input for Social Security Number */}
             <TextInput
               label="Social Security Number"
               value={ssn}
@@ -108,6 +114,7 @@ export default function VerifyInformation() {
           </View>
 
           <View style={styles.content}>
+            {/*Consent and Disclosure Text*/}
             <Text>
               By providing your number, you agree to receive a one-time text message from ***** *****{'\n'}
               with a link to verify your identity. Message and data rates may apply.{'\n'}
@@ -117,7 +124,8 @@ export default function VerifyInformation() {
               device and to prevent fraud. See our <Text style={styles.url} onPress={handlePrivacyPolicy}>Privacy Policy</Text> for how we treat your data.{'\n'}
             </Text>
           </View>
-
+          
+          {/* Next button */}
           <Button mode="contained" style={styles.button} onPress={handleNextPress}>
             Next
           </Button>

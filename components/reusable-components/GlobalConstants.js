@@ -10,8 +10,8 @@ const constants = {
     NO_VISIBLE_HYPHEN: Infinity,
     HYPHEN: '-',
     SSN_LENGTH: 9,
-    PHONE_MAX_LENGTH: 20,
-    SSN_MAX_LENGTH: 18
+    PHONE_MAX_LENGTH: 12, // Adjusted to account for '-' characters
+    SSN_MAX_LENGTH: 11 // Adjusted to account for '-' characters
 }
 
 export default constants;

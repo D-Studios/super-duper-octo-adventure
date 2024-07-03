@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { View, Image, ScrollView, findNodeHandle } from 'react-native';
+import { View, Image, ScrollView} from 'react-native';
 import { Menu, Divider, IconButton, List, Appbar, Text, Card, ProgressBar, Provider as PaperProvider } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native';
@@ -50,7 +50,9 @@ export default function Approved() {
           <ProgressBar progress={1} style={styles.progressBar} />
 
           <View style={styles.content}>
+          {/*Creating box*/}
           <Card mode = 'elevated' style = {styles.boxContainer}>
+             {/*Three dots menu on upper right corner of box*/}
               <IconButton
                 icon="dots-vertical"
                 onPress={(event) => measureIconButton(event)}
@@ -69,11 +71,14 @@ export default function Approved() {
                   <Menu.Item onPress={() => {}} title="Item 3" />
                 </Menu>
               )}
+              {/*Approved text*/}
               <Text style={styles.centeredTitle}>You are Approved{'\n'}</Text>
+              {/*Credit card image*/}
               <Image
                 source={{ uri: 'https://t4.ftcdn.net/jpg/03/27/87/41/360_F_327874197_zaMWlrLxEw8sbjn4jnVsmqu3K3ZB1Jur.jpg' }}
                 style={styles.centeredImage}
               />
+              {/*Credit card attribute descriptions*/}
               <View style={styles.row}>
                 <Text style={styles.title}>16 %</Text>
                 <Text style={[styles.rightAlignedText, styles.title]}>$10.000</Text>
@@ -82,12 +87,14 @@ export default function Approved() {
                 <Text style={styles.miniTitle}>Purchase APR</Text>
                 <Text style={[styles.rightAlignedText, styles.miniTitle]}>Credit Limit</Text>
               </View>
+              {/*Placeholder text*/}
               <Text>
                 Lorem ipsum dolor sit amet, consectetur{'\n'}
                 adipiscing elit, sed do eiusmod tempor
               </Text>
             </Card>
-
+            
+            {/*Dropdown menu for Card Holder Agreement*/}
             <View style={styles.container}>
               <List.Section>
                 <List.Accordion
@@ -99,7 +106,8 @@ export default function Approved() {
                 </List.Accordion>
               </List.Section>
             </View>
-
+            
+            {/*Dropdown menu for Privacy Notice*/}
             <View style={styles.container}>
               <List.Section>
                 <List.Accordion
@@ -112,6 +120,7 @@ export default function Approved() {
               </List.Section>
             </View>
 
+            {/*Dropdown menu for Rewards Agreement*/}
             <View style={styles.container}>
               <List.Section>
                 <List.Accordion

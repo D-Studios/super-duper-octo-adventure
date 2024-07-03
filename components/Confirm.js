@@ -171,6 +171,7 @@ export default function Confirm() {
             {/* Identity box */}
             <Card mode='elevated' style={styles.boxContainer}>
               <Text style={styles.title}>Identity</Text>
+              {/* Input for Social Security Number */}
               <InputField
                 label="Social Security Number"
                 value={ssn}
@@ -181,6 +182,7 @@ export default function Confirm() {
                 secureTextEntry={true} 
                 onClear={clearSsn}
               />
+              {/* Input for Mobile Phone Number */}
               <InputField
                 label="Mobile Phone Number"
                 value={phone}
@@ -190,6 +192,7 @@ export default function Confirm() {
                 placeholder={constants.DEFAULT_PHONE}
                 onClear={clearPhone}
               />
+              {/* Input for Date of Birth */}
               <InputField
                 label="Date of Birth"
                 value={dob}
@@ -204,6 +207,7 @@ export default function Confirm() {
             {/* Address Box */}
             <Card mode='elevated' style={styles.boxContainer}>
               <Text style={styles.title}>Address</Text>
+              {/* Input for Address 1 */}
               <InputField
                 label="Address 1"
                 value={addr1}
@@ -212,6 +216,7 @@ export default function Confirm() {
                 placeholder={constants.EMPTY_STRING}
                 onClear={clearAddr1}
               />
+              {/* Input for Address 2 */}
               <InputField
                 label="Address 2"
                 value={addr2}
@@ -220,6 +225,7 @@ export default function Confirm() {
                 placeholder={constants.EMPTY_STRING}
                 onClear={clearAddr2}
               />
+              {/* Input for City*/}
               <InputField
                 label="City"
                 value={city}
@@ -228,6 +234,7 @@ export default function Confirm() {
                 placeholder={constants.EMPTY_STRING}
                 onClear={clearCity}
               />
+              {/* Input for State */}
               <InputField
                 label="State"
                 value={state}
@@ -236,6 +243,7 @@ export default function Confirm() {
                 placeholder={constants.EMPTY_STRING}
                 onClear={clearState}
               />
+              {/* Input for Zip Code*/}
               <InputField
                 label="Zip"
                 value={zip}
@@ -249,6 +257,8 @@ export default function Confirm() {
             {/* Other Box */}
             <Card mode='elevated' style={styles.boxContainer}>
               <Text style={styles.title}>Other</Text>
+              {/* Input for Annual Income (In Thousands)*/}
+              <Text style = {styles.miniTitle}>Annual Income (In Thousands)</Text>
               <InputField
                 label="Annual Income (In Thousands)"
                 value={income}
@@ -259,6 +269,7 @@ export default function Confirm() {
               />
               <View>
                 <Text style={styles.miniTitle}>Housing</Text>
+                {/* Input for Housing (Rent or Own)*/}
                 <SegmentedButtons
                   value={housing}
                   onValueChange={handleHousing}
@@ -280,6 +291,7 @@ export default function Confirm() {
               </View>
               <View>
                 <Text style={styles.miniTitle}>{'\n'}USA Citizen</Text>
+                {/* Input for USA Citizen (Yes or No)*/}
                 <SegmentedButtons
                   value={citizen}
                   onValueChange={handleCitizen}
