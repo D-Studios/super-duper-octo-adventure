@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { View, Linking, TouchableOpacity } from 'react-native';
+import { View, Linking, TouchableOpacity, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import styles from './reusable-components/styles';
 import constants from './reusable-components/GlobalConstants';
@@ -14,21 +14,31 @@ import {
 import { SafeAreaView } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import formatInputBox from './reusable-components/FormatInputBox';
+import { sendOtp } from './twilio';
 
 export default function VerifyInformation() {
   const navigation = useNavigation();
 
-  // Previous screen.
-  const handlePreviousPress = useCallback(() => {
-    navigation.navigate('VerifyInformation');
-  }, [navigation]);
+  const [formattedPhone, setFormattedPhone] = useState(constants.EMPTY_STRING);
+  const [unformattedPhone, setUnformattedPhone] = useState(constants.EMPTY_STRING);
+  const [ssn, setSsn] = useState(constants.EMPTY_STRING);
 
-  // Next screen.
-  const handleNextPress = useCallback(() => {
-    navigation.navigate('OTP');
-  }, [navigation]);
+  const clearPhone = () => {
+    setFormattedPhone(constants.EMPTY_STRING);
+    setUnformattedPhone(constants.EMPTY_STRING);
+  };
+  
+  const clearSsn = () => setSsn(constants.EMPTY_STRING);
 
-  // Privacy Policy.
+  const handlePhoneChange = (text) => {
+    setFormattedPhone(formatInputBox(text, constants.PHONE_NUMBER_LENGTH, constants.HYPHEN, constants.PHONE_HYPHEN_FIRST_POS, constants.PHONE_HYPHEN_SECOND_POS));
+    setUnformattedPhone(text.replace(/-/g, '')); // Remove hyphens from phone number
+  };
+
+  const handleSsnChange = (text) => {
+    setSsn(formatInputBox(text, constants.SSN_LENGTH, constants.HYPHEN, constants.NO_VISIBLE_HYPHEN, constants.NO_VISIBLE_HYPHEN));
+  };
+
   const handlePrivacyPolicy = async () => {
     const url = 'https://www.yahoo.com';
     const supported = await Linking.canOpenURL(url);
@@ -38,47 +48,38 @@ export default function VerifyInformation() {
     }
   };
 
-
-  const [phone, setPhone] = useState(constants.EMPTY_STRING);
-  const [ssn, setSsn] = useState(constants.EMPTY_STRING);
-
-  const clearPhone = () => setPhone(constants.EMPTY_STRING);
-  const clearSsn = () => setSsn(constants.EMPTY_STRING);
-
-  const handlePhoneChange = (text) => {
-    setPhone(formatInputBox(text, constants.PHONE_NUMBER_LENGTH, constants.HYPHEN, constants.PHONE_HYPHEN_FIRST_POS, constants.PHONE_HYPHEN_SECOND_POS));
-  };
-
-  const handleSsnChange = (text) => {
-    setSsn(formatInputBox(text, constants.SSN_LENGTH, constants.HYPHEN, constants.NO_VISIBLE_HYPHEN, constants.NO_VISIBLE_HYPHEN));
-  };
+  const handleNextPress = useCallback(async () => {
+    try {
+      await sendOtp(unformattedPhone);
+      Alert.alert('Success', 'OTP sent successfully');
+      navigation.navigate('OTP', { phoneNumber: unformattedPhone });
+    } catch (error) {
+      Alert.alert('Error', `Failed to send OTP to ${unformattedPhone}. Error: ${error.message}`);
+    }
+  }, [unformattedPhone, navigation]);
 
   return (
     <PaperProvider>
       <SafeAreaView style={styles.container}>
         <Appbar.Header>
-          {/* This is the back button */}
-          <Appbar.BackAction onPress={handlePreviousPress} />
-           {/* This is the title */}
+          <Appbar.BackAction onPress={() => navigation.navigate('PreviousScreen')} />
           <Appbar.Content title="Verify and Pre-fill Application" />
         </Appbar.Header>
 
-        {/* Progress bar. */}
         <ProgressBar progress={0} style={styles.progressBar} />
 
         <View style={styles.content}>
           <View style={styles.inputContainer}>
-            {/* Input for Mobile Phone Number */}
             <TextInput
               label="Mobile Phone Number"
-              value={phone}
+              value={formattedPhone}
               onChangeText={handlePhoneChange}
               style={styles.input}
               keyboardType="numeric"
               maxLength={constants.PHONE_MAX_LENGTH}
               placeholder={constants.DEFAULT_PHONE}
             />
-            {phone !== constants.EMPTY_STRING && (
+            {formattedPhone !== constants.EMPTY_STRING && (
               <TouchableOpacity style={styles.clearButton} onPress={clearPhone}>
                 <Icon name="close" size={20} color="gray" />
               </TouchableOpacity>
@@ -86,7 +87,6 @@ export default function VerifyInformation() {
           </View>
 
           <View style={styles.content}>
-            {/*Consent and Disclosure Text*/}
             <Text>
               We ask for your Social Security number or Individual Tax Identification Number (ITIN) to{'\n'}
               help prefill your information in this application process, verify your identity, and obtain your{'\n'}
@@ -95,7 +95,6 @@ export default function VerifyInformation() {
           </View>
 
           <View style={styles.inputContainer}>
-             {/* Input for Social Security Number */}
             <TextInput
               label="Social Security Number"
               value={ssn}
@@ -114,7 +113,6 @@ export default function VerifyInformation() {
           </View>
 
           <View style={styles.content}>
-            {/*Consent and Disclosure Text*/}
             <Text>
               By providing your number, you agree to receive a one-time text message from ***** *****{'\n'}
               with a link to verify your identity. Message and data rates may apply.{'\n'}
@@ -124,8 +122,7 @@ export default function VerifyInformation() {
               device and to prevent fraud. See our <Text style={styles.url} onPress={handlePrivacyPolicy}>Privacy Policy</Text> for how we treat your data.{'\n'}
             </Text>
           </View>
-          
-          {/* Next button */}
+
           <Button mode="contained" style={styles.button} onPress={handleNextPress}>
             Next
           </Button>
