@@ -1,8 +1,10 @@
 import axios from 'axios';
 
+
 // Replace with your Mac's IP address assigned by the phone hotspot
 // const BACKEND_URL = 'http://localhost:3000';
 const BACKEND_URL = 'http://10.128.227.239:3000';
+
 
 export const sendOtp = async (phoneNumber) => {
   try {
