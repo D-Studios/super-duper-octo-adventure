@@ -65,7 +65,7 @@ export default function Approved() {
                   onDismiss={closeMenu}
                   anchor={{ x: iconButtonPosition.x + X_OFFSET, y: iconButtonPosition.y + iconButtonPosition.height + Y_OFFSET }}
                 >
-                  <Menu.Item onPress={() => {}} title="Item 1" />
+                  <Menu.Item onPress={() => navigation.navigate("CreditCardInformation")} title="Credit Card Information" />
                   <Menu.Item onPress={() => {}} title="Item 2" />
                   <Divider />
                   <Menu.Item onPress={() => {}} title="Item 3" />

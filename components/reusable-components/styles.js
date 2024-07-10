@@ -1,8 +1,31 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 
 const styles = StyleSheet.create({
   container: { 
     flex: 1,
+  },
+  creditCardBackground : {
+    backgroundColor: "#9fc0f5"
+  },
+  downSpace : {
+    paddingVertical: 200
+  },
+  largeContainer : {
+    flex: 1,
+    marginLeft: 0,
+    marginRight: 0,
+    backgroundColor: '#d7dade',
+    marginBottom: 0,
+  },
+  fullScreen: {
+    width: '100%',
+    height: '100%'
+  },
+  bixBox: {
+    width: '100%'
+  },
+  fullWidth: {
+    width: '100%'
   },
   url : {
     color : 'blue',
@@ -32,6 +55,20 @@ const styles = StyleSheet.create({
   button: {
     marginTop: 20,
   },
+  additionalButtonStyling: {
+    backgroundColor: '#ffffff',
+    borderWidth: 1,
+    borderRadius: 8,
+    marginRight: 16,
+    marginLeft: 0,
+    width: 150
+  },
+  additionalButtonTextStyling: {
+    color: '#000000',
+    fontSize: 16,
+    fontWeight: 'bold',
+    textAlign: 'center'
+  },
   boxContainer: {
     backgroundColor: '#ffffff', 
     borderRadius: 8, 
@@ -43,6 +80,20 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 }, 
     shadowOpacity: 0.8, 
     shadowRadius: 2, 
+  },
+  boxContainerVariation2: {
+    backgroundColor: '#ffffff', 
+    borderRadius: 8, 
+    borderWidth: 1, 
+    borderColor: '#dddddd', 
+    shadowColor: '#000000', 
+    shadowOffset: { width: 0, height: 2 }, 
+    shadowOpacity: 0.8, 
+    shadowRadius: 2, 
+  },
+  noPaddingOrMargin: {
+    padding: 0,
+    margin: 0
   },
   title: {
     fontSize: 20,
@@ -78,6 +129,12 @@ const styles = StyleSheet.create({
   rightAlignedText : {
     alignSelf : 'right',
     textAlign : 'right',
+  },
+  closerRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingHorizontal: 4,
+    paddingVertical: 2
   },
   row : {
     flexDirection: 'row',

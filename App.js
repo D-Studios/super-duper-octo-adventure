@@ -5,13 +5,14 @@ import OTP from './components/OTP.js';
 import VerifyInformation from './components/VerifyInformation.js';
 import Confirm from './components/Confirm.js';
 import Approved from './components/Approved.js';
+import CreditCardInformation from './components/CreditCardInformation.js';
 
 const Stack = createStackNavigator();
 
 function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="VerifyInformation">
+      <Stack.Navigator initialRouteName="Confirm">
         <Stack.Screen
           name="VerifyInformation"
           component={VerifyInformation}
@@ -39,6 +40,14 @@ function App() {
         <Stack.Screen
           name="Approved"
           component={Approved}
+          options={{ 
+            headerShown: false,
+            ...TransitionPresets.RevealFromBottomAndroid
+          }}
+        />
+        <Stack.Screen
+          name="CreditCardInformation"
+          component={CreditCardInformation}
           options={{ 
             headerShown: false,
             ...TransitionPresets.RevealFromBottomAndroid
