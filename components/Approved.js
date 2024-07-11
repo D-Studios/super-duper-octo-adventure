@@ -66,7 +66,7 @@ export default function Approved() {
                   anchor={{ x: iconButtonPosition.x + X_OFFSET, y: iconButtonPosition.y + iconButtonPosition.height + Y_OFFSET }}
                 >
                   <Menu.Item onPress={() => navigation.navigate("CreditCardInformation")} title="Credit Card Information" />
-                  <Menu.Item onPress={() => {}} title="Item 2" />
+                  <Menu.Item onPress={() => navigation.navigate("Rewards")} title="Rewards" />
                   <Divider />
                   <Menu.Item onPress={() => {}} title="Item 3" />
                 </Menu>
