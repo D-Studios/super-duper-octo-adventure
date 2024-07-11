@@ -197,16 +197,17 @@ export default function CreditCardInformation() {
       ];
 
     return (
-        <PaperProvider style = {styles.fullScreen}>
-            <SafeAreaView style= {[styles.creditCardBackground, styles.fullScreen]}>
+        <PaperProvider style = {[styles.fullScreen, styles.container]}>
+            <SafeAreaView style= {[styles.creditCardBackground, styles.fullScreen, styles.container]}>
+            <View style = {{height: spacer}}>
             <Appbar.Header>
               <Appbar.BackAction onPress={handlePreviousPress} />
-            <Appbar.Content title="Credit Card Information" />
-            </Appbar.Header>
-            <View style = {{height: spacer}} />
+              <Appbar.Content title="Credit Card Information" />
+              </Appbar.Header>
+            </View>
             <View style = {[{height: cardHeight}, styles.fullWidth]}>
             <Card mode = 'elevated' style = {[styles.boxContainer, styles.largeContainer, styles.fullWidth, styles.container]}>
-                <ScrollView vertical = {true} contentContainerStyle={styles.scrollViewContent}>
+                <ScrollView>
                     <Card.Content>
                         <View style={styles.row}>
                             <Button mode="contained" style={[styles.button, styles.additionalButtonStyling]} labelStyle = {styles.additionalButtonTextStyling}>
