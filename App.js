@@ -6,6 +6,8 @@ import VerifyInformation from './components/VerifyInformation.js';
 import Confirm from './components/Confirm.js';
 import Approved from './components/Approved.js';
 import CreditCardInformation from './components/CreditCardInformation.js';
+import Transactions from './components/Transactions';
+import MakePayment from './components/MakePayment';
 import Rewards from './components/Rewards';
 
 const Stack = createStackNavigator();
@@ -49,6 +51,22 @@ function App() {
         <Stack.Screen
           name="CreditCardInformation"
           component={CreditCardInformation}
+          options={{ 
+            headerShown: false,
+            ...TransitionPresets.RevealFromBottomAndroid
+          }}
+        />
+        <Stack.Screen
+          name="Transactions"
+          component={Transactions}
+          options={{ 
+            headerShown: false,
+            ...TransitionPresets.RevealFromBottomAndroid
+          }}
+        />
+        <Stack.Screen
+          name="MakePayment"
+          component={MakePayment} 
           options={{ 
             headerShown: false,
             ...TransitionPresets.RevealFromBottomAndroid

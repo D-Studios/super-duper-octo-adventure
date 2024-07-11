@@ -28,7 +28,7 @@ export default function OTP() {
 
   const handleNextPress = useCallback(async () => {
     try {
-      const response = await verifyOtp(phoneNumber, otp);
+      const response = await verifyOtp(otp);
       if (response.status === 'approved') {
         Alert.alert('Success', 'OTP verified successfully');
         navigation.navigate('Confirm');
@@ -39,7 +39,7 @@ export default function OTP() {
       console.error('OTP verification error:', error.response ? error.response.data : error.message);
       Alert.alert('Error', 'OTP verification failed');
     }
-  }, [navigation, otp, phoneNumber]);
+  }, [navigation, otp]);
 
   const clearOTP = () => setOTP(constants.EMPTY_STRING);
 

@@ -4,13 +4,13 @@ const styles = StyleSheet.create({
   container: { 
     flex: 1,
   },
-  creditCardBackground : {
+  creditCardBackground: {
     backgroundColor: "#9fc0f5"
   },
-  downSpace : {
+  downSpace: {
     paddingVertical: 200
   },
-  largeContainer : {
+  largeContainer: {
     flex: 1,
     marginLeft: 0,
     marginRight: 0,
@@ -27,8 +27,8 @@ const styles = StyleSheet.create({
   fullWidth: {
     width: '100%'
   },
-  url : {
-    color : 'blue',
+  url: {
+    color: 'blue',
     textDecorationLine: 'underline',
   },
   progressBar: {
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     right: 20, 
   },
   button: {
-    marginTop: 20,
+    marginVertical: 10, // Adjusted margin to accommodate multiple buttons
   },
   additionalButtonStyling: {
     backgroundColor: '#ffffff',
@@ -114,25 +114,25 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginRight: 10,
   },
-  slider : {
+  slider: {
     width: '100%',
-    height : 40, 
+    height: 40, 
   },
-  centeredTitle : {
+  centeredTitle: {
     textAlign: 'center',
     fontSize: 24,
     fontWeight: 'bold',
     marginTop: 20,
   },
-  centeredImage : {
+  centeredImage: {
     alignSelf: 'center',
     width: 200,
     height: 200,
     resizeMode: 'contain',
   },
-  rightAlignedText : {
-    alignSelf : 'right',
-    textAlign : 'right',
+  rightAlignedText: {
+    alignSelf: 'flex-end',
+    textAlign: 'right',
   },
   closerRow: {
     flexDirection: 'row',
@@ -140,16 +140,95 @@ const styles = StyleSheet.create({
     paddingHorizontal: 4,
     paddingVertical: 2
   },
-  row : {
+  row: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingHorizontal: 16, 
     paddingVertical: 8,
   },
-  top_right :  {
-    position : 'absolute',
-    top : 0,
-    right : 0,
+  top_right: {
+    position: 'absolute',
+    top: 0,
+    right: 0,
+  },
+  creditCardTitle: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    textAlign: 'left',
+    marginVertical: 16,
+  },
+  balanceTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginVertical: 8,
+  },
+  balanceAmount: {
+    fontSize: 28,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    marginVertical: 8,
+  },
+  availableCredit: {
+    fontSize: 16,
+    textAlign: 'center',
+    marginVertical: 8,
+  },
+  increaseCredit: {
+    fontSize: 16,
+    textAlign: 'center',
+    color: 'blue',
+    marginVertical: 8,
+  },
+  statementText: {
+    fontSize: 16,
+    textAlign: 'center',
+    marginVertical: 8,
+  },
+  autoPayText: {
+    fontSize: 16,
+  },
+  divider: {
+    marginVertical: 8,
+  },
+  topPane: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: 16,
+    backgroundColor: '#d7dade',
+  },
+  cardTextContainer: {
+    flex: 1,
+  },
+  creditCardImage: {
+    width: 50,
+    height: 50,
+    resizeMode: 'contain',
+  },
+  paymentOptionsContainer: {
+    marginTop: 16,
+  },
+  paymentOptionsTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 8,
+  },
+  paymentMethodTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginTop: 16,
+    marginBottom: 8,
+  },
+  paymentMethod: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginVertical: 8,
+  },
+  paymentMethodDetails: {
+    fontSize: 16,
+    color: 'gray',
+    marginVertical: 8,
   }
 });
 
