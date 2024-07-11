@@ -206,7 +206,7 @@ export default function CreditCardInformation() {
             <View style = {{height: spacer}} />
             <View style = {[{height: cardHeight}, styles.fullWidth]}>
             <Card mode = 'elevated' style = {[styles.boxContainer, styles.largeContainer, styles.fullWidth, styles.container]}>
-                <ScrollView contentContainerStyle={styles.scrollViewContent}>
+                <ScrollView vertical = {true} contentContainerStyle={styles.scrollViewContent}>
                     <Card.Content>
                         <View style={styles.row}>
                             <Button mode="contained" style={[styles.button, styles.additionalButtonStyling]} labelStyle = {styles.additionalButtonTextStyling}>
