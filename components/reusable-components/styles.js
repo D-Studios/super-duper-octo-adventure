@@ -1,4 +1,4 @@
-import { StyleSheet, Dimensions } from 'react-native';
+import { StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
   container: { 
@@ -90,6 +90,10 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 }, 
     shadowOpacity: 0.8, 
     shadowRadius: 2, 
+  },
+  centerAlign: {
+    justifyContent: 'center', 
+    alignItems: 'center'
   },
   noPaddingOrMargin: {
     padding: 0,

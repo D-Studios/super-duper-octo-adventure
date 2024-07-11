@@ -1,13 +1,14 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
-import OTP from './components/OTP';
-import VerifyInformation from './components/VerifyInformation';
-import Confirm from './components/Confirm';
-import Approved from './components/Approved';
-import CreditCardInformation from './components/CreditCardInformation';
+import OTP from './components/OTP.js';
+import VerifyInformation from './components/VerifyInformation.js';
+import Confirm from './components/Confirm.js';
+import Approved from './components/Approved.js';
+import CreditCardInformation from './components/CreditCardInformation.js';
 import Transactions from './components/Transactions';
-import MakePayment from './components/MakePayment'; // Import the MakePayment component
+import MakePayment from './components/MakePayment';
+import Rewards from './components/Rewards';
 
 const Stack = createStackNavigator();
 
@@ -66,6 +67,14 @@ function App() {
         <Stack.Screen
           name="MakePayment"
           component={MakePayment} 
+          options={{ 
+            headerShown: false,
+            ...TransitionPresets.RevealFromBottomAndroid
+          }}
+        />
+        <Stack.Screen
+          name="Rewards"
+          component={Rewards}
           options={{ 
             headerShown: false,
             ...TransitionPresets.RevealFromBottomAndroid
