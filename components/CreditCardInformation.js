@@ -200,12 +200,12 @@ export default function CreditCardInformation() {
                               </TouchableOpacity>
                             </View>
                             {activeCreditCardUsage == 'Daily' && (
-                             <View style = {styles.noPaddingOrMargin}>
+                             <View style = {{alignItems: 'center'}}>
                              <LineChart
                               data={lineChartData}
-                              width = {400}
+                              width = {380}
                               height = {180}
-                              style = {styles.fullWidth}
+                              style = {{flexShrink : 1}}
                               yAxisInterval={1} // optional, defaults to 1
                               withVerticalLabels = {true}
                               withHorizontalLabels = {false}
