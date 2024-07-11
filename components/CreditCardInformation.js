@@ -32,7 +32,7 @@ export default function CreditCardInformation() {
     };
 
     const lineChartData = {
-        labels: ["June 24", "June 25", "June 26", "June 27", "June 28", "June 29"],
+        labels: ["06/24", "06/25", "06/26", "06/27", "06/28", "06/29"],
         datasets: [
           {
             data: [20, 30, 40, 20, 40, 20],
@@ -200,10 +200,10 @@ export default function CreditCardInformation() {
                               </TouchableOpacity>
                             </View>
                             {activeCreditCardUsage == 'Daily' && (
-                             <View style = {{alignItems: 'center'}}>
+                             <View style = {{justifyContent: 'center', alignItems: 'center'}}>
                              <LineChart
                               data={lineChartData}
-                              width = {380}
+                              width = {320}
                               height = {180}
                               style = {{flexShrink : 1}}
                               yAxisInterval={1} // optional, defaults to 1
