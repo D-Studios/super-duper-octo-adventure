@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { View, Image, ScrollView} from 'react-native';
+import { View, Image, ScrollView } from 'react-native';
 import { Menu, Divider, IconButton, List, Appbar, Text, Card, ProgressBar, Provider as PaperProvider } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native';
@@ -51,7 +51,7 @@ export default function Approved() {
 
           <View style={styles.content}>
           {/*Creating box*/}
-          <Card mode = 'elevated' style = {styles.boxContainer}>
+          <Card mode='elevated' style={styles.boxContainer}>
              {/*Three dots menu on upper right corner of box*/}
               <IconButton
                 icon="dots-vertical"
@@ -68,7 +68,7 @@ export default function Approved() {
                   <Menu.Item onPress={() => navigation.navigate("CreditCardInformation")} title="Credit Card Information" />
                   <Menu.Item onPress={() => {}} title="Item 2" />
                   <Divider />
-                  <Menu.Item onPress={() => {}} title="Item 3" />
+                  <Menu.Item onPress={() => navigation.navigate("Transactions")} title="Transactions" />
                 </Menu>
               )}
               {/*Approved text*/}
