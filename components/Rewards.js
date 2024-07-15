@@ -99,6 +99,7 @@ export default function Rewards() {
                                 <Text>Shop with points on Delta Inc.</Text>
                             </TouchableOpacity>
                             <Divider style={styles.divider} />
+
                             <TouchableOpacity 
                               onPress={() => {}}
                               mode = "text"
@@ -112,6 +113,12 @@ export default function Rewards() {
                                     </Button>
                                 </Card.Content>
                             </Card>
+                            <View style={styles.row}>
+                                <Text style={styles.mediumUnBoldedTitle}>My Delta Inc. Deals</Text>
+                                <Button mode="text" style={styles.button} onPress={() => { /* Action */ }}>
+                                       View all (10)
+                                    </Button>
+                            </View>
                         </View>
                         {/* Horizontal Scroll for individual cards */}
                         <ScrollView horizontal={true} style={styles.fullWidth} contentContainerStyle={{ padding: 16 }}>

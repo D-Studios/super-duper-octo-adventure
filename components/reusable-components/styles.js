@@ -107,6 +107,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center', 
     alignItems: 'center'
   },
+  mediumUnBoldedTitle: {
+    fontSize: 20,
+    marginBottom: 10
+  },
   noPaddingOrMargin: {
     padding: 0,
     margin: 0
