@@ -107,6 +107,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center', 
     alignItems: 'center'
   },
+  regularText:{
+    fontSize: 14
+  },
+  miniText: {
+    fontSize: 10
+  },
   mediumUnBoldedTitle: {
     fontSize: 20,
     marginBottom: 10
