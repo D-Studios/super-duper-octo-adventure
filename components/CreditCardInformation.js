@@ -1,9 +1,11 @@
-import React, { useState, useCallback } from 'react';
-import { View, Image, ScrollView, Dimensions} from 'react-native';
+import React, { useState, useCallback, useRef, useEffect, Component } from 'react';
+import { View, Image, ScrollView, PanResponder, Animated, StyleSheet,  Dimensions} from 'react-native';
 import { Surface, Button, useTheme, Menu, Divider, IconButton, List, Appbar, Text, Card, Paragraph, ProgressBar, Provider as PaperProvider } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView, TouchableOpacity } from 'react-native';
 import styles from './reusable-components/styles';
+import PagerView from 'react-native-pager-view';
+
 import {
     LineChart,
     BarChart,
@@ -13,13 +15,17 @@ import {
     StackedBarChart
   } from "react-native-chart-kit";
 import { Circle } from 'react-native-svg';
+import Swipeable from "swipeable-react";
+import SwipeGesture from './swipe-gesture'
+//import { Swiper, SwiperSlide } from 'swiper/react';
+// import PagerView from 'react-native-pager-view';
 
 export default function CreditCardInformation() {
 
+    const FIRST_SCREEN = 0;
     const navigation = useNavigation();  
     const screenHeight = Dimensions.get('window').height;
-    const screenWidth = Dimensions.get('window').width;
-    const CARD_PORTION = 0.7;
+    const CARD_PORTION = 0.48;
     const FULL_SCREEN = 1;
     const cardHeight = screenHeight * CARD_PORTION;
     const spacer = (FULL_SCREEN-CARD_PORTION) * screenHeight;
@@ -39,13 +45,20 @@ export default function CreditCardInformation() {
     const BOTTOM_BORDER_WIDTH = 2;
     const NO_BOTTOM_BORDER = 0;
     const THOUSAND_DOLLARS = '$K';
+    const NUMBER_OF_SCREENS = 3;
 
     const [activeCreditCardUsage, setCreditCardUsage] = useState('Daily'); 
     const [activeRewardsAccumulation, setRewardsAccumulation] = useState('Weekly');
-
+    
     const handleCreditCardUsage = (chartName) => {
       setCreditCardUsage(chartName);
     };
+
+    const swipe = (newIndex) => {
+      if(currentIndex>=FIRST_SCREEN && currentIndex < NUMBER_OF_SCREENS) {
+        currentIndex = newIndex;
+      }
+    }
 
     const handleRewardsAccumulation = (chartName) => {
       setRewardsAccumulation(chartName);
@@ -204,41 +217,65 @@ export default function CreditCardInformation() {
               <Appbar.BackAction onPress={handlePreviousPress} />
               <Appbar.Content title="Credit Card Information" />
               </Appbar.Header>
+              <Text style = {[styles.miniTitle, styles.content]}>Delta Inc.</Text>
+              <Text style = {[styles.title, styles.content]}>Delta Inc. Credit Card.....1234</Text>
+              <Image
+                source={{ uri: 'https://t4.ftcdn.net/jpg/03/27/87/41/360_F_327874197_zaMWlrLxEw8sbjn4jnVsmqu3K3ZB1Jur.jpg' }}
+                style={styles.centeredImage}
+              />
+
             </View>
             <View style = {[{height: cardHeight}, styles.fullWidth]}>
             <Card mode = 'elevated' style = {[styles.boxContainer, styles.largeContainer, styles.fullWidth, styles.container]}>
-                <ScrollView>
-                    <Card.Content>
-                        <View style={styles.row}>
+                  <Card.Content>
+                  {/* <Animated.View
+                         {...panResponder.panHandlers}
+                 style = {{
+                   transform: [{translateX: swipeAnim}]
+                 }}
+                 onLayout = {(event)=> {
+                   screenWidth.current = event.nativeEvent.layout.width;
+                 }}
+                 > */}
+             <PagerView style={{width:'100%', height:'100%'}} initialPage={0} pageMargin={10}>
+                   {/* { currentIndex == TOP_CATEGORY_SPEND_SCREEN && ( */}
+                  <View key = "1" collapsable={false} style = {{width: '100%', height: '100%'}}> 
+                        <View style={styles.row} collapsable={false}>
                             <Button mode="contained" style={[styles.button, styles.additionalButtonStyling]} labelStyle = {styles.additionalButtonTextStyling}>
                                 Groceries
                             </Button>
                             <Button mode="contained" style={[styles.button, styles.additionalButtonStyling]} labelStyle = {styles.additionalButtonTextStyling}>
                                 Car Fuel
                             </Button>
-                        </View>
-
+                        </View> 
+                        {/* <SwipeGesture onSwipePerformed={this.onSwipePerformed}> */}
                         <Text style = {styles.title}>{'\n'}Top Category Spend</Text>
-                        <View style = {styles.fullWidth}>
-                        <Card mode = 'elevated' style = {[styles.boxContainerVariation2, styles.container, styles.fullWidth]}>
+                        <View style = {styles.fullWidth} collapsable = {false}>
+                        <Card mode = 'elevated' style = {[styles.boxContainerVariation2, styles.fullWidth, {height: '100%'}]}>
                         <PieChart
                             data={pieChartData}
                             width={PIE_CHART_WIDTH}
                             height={PIE_CHART_HEIGHT}
-                            style = {styles.container}
+                            style = {{width:'100%', height:'100%'}}
                             chartConfig={pieChartConfig}
                             accessor={"expenses"}
                             backgroundColor={"transparent"}
                         />
                         </Card>
                         </View>
-                    
+                        {/* </SwipeGesture> */}
+                    </View>
+                     {/* )
+                    }  */}
+                    {/* { currentIndex == CREDIT_CARD_USAGE_SCREEN && ( */}
+                     <View key = "2" collapsable={false} style = {{width:'100%', height:'100%'}}>
+                      {/* <SwipeGesture onSwipePerformed={this.onSwipePerformed}> */}
                         <Text style = {styles.title}>{'\n'}Credit Card Usage</Text>
-
-                        <View style = {styles.fullWidth}>
-                        <Card mode = 'elevated' style = {[styles.boxContainerVariation2, styles.container, styles.fullWidth]}>
+                      {/* </SwipeGesture> */}
+                        <View style = {styles.fullWidth} collapsable={false}>
+                        <Card mode = 'elevated' style = {[styles.boxContainerVariation2, styles.fullWidth, {height: '100%'}]}>
                             <Card.Content>
-                            <View style = {styles.row}>
+                            <View style = {styles.row} collapsable={false}>
                               <TouchableOpacity 
                               onPress={() => handleCreditCardUsage(DAILY)} 
                               style = {{
@@ -268,7 +305,7 @@ export default function CreditCardInformation() {
                               </TouchableOpacity>
                             </View>
                             {activeCreditCardUsage == DAILY && (
-                             <View style = {styles.centerAlign}>
+                             <View style = {styles.centerAlign} collapsable={false}>
                              <ScrollView horizontal={true}>
                              <LineChart
                               data={dailyCreditCardUsageData}
@@ -288,7 +325,7 @@ export default function CreditCardInformation() {
                             ) 
                            }
                            {activeCreditCardUsage == WEEKLY && (
-                             <View style = {styles.centerAlign}>
+                             <View style = {styles.centerAlign} collapsable={false}>
                              <ScrollView horizontal={true}>
                              <LineChart
                               data={weeklyCreditCardUsageData}
@@ -308,7 +345,7 @@ export default function CreditCardInformation() {
                             ) 
                            }
                            {activeCreditCardUsage == MONTHLY && (
-                             <View style = {styles.centerAlign}>
+                             <View style = {styles.centerAlign} collapsable={false}>
                              <ScrollView horizontal={true}>
                              <LineChart
                               data={monthlyCreditCardUsageData}
@@ -326,13 +363,20 @@ export default function CreditCardInformation() {
                               </ScrollView>
                               </View>
                             ) 
-                           }
+                           } 
+                           {/* <SwipeGesture onSwipePerformed={this.onSwipePerformed}></SwipeGesture> */}
                             </Card.Content>
-                        </Card>
-                        <Text style = {styles.title}>{'\n'}Rewards Accumulation</Text>
-                        <Card mode = 'elevated' style = {[styles.boxContainerVariation2, styles.container, styles.fullWidth]}>
+                        </Card> 
+                        </View>
+                        </View>
+                    {/* )
+                          } */}
+                  {/* {currentIndex == REWARDS_ACCUMULATION_SCREEN && ( */}
+                    <View key = "3" collapsable={false} style = {{width: '100%', height: '100%'}}>
+                        <Text style = {styles.title} collapsable={false}>{'\n'}Rewards Accumulation</Text>
+                        <Card mode = 'elevated' style = {[styles.boxContainerVariation2, {height:'100%'}]}>
                            <Card.Content>
-                           <View style = {styles.row}>
+                           <View style = {styles.row} collapsable={false}>
                               <TouchableOpacity 
                               onPress={() => handleRewardsAccumulation(WEEKLY)} 
                               style = {{
@@ -353,7 +397,7 @@ export default function CreditCardInformation() {
                               </TouchableOpacity>
                             </View>
                             {activeRewardsAccumulation == WEEKLY && (
-                             <View style = {styles.centerAlign}>
+                             <View style = {styles.centerAlign} collapsable={false}>
                              <ScrollView horizontal={true}>
                              <LineChart
                               data={weeklyRewardsAccumulation}
@@ -373,7 +417,7 @@ export default function CreditCardInformation() {
                             ) 
                            }
                            {activeRewardsAccumulation == MONTHLY && (
-                             <View style = {styles.centerAlign}>
+                             <View style = {styles.centerAlign} collapsable={false}>
                              <ScrollView horizontal={true}>
                              <LineChart
                               data={monthlyRewardsAccumulation}
@@ -395,11 +439,13 @@ export default function CreditCardInformation() {
                            </Card.Content>
                         </Card> 
                         </View>
+                  {/* )
+                          } */}
+                          </PagerView>
                     </Card.Content>
-                </ScrollView>
-            </Card> 
-            </View>
-            </SafeAreaView>
-        </PaperProvider>
+                    </Card>
+                    </View>
+                    </SafeAreaView>
+                    </PaperProvider>
     );
 }

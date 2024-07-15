@@ -1,4 +1,8 @@
 import { StyleSheet} from 'react-native';
+import {Dimensions} from 'react-native';
+
+const screenWidth = Dimensions.get('window').width;
+const screenHeight = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
   container: { 
@@ -18,8 +22,8 @@ const styles = StyleSheet.create({
     marginBottom: 0,
   },
   fullScreen: {
-    width: '100%',
-    height: '100%'
+    width: screenWidth,
+    height: screenHeight
   },
   bixBox: {
     width: '100%'
@@ -33,6 +37,15 @@ const styles = StyleSheet.create({
   },
   progressBar: {
     marginVertical: 20,
+  },
+  scrollViewContainer: {
+    flexGrow: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  page: {
+    width: screenWidth,
+    height: screenHeight
   },
   content: {
     padding: 20,
@@ -143,8 +156,8 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingHorizontal: 16, 
-    paddingVertical: 8,
+    paddingHorizontal: 0, 
+    paddingVertical: 0,
   },
   top_right: {
     position: 'absolute',
