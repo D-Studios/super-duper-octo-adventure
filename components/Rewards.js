@@ -1,8 +1,8 @@
 import React from 'react';
-import { View, ScrollView, Dimensions } from 'react-native';
+import { View, Image, ScrollView, Dimensions } from 'react-native';
 import { Appbar, Text, Card, Button, Divider, Provider as PaperProvider } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
-import { SafeAreaView } from 'react-native';
+import { SafeAreaView, TouchableOpacity} from 'react-native';
 import styles from './reusable-components/styles';
 
 export default function Rewards() {
@@ -25,7 +25,12 @@ export default function Rewards() {
                 </Appbar.Header>
                 <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
                     {/* Top Portion */}
-                    <View style={[styles.creditCardBackground, { height: topHeight, width: screenWidth }]}></View>
+                    <View style={[styles.creditCardBackground, { height: topHeight, width: screenWidth }]}>
+                    <Image
+                source={{ uri: 'https://t4.ftcdn.net/jpg/03/27/87/41/360_F_327874197_zaMWlrLxEw8sbjn4jnVsmqu3K3ZB1Jur.jpg' }}
+                style={styles.centeredImage}
+              /> 
+                    </View>
                     {/* Bottom Portion */}
                     <Text style={[styles.centeredTitle, {paddingTop: 20 }]}>Rewards & Benefits</Text>
                     <View style={{ flex: 1, width: '100%' }}>
@@ -33,41 +38,77 @@ export default function Rewards() {
                             {/* Four Cards vertically stacked */}
                             <Card mode="elevated" style={[styles.boxContainer, { marginBottom: 16, alignSelf: 'center', width: '100%' }]}>
                                 <Card.Content>
-                                    <Text style={styles.title}>Reward 1</Text>
-                                    <Text>Details about reward 1.</Text>
+                                  <Text style={styles.title}>Delta inc rewards points</Text>
+                                   <View style={styles.row}>
+                                        <Text style={styles.unBoldedTitle}>4,822</Text>
+                                        <Text style={[styles.rightAlignedText, styles.unBoldedTitle]}>533</Text>
+                                  </View>
+                                  <View style={styles.row}>
+                                        <Text style={styles.unBoldedMiniTitle}>Total available</Text>
+                                        <Text style={[styles.rightAlignedText, styles.unBoldedMiniTitle]}>Pending</Text>
+                                  </View>
                                     <Divider style={styles.divider} />
-                                    <Button mode="contained" style={styles.button} onPress={() => { /* Action */ }}>
-                                        Learn More
+                                    <Button mode="text" style={styles.button} onPress={() => { /* Action */ }}>
+                                       Redeem available points
                                     </Button>
                                 </Card.Content>
                             </Card>
                             <Card mode="elevated" style={[styles.boxContainer, { marginBottom: 16, alignSelf: 'center', width: '100%' }]}>
                                 <Card.Content>
-                                    <Text style={styles.title}>Reward 2</Text>
-                                    <Text>Details about reward 2.</Text>
+                                <Text style={styles.title}>3% Choice</Text>
+                                <Text style={styles.unBoldedTitle}>Dining</Text>
+                                <Divider style={styles.divider} />
+                                <Button mode="text" style={styles.button} onPress={() => { /* Action */ }}>
+                                       Change 3%
+                                </Button>
+                                </Card.Content>
+                            </Card>
+                            <Card mode="elevated" style={[styles.boxContainer, { marginBottom: 16, alignSelf: 'center', width: '100%' }]}>
+                            <Card.Content>
+                                  <Text style={styles.title}>Alpha Airline Mileage</Text>
+                                   <View style={styles.row}>
+                                        <Text style={styles.unBoldedTitle}>112,102</Text>
+                                        <Text style={[styles.rightAlignedText, styles.unBoldedTitle]}>346</Text>
+                                  </View>
+                                  <View style={styles.row}>
+                                        <Text style={styles.unBoldedMiniTitle}>Total available</Text>
+                                        <Text style={[styles.rightAlignedText, styles.unBoldedMiniTitle]}>Pending</Text>
+                                  </View>
                                     <Divider style={styles.divider} />
-                                    <Button mode="contained" style={styles.button} onPress={() => { /* Action */ }}>
-                                        Learn More
+                                    <Button mode="text" style={styles.button} onPress={() => { /* Action */ }}>
+                                       SSO Login to Alpha Airline
                                     </Button>
                                 </Card.Content>
                             </Card>
                             <Card mode="elevated" style={[styles.boxContainer, { marginBottom: 16, alignSelf: 'center', width: '100%' }]}>
-                                <Card.Content>
-                                    <Text style={styles.title}>Reward 3</Text>
-                                    <Text>Details about reward 3.</Text>
-                                    <Divider style={styles.divider} />
-                                    <Button mode="contained" style={styles.button} onPress={() => { /* Action */ }}>
-                                        Learn More
-                                    </Button>
-                                </Card.Content>
-                            </Card>
-                            <Card mode="elevated" style={[styles.boxContainer, { marginBottom: 16, alignSelf: 'center', width: '100%' }]}>
-                                <Card.Content>
-                                    <Text style={styles.title}>Reward 4</Text>
-                                    <Text>Details about reward 4.</Text>
-                                    <Divider style={styles.divider} />
-                                    <Button mode="contained" style={styles.button} onPress={() => { /* Action */ }}>
-                                        Learn More
+                            <Card.Content>
+                                  <Text style={styles.title}>Credit Card Benefits</Text>
+                                  <TouchableOpacity 
+                              onPress={() => {}}
+                              mode = "text"
+                              style = {styles.centerAlign}
+                              >
+                                <Text>3% cash back category choice</Text>
+                            </TouchableOpacity>
+                            <Divider style={styles.divider} />
+                            <TouchableOpacity 
+                              onPress={() => {}}
+                              mode = "text"
+                              style = {styles.centerAlign}
+                              >
+                                <Text>Shop with points on Delta Inc.</Text>
+                            </TouchableOpacity>
+                            <Divider style={styles.divider} />
+                            <TouchableOpacity 
+                              onPress={() => {}}
+                              mode = "text"
+                              style = {styles.centerAlign}
+                              >
+                                <Text>Alpha airline mileage plan</Text>
+                            </TouchableOpacity>
+                            <Divider style={styles.divider} />
+                                    <Button mode="text" style={styles.button} onPress={() => { /* Action */ }}>
+                                      View all reward benefits
                                     </Button>
                                 </Card.Content>
                             </Card>

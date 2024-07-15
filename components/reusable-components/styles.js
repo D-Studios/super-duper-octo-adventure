@@ -1,8 +1,4 @@
 import { StyleSheet} from 'react-native';
-import {Dimensions} from 'react-native';
-
-const screenWidth = Dimensions.get('window').width;
-const screenHeight = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
   container: { 
@@ -22,8 +18,11 @@ const styles = StyleSheet.create({
     marginBottom: 0,
   },
   fullScreen: {
-    width: screenWidth,
-    height: screenHeight
+    width: '100%',
+    height: '100%' 
+  },
+  fullHeight: {
+    height: '100%'
   },
   bixBox: {
     width: '100%'
@@ -44,8 +43,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   page: {
-    width: screenWidth,
-    height: screenHeight
+    width: '100%',
+    height: '100%'
   },
   content: {
     padding: 20,
@@ -66,7 +65,7 @@ const styles = StyleSheet.create({
     right: 20, 
   },
   button: {
-    marginVertical: 10, // Adjusted margin to accommodate multiple buttons
+    marginVertical: 10, 
   },
   additionalButtonStyling: {
     backgroundColor: '#ffffff',
@@ -121,6 +120,14 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: 'bold',
     marginBottom: 10,
+  },
+  unBoldedTitle:{
+    fontSize: 30,
+    marginBottom: 10,
+  },
+  unBoldedMiniTitle: {
+    fontSize: 15,
+    marginBottom: 10
   },
   regBold: {
     fontSize: 10,
