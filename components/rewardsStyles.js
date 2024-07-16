@@ -25,7 +25,7 @@ const rewardsStyles = StyleSheet.create({
         zIndex: 1,
     },
     centeredTitle: {
-        paddingLeft: 20,
+        paddingLeft: 26,
         fontSize: 28,
         fontWeight: 'bold',
         color: '#333',

@@ -15,21 +15,23 @@ export default function Rewards() {
     return (
         <PaperProvider>
             <SafeAreaView style={styles.container}>
-                    {/* Top Portion */}
-                    <CreditCardImage 
-                        complex = {true} 
-                        topPortion = {TOP_PORTION} appBarText = {'Rewards'} 
-                        showText={false}>
-                    </CreditCardImage>
+                {/* Top Portion */}
+                <CreditCardImage 
+                    complex = {true} 
+                    topPortion = {TOP_PORTION} appBarText = {'Rewards'} 
+                    showText={false}>
+                </CreditCardImage>
 
-                    {/* Bottom Portion */}
-                    <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+                {/* Bottom Portion */}
+                 <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
                     <Text style={[rewardsStyles.centeredTitle, {paddingTop: 20 }]}>Rewards & Benefits</Text>
                     <View style={{ flex: 1, width: '100%' }}>
-                        <View style={[styles.fullWidth, { padding: 16 }]}>
+                        <View style={[styles.fullWidth, { paddingTop: 6, paddingRight: 20, paddingBottom: 20, paddingLeft: 20}]}>
                             {/* Four Cards vertically stacked */}
                             <RewardsCardComponent
                                 title="Delta Inc. rewards points"
+                                iconLibrary="MaterialCommunityIcons"
+                                iconName="piggy-bank-outline"
                                 availablePoints="4,822"
                                 availableLabel="Total available"
                                 pendingPoints="533"
@@ -40,6 +42,8 @@ export default function Rewards() {
 
                             <RewardsCardComponent
                                 title="3% Choice"
+                                iconLibrary="MaterialIcons"
+                                iconName="local-dining"
                                 availablePoints="Dining"
                                 buttonText="Change 3% choice"
                                 onRedeem={() => { /* Action */ }}
@@ -47,6 +51,8 @@ export default function Rewards() {
 
                             <RewardsCardComponent
                                 title="Alpha Airline Mileage"
+                                iconLibrary="MaterialCommunityIcons"
+                                iconName="airplane"
                                 availablePoints="112,102"
                                 availableLabel="Total available"
                                 pendingPoints="346"
@@ -57,6 +63,8 @@ export default function Rewards() {
 
                             <RewardsCardComponent
                                 title="Credit Card Benefits"
+                                iconLibrary="MaterialCommunityIcons"
+                                iconName="gift-outline"
                                 benefits={[
                                     "3% cash back category choice",
                                     "Shop with points on Delta Inc.",
