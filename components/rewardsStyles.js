@@ -25,8 +25,8 @@ const rewardsStyles = StyleSheet.create({
         zIndex: 1,
     },
     centeredTitle: {
-        textAlign: 'center',
-        fontSize: 24,
+        paddingLeft: 20,
+        fontSize: 28,
         fontWeight: 'bold',
         color: '#333',
     },
@@ -48,8 +48,9 @@ const rewardsStyles = StyleSheet.create({
         fontWeight: 'normal',
         color: '#666',
     },
-    rightAlignedText: {
+    rightAlignedTextRS: {
         textAlign: 'right',
+        paddingRight: 80
     },
     row: {
         flexDirection: 'row',
