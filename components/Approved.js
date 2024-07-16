@@ -8,6 +8,7 @@ import CreditCardImage from './CreditCardImage';
 import WalletManager from 'react-native-wallet-manager';
 import { AddToWalletButton, openPaymentSetup } from 'react-native-add-wallet';
 import ReactNativeBiometrics, { BiometryTypes } from 'react-native-biometrics';
+import {TouchableOpacity} from 'react-native';
 
 export default function Approved() {
 
@@ -38,6 +39,14 @@ export default function Approved() {
       openMenu();
     });
   };
+
+  const rnBiometrics = new ReactNativeBiometrics()
+
+  const { biometryType } = await rnBiometrics.isSensorAvailable()
+  
+  if (biometryType === BiometryTypes.Biometrics) {
+    //do something face id specific
+  }
 
   return (
     <ScrollView contentContainerStyle={styles.scrollViewContent}>
@@ -89,42 +98,7 @@ export default function Approved() {
                 <Text style={[styles.rightAlignedText, styles.miniTitle]}>Credit Limit</Text>
               </View>
               {/*Placeholder text*/}
-              <TouchableOpacity
-                  onPress={async () => {
-                    // Verify user credentials before asking them to enable Face ID
-                    const {userId} = await verifyUserCredentials();
-
-                    const rnBiometrics = new ReactNativeBiometrics();
-                    
-                    const { available, biometryType } =
-                      await rnBiometrics.isSensorAvailable();
-                    
-                    if (available && biometryType === BiometryTypes.FaceID) {
-                      Alert.alert(
-                        'Face ID',
-                        'Would you like to enable Face ID authentication for the next time?',
-                        [
-                          {
-                            text: 'Yes please',
-                            onPress: async () => {
-                              const { publicKey } = await rnBiometrics.createKeys();
-
-                              // `publicKey` has to be saved on the user's entity in the database
-                              await sendPublicKeyToServer({ userId, publicKey });
-
-                              // save `userId` in the local storage to use it during Face ID authentication
-                              await AsyncStorage.setItem('userId', userId);
-                            },
-                          },
-                          { text: 'Cancel', style: 'cancel' },
-                        ],
-                      );
-                    }
-  }}>
-  <View style={styles.btn}>
-    <Text style={styles.btnText}>Sign in</Text>
-  </View>
-</TouchableOpacity>
+              
               <Text>
                 Lorem ipsum dolor sit amet, consectetur{'\n'}
                 adipiscing elit, sed do eiusmod tempor
