@@ -24,13 +24,13 @@ export default function Rewards() {
                     <Appbar.BackAction onPress={handlePreviousPress} />
                     <Appbar.Content title="Rewards" />
                 </Appbar.Header>
-                <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
                     {/* Top Portion */}
+                    <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
                     <View style={[styles.creditCardBackground, { height: topHeight, width: screenWidth }]}>
                     <Image
                 source={{ uri: 'https://t4.ftcdn.net/jpg/03/27/87/41/360_F_327874197_zaMWlrLxEw8sbjn4jnVsmqu3K3ZB1Jur.jpg' }}
                 style={styles.centeredImage}
-              /> 
+                    /> 
                     </View>
                     {/* Bottom Portion */}
                     <Text style={[styles.centeredTitle, {paddingTop: 20 }]}>Rewards & Benefits</Text>
@@ -38,7 +38,7 @@ export default function Rewards() {
                         <View style={[styles.fullWidth, { padding: 16 }]}>
                             {/* Four Cards vertically stacked */}
                             <Card mode="elevated" style={[styles.boxContainer, { marginBottom: 16, alignSelf: 'center', width: '100%' }]}>
-                                <Card.Content>
+                                <Card.Content>                        
                                   <Text style={styles.title}>Delta inc rewards points</Text>
                                    <View style={styles.row}>
                                         <Text style={styles.unBoldedTitle}>4,822</Text>
