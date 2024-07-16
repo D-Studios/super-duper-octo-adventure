@@ -38,22 +38,31 @@ export default function Rewards() {
                         <View style={[styles.fullWidth, { padding: 16 }]}>
                             {/* Four Cards vertically stacked */}
                             <Card mode="elevated" style={[styles.boxContainer, { marginBottom: 16, alignSelf: 'center', width: '100%' }]}>
-                                <Card.Content>
+                                <Card.Content style={rewardsStyles.cardMargins}>
                                   <Text style={styles.title}>Delta Inc. rewards points</Text>
-                                   <View style={styles.row}>
-                                        <Text style={styles.unBoldedTitle}>4,822</Text>
-                                        <Text style={[rewardsStyles.rightAlignedTextRS, styles.unBoldedTitle]}>533</Text>
-                                  </View>
                                   <View style={styles.row}>
-                                        <Text style={styles.unBoldedMiniTitle}>Total available</Text>
-                                        <Text style={[styles.rightAlignedText, styles.unBoldedMiniTitle]}>Pending</Text>
-                                  </View>
-                                    <Divider style={styles.divider} />
-                                    <Button mode="text" style={styles.button} onPress={() => { /* Action */ }}>
+                                    <View style={styles.column}>
+                                        <Text style={rewardsStyles.unBoldedTitle}>4,822</Text>
+                                        <Text style={rewardsStyles.unBoldedMiniTitle}>Total available</Text>
+                                    </View>
+                                    <View style={[styles.column, rewardsStyles.rightAlignedText]}>
+                                        <Text style={[rewardsStyles.unBoldedTitle]}>533</Text>
+                                        <Text style={[rewardsStyles.unBoldedMiniTitle]}>Pending</Text>
+                                    </View>
+                                </View>
+                                  
+                                    <Divider style={rewardsStyles.divider} />
+                                    <Button 
+                                        mode="text" 
+                                        style={rewardsStyles.button} 
+                                        labelStyle={rewardsStyles.buttonLabel}
+                                        onPress={() => { /* Action */ }}
+                                    >
                                        Redeem available points
                                     </Button>
                                 </Card.Content>
                             </Card>
+
                             <Card mode="elevated" style={[styles.boxContainer, { marginBottom: 16, alignSelf: 'center', width: '100%' }]}>
                                 <Card.Content>
                                 <Text style={styles.title}>3% Choice</Text>
