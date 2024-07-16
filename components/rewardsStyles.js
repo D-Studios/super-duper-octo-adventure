@@ -30,25 +30,23 @@ const rewardsStyles = StyleSheet.create({
         fontWeight: 'bold',
         color: '#333',
     },
-    boxContainer: {
-        borderRadius: 10,
-        elevation: 4,
-        backgroundColor: '#fff',
+    cardMargins: {
+        paddingBottom: 0,
     },
     title: {
         fontSize: 18,
         fontWeight: 'bold',
     },
     unBoldedTitle: {
-        fontSize: 16,
+        fontSize: 40,
         fontWeight: 'normal',
     },
     unBoldedMiniTitle: {
-        fontSize: 14,
+        fontSize: 16,
         fontWeight: 'normal',
         color: '#666',
     },
-    rightAlignedTextRS: {
+    rightAlignedText: {
         textAlign: 'right',
         paddingRight: 80
     },
@@ -59,10 +57,13 @@ const rewardsStyles = StyleSheet.create({
         marginVertical: 8,
     },
     divider: {
-        marginVertical: 8,
+        marginTop: 8,
     },
     button: {
-        marginTop: 10,
+        marginVertical: 8, 
+    },
+    buttonLabel: {
+        fontSize: 17, 
     },
     mediumUnBoldedTitle: {
         fontSize: 16,
