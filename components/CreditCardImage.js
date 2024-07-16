@@ -22,7 +22,7 @@ const CreditCardImage = ({ complex, topPortion, appBarText, showText, company, d
                     <Appbar.Content title={appBarText} />
                 </Appbar.Header>
             )}
-            <View style={[styles.creditCardBackground, complex ? { height: topHeight, width: screenWidth } : {}]}>
+            <View style={[styles.creditCardBackground, complex ? { height: topHeight, width: screenWidth, justifyContent: 'center', alignItems: 'center'} : {}]}>
                 {showText && complex && (
                     <View>
                         <Text style={[styles.miniTitle, styles.content]}>{company}</Text>
@@ -30,7 +30,7 @@ const CreditCardImage = ({ complex, topPortion, appBarText, showText, company, d
                     </View>
                 )}
                 <Image
-                    source={{ uri: 'https://wallpapers.com/images/hd/generic-credit-card-mockup-d8hix19lshdlfy2z.jpg'}}
+                    source={{ uri: 'https://cdn-icons-png.freepik.com/512/9334/9334539.png'}}
                     style={styles.centeredImage}
                     accessibilityLabel="Credit card image"
                 />
