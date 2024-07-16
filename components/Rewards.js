@@ -8,15 +8,8 @@ import rewardsStyles from './rewardsStyles';
 import CreditCardImage from './CreditCardImage';
 
 export default function Rewards() {
-    const navigation = useNavigation();
-    const handlePreviousPress = () => {
-        navigation.goBack();
-    };
 
-    const screenHeight = Dimensions.get('window').height;
-    const screenWidth = Dimensions.get('window').width;
     const TOP_PORTION = 0.25;
-    const topHeight = screenHeight * TOP_PORTION;
 
     return (
         <PaperProvider>
