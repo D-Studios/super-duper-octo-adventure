@@ -21,10 +21,6 @@ export default function Rewards() {
     return (
         <PaperProvider>
             <SafeAreaView style={styles.container}>
-                {/* <Appbar.Header>
-                    <Appbar.BackAction onPress={handlePreviousPress} />
-                    <Appbar.Content title="Rewards" />
-                </Appbar.Header> */}
                     {/* Top Portion */}
                     <CreditCardImage topPortion = {TOP_PORTION} appBarText = {'Rewards'} showText={false}></CreditCardImage>
                     {/* Bottom Portion */}
