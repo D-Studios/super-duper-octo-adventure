@@ -45,7 +45,7 @@ export default function Confirm() {
 
   const SLASH = '/';
   const DEFAULT_DATE = 'mm/dd/yyyy';
-  const DATE_MAX_LENGTH = 10; // Adjusted to account for '/' characters
+  const DATE_MAX_LENGTH = 10;
   const DATE_SLASH_FIRST_POS = 2;
   const DATE_SLASH_SECOND_POS = 4;
 

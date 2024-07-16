@@ -1,4 +1,4 @@
-import { StyleSheet} from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 
 const styles = StyleSheet.create({
   container: { 
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     right: 20, 
   },
   button: {
-    marginVertical: 10, // Adjusted margin to accommodate multiple buttons
+    marginVertical: 10,
   },
   additionalButtonStyling: {
     backgroundColor: '#ffffff',
@@ -90,10 +90,6 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 }, 
     shadowOpacity: 0.8, 
     shadowRadius: 2, 
-  },
-  centerAlign: {
-    justifyContent: 'center', 
-    alignItems: 'center'
   },
   noPaddingOrMargin: {
     padding: 0,
