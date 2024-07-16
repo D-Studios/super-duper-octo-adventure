@@ -9,25 +9,14 @@ import CreditCardImage from './CreditCardImage';
 import RewardsCardComponent from './reusable-components/RewardsCardComponent';
 
 export default function Rewards() {
-    const navigation = useNavigation();
-    const handlePreviousPress = () => {
-        navigation.goBack();
-    };
 
-    const screenHeight = Dimensions.get('window').height;
-    const screenWidth = Dimensions.get('window').width;
     const TOP_PORTION = 0.25;
-    const topHeight = screenHeight * TOP_PORTION;
 
     return (
         <PaperProvider>
             <SafeAreaView style={styles.container}>
-                {/* <Appbar.Header>
-                    <Appbar.BackAction onPress={handlePreviousPress} />
-                    <Appbar.Content title="Rewards" />
-                </Appbar.Header> */}
                     {/* Top Portion */}
-                    <CreditCardImage topPortion = {TOP_PORTION} appBarText = {'Rewards'} showText={false}></CreditCardImage>
+                    <CreditCardImage complex = {true} topPortion = {TOP_PORTION} appBarText = {'Rewards'} showText={false}></CreditCardImage>
                     {/* Bottom Portion */}
                     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
                     <Text style={[rewardsStyles.centeredTitle, {paddingTop: 20 }]}>Rewards & Benefits</Text>
