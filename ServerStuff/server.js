@@ -51,9 +51,6 @@ let application_token = '';
  
 const AUTH_HEADERS = {
   'Content-Type': 'application/json',
-  // 'Authorization': 'Bearer qPGHxvxXm51hVzviyqbTVrxdbnUF', 
-  // 'gateway-user-id': 'WFG_TEST_SUNEETHAM',
-  // 'gateway-entity-id': '2165575361-47584-307d6'
   'Authorization': 'Bearer ' + AUTHORIZATION,
   'gateway-user-id': GATEWAY_USER_ID,
   'gateway-entity-id': GATEWAY_ENTITY_ID 
