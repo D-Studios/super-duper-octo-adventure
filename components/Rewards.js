@@ -4,6 +4,7 @@ import { Appbar, Text, Card, Button, Divider, Provider as PaperProvider } from '
 import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView, TouchableOpacity} from 'react-native';
 import styles from './reusable-components/styles';
+import rewardsStyles from './rewardsStyles';
 
 export default function Rewards() {
     const navigation = useNavigation();
