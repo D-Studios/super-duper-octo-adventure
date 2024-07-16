@@ -40,13 +40,13 @@ export default function Approved() {
     });
   };
 
-  const rnBiometrics = new ReactNativeBiometrics()
+  // const rnBiometrics = new ReactNativeBiometrics()
 
-  const { biometryType } = await rnBiometrics.isSensorAvailable()
+  // const { biometryType } = await rnBiometrics.isSensorAvailable()
   
-  if (biometryType === BiometryTypes.Biometrics) {
-    //do something face id specific
-  }
+  // if (biometryType === BiometryTypes.Biometrics) {
+  //   //do something face id specific
+  // }
 
   return (
     <ScrollView contentContainerStyle={styles.scrollViewContent}>
