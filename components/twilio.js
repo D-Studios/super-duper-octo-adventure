@@ -1,13 +1,11 @@
 import axios from 'axios';
 
-
-// Replace with your Mac's IP address assigned by the phone hotspot
-// const BACKEND_URL = 'http://localhost:3000';
-const BACKEND_URL = 'http://10.128.227.239:3000';
-
+// Replace with your Mac's IP address if getting a Network Error
+const BACKEND_URL = 'http://localhost:3000';
 
 export const sendOtp = async (phoneNumber) => {
   try {
+    console.log("in send OTP");
     const response = await axios.post(`${BACKEND_URL}/send-otp`, { phoneNumber });
     return response.data;
   } catch (error) {
@@ -16,9 +14,11 @@ export const sendOtp = async (phoneNumber) => {
   }
 };
 
-export const verifyOtp = async (phoneNumber, code) => {
+export const verifyOtp = async (code) => {
   try {
-    const response = await axios.post(`${BACKEND_URL}/verify-otp`, { phoneNumber, code });
+    console.log("in verify 1");
+    const response = await axios.post(`${BACKEND_URL}/verify-otp`, { code });
+    console.log("in verify 2");
     return response.data;
   } catch (error) {
     console.error('Failed to verify OTP:', error.response ? error.response.data : error.message);

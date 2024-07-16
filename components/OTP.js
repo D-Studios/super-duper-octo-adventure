@@ -29,7 +29,7 @@ export default function OTP() {
   const handleNextPress = useCallback(async () => {
     try {
       const response = await verifyOtp(otp);
-      if (response.status === 'approved') {
+      if (response.status === 'VALID') {
         Alert.alert('Success', 'OTP verified successfully');
         navigation.navigate('Confirm');
       } else {

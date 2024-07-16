@@ -1,4 +1,4 @@
-import { StyleSheet} from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 
 const styles = StyleSheet.create({
   container: { 
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     right: 20, 
   },
   button: {
-    marginVertical: 10, 
+    marginVertical: 10,
   },
   additionalButtonStyling: {
     backgroundColor: '#ffffff',
@@ -156,8 +156,8 @@ const styles = StyleSheet.create({
   },
   centeredImage: {
     alignSelf: 'center',
-    width: 200,
-    height: 200,
+    width: 250,
+    height: 250,
     resizeMode: 'contain',
   },
   rightAlignedText: {
