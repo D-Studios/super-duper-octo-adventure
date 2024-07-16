@@ -16,7 +16,12 @@ export default function Rewards() {
         <PaperProvider>
             <SafeAreaView style={styles.container}>
                     {/* Top Portion */}
-                    <CreditCardImage complex = {true} topPortion = {TOP_PORTION} appBarText = {'Rewards'} showText={false}></CreditCardImage>
+                    <CreditCardImage 
+                        complex = {true} 
+                        topPortion = {TOP_PORTION} appBarText = {'Rewards'} 
+                        showText={false}>
+                    </CreditCardImage>
+
                     {/* Bottom Portion */}
                     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
                     <Text style={[rewardsStyles.centeredTitle, {paddingTop: 20 }]}>Rewards & Benefits</Text>
