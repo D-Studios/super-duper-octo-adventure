@@ -2,10 +2,11 @@ import React from 'react';
 import { View, Image, ScrollView, Dimensions } from 'react-native';
 import { Appbar, Text, Card, Button, Divider, Provider as PaperProvider } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
-import { SafeAreaView, TouchableOpacity} from 'react-native';
+import { SafeAreaView} from 'react-native';
 import styles from './reusable-components/styles';
 import rewardsStyles from './rewardsStyles';
 import CreditCardImage from './CreditCardImage';
+import RewardsCardComponent from './reusable-components/RewardsCardComponent';
 
 export default function Rewards() {
 
@@ -22,92 +23,45 @@ export default function Rewards() {
                     <View style={{ flex: 1, width: '100%' }}>
                         <View style={[styles.fullWidth, { padding: 16 }]}>
                             {/* Four Cards vertically stacked */}
-                            <Card mode="elevated" style={[styles.boxContainer, { marginBottom: 16, alignSelf: 'center', width: '100%' }]}>
-                                <Card.Content style={rewardsStyles.cardMargins}>
-                                  <Text style={styles.title}>Delta Inc. rewards points</Text>
-                                  <View style={styles.row}>
-                                    <View style={styles.column}>
-                                        <Text style={rewardsStyles.unBoldedTitle}>4,822</Text>
-                                        <Text style={rewardsStyles.unBoldedMiniTitle}>Total available</Text>
-                                    </View>
-                                    <View style={[styles.column, rewardsStyles.rightAlignedText]}>
-                                        <Text style={[rewardsStyles.unBoldedTitle]}>533</Text>
-                                        <Text style={[rewardsStyles.unBoldedMiniTitle]}>Pending</Text>
-                                    </View>
-                                </View>
-                                  
-                                    <Divider style={rewardsStyles.divider} />
-                                    <Button 
-                                        mode="text" 
-                                        style={rewardsStyles.button} 
-                                        labelStyle={rewardsStyles.buttonLabel}
-                                        onPress={() => { /* Action */ }}
-                                    >
-                                       Redeem available points
-                                    </Button>
-                                </Card.Content>
-                            </Card>
+                            <RewardsCardComponent
+                                title="Delta Inc. rewards points"
+                                availablePoints="4,822"
+                                availableLabel="Total available"
+                                pendingPoints="533"
+                                pendingLabel="Pending"
+                                buttonText="Redeem available points"
+                                onRedeem={() => { /* Action */ }}
+                            />
 
-                            <Card mode="elevated" style={[styles.boxContainer, { marginBottom: 16, alignSelf: 'center', width: '100%' }]}>
-                                <Card.Content>
-                                <Text style={styles.title}>3% Choice</Text>
-                                <Text style={styles.unBoldedTitle}>Dining</Text>
-                                <Divider style={styles.divider} />
-                                <Button mode="text" style={styles.button} onPress={() => { /* Action */ }}>
-                                       Change 3%
-                                </Button>
-                                </Card.Content>
-                            </Card>
-                            <Card mode="elevated" style={[styles.boxContainer, { marginBottom: 16, alignSelf: 'center', width: '100%' }]}>
-                            <Card.Content>
-                                  <Text style={styles.title}>Alpha Airline Mileage</Text>
-                                   <View style={styles.row}>
-                                        <Text style={styles.unBoldedTitle}>112,102</Text>
-                                        <Text style={[styles.rightAlignedText, styles.unBoldedTitle]}>346</Text>
-                                  </View>
-                                  <View style={styles.row}>
-                                        <Text style={styles.unBoldedMiniTitle}>Total available</Text>
-                                        <Text style={[styles.rightAlignedText, styles.unBoldedMiniTitle]}>Pending</Text>
-                                  </View>
-                                    <Divider style={styles.divider} />
-                                    <Button mode="text" style={styles.button} onPress={() => { /* Action */ }}>
-                                       SSO Login to Alpha Airline
-                                    </Button>
-                                </Card.Content>
-                            </Card>
-                            <Card mode="elevated" style={[styles.boxContainer, { marginBottom: 16, alignSelf: 'center', width: '100%' }]}>
-                            <Card.Content>
-                                  <Text style={styles.title}>Credit Card Benefits</Text>
-                                  <TouchableOpacity 
-                              onPress={() => {}}
-                              mode = "text"
-                              style = {styles.centerAlign}
-                              >
-                                <Text>3% cash back category choice</Text>
-                            </TouchableOpacity>
-                            <Divider style={styles.divider} />
-                            <TouchableOpacity 
-                              onPress={() => {}}
-                              mode = "text"
-                              style = {styles.centerAlign}
-                              >
-                                <Text>Shop with points on Delta Inc.</Text>
-                            </TouchableOpacity>
-                            <Divider style={styles.divider} />
+                            <RewardsCardComponent
+                                title="3% Choice"
+                                availablePoints="Dining"
+                                buttonText="Change 3% choice"
+                                onRedeem={() => { /* Action */ }}
+                            />
 
-                            <TouchableOpacity 
-                              onPress={() => {}}
-                              mode = "text"
-                              style = {styles.centerAlign}
-                              >
-                                <Text>Alpha airline mileage plan</Text>
-                            </TouchableOpacity>
-                            <Divider style={styles.divider} />
-                                    <Button mode="text" style={styles.button} onPress={() => { /* Action */ }}>
-                                      View all reward benefits
-                                    </Button>
-                                </Card.Content>
-                            </Card>
+                            <RewardsCardComponent
+                                title="Alpha Airline Mileage"
+                                availablePoints="112,102"
+                                availableLabel="Total available"
+                                pendingPoints="346"
+                                pendingLabel="Pending"
+                                buttonText="SSO Login to Alpha Airline"
+                                onRedeem={() => { /* Action */ }}
+                            />
+
+                            <RewardsCardComponent
+                                title="Credit Card Benefits"
+                                benefits={[
+                                    "3% cash back category choice",
+                                    "Shop with points on Delta Inc.",
+                                    "Alpha airline mileage plan"
+                                ]}
+                                onBenefitPress={() => { }}
+                                buttonText="View all reward benefits"
+                                onRedeem={() => {}}
+                            />
+
                             <View style={styles.row}>
                                 <Text style={styles.mediumUnBoldedTitle}>My Delta Inc. Deals</Text>
                                 <Button mode="text" style={styles.button} onPress={() => { /* Action */ }}>

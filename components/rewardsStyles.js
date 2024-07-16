@@ -81,6 +81,9 @@ const rewardsStyles = StyleSheet.create({
     centerAlign: {
         alignItems: 'center',
     },
+    list: {
+        fontSize: 17,
+    }
 });
 
 export default rewardsStyles;
