@@ -163,7 +163,6 @@ const styles = StyleSheet.create({
   rightAlignedText: {
     alignSelf: 'flex-end',
     textAlign: 'right',
-    paddingRight: 80
   },
   closerRow: {
     flexDirection: 'row',

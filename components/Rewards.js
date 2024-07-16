@@ -33,16 +33,16 @@ export default function Rewards() {
               /> 
                     </View>
                     {/* Bottom Portion */}
-                    <Text style={[styles.centeredTitle, {paddingTop: 20 }]}>Rewards & Benefits</Text>
+                    <Text style={[rewardsStyles.centeredTitle, {paddingTop: 20 }]}>Rewards & Benefits</Text>
                     <View style={{ flex: 1, width: '100%' }}>
                         <View style={[styles.fullWidth, { padding: 16 }]}>
                             {/* Four Cards vertically stacked */}
                             <Card mode="elevated" style={[styles.boxContainer, { marginBottom: 16, alignSelf: 'center', width: '100%' }]}>
                                 <Card.Content>
-                                  <Text style={styles.title}>Delta inc rewards points</Text>
+                                  <Text style={styles.title}>Delta Inc. rewards points</Text>
                                    <View style={styles.row}>
                                         <Text style={styles.unBoldedTitle}>4,822</Text>
-                                        <Text style={[styles.rightAlignedText, styles.unBoldedTitle]}>533</Text>
+                                        <Text style={[rewardsStyles.rightAlignedTextRS, styles.unBoldedTitle]}>533</Text>
                                   </View>
                                   <View style={styles.row}>
                                         <Text style={styles.unBoldedMiniTitle}>Total available</Text>
