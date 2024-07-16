@@ -5,6 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView, TouchableOpacity} from 'react-native';
 import styles from './reusable-components/styles';
 import rewardsStyles from './rewardsStyles';
+import CreditCardImage from './CreditCardImage';
 
 export default function Rewards() {
     const navigation = useNavigation();
@@ -20,17 +21,12 @@ export default function Rewards() {
     return (
         <PaperProvider>
             <SafeAreaView style={styles.container}>
-                <Appbar.Header>
+                {/* <Appbar.Header>
                     <Appbar.BackAction onPress={handlePreviousPress} />
                     <Appbar.Content title="Rewards" />
-                </Appbar.Header>
+                </Appbar.Header> */}
                     {/* Top Portion */}
-                    <View style={[styles.creditCardBackground, { height: topHeight, width: screenWidth }]}>
-                    <Image
-                source={{ uri: 'https://t4.ftcdn.net/jpg/03/27/87/41/360_F_327874197_zaMWlrLxEw8sbjn4jnVsmqu3K3ZB1Jur.jpg' }}
-                style={styles.centeredImage}
-                    /> 
-                    </View> 
+                    <CreditCardImage topPortion = {TOP_PORTION} appBarText = {'Rewards'} showText={false}></CreditCardImage>
                     {/* Bottom Portion */}
                     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
                     <Text style={[rewardsStyles.centeredTitle, {paddingTop: 20 }]}>Rewards & Benefits</Text>

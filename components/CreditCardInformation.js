@@ -5,6 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView, TouchableOpacity } from 'react-native';
 import styles from './reusable-components/styles';
 import PagerView from 'react-native-pager-view';
+import CreditCardImage from './CreditCardImage';
 
 import {
     LineChart,
@@ -16,10 +17,10 @@ export default function CreditCardInformation() {
 
     const navigation = useNavigation();  
     const screenHeight = Dimensions.get('window').height;
-    const CARD_PORTION = 0.48;
+    const CARD_PORTION = 1;
     const FULL_SCREEN = 1;
     const cardHeight = screenHeight * CARD_PORTION;
-    const spacer = (FULL_SCREEN-CARD_PORTION) * screenHeight;
+    const spacer = (FULL_SCREEN-cardHeight);
     const LEGEND_FONT_SIZE = 12;
     const LINE_CHART_WIDTH = 420;
     const LINE_CHART_HEIGHT = 180;
@@ -212,19 +213,7 @@ export default function CreditCardInformation() {
     return (
         <PaperProvider style = {[styles.fullScreen, styles.container]}>
             <SafeAreaView style= {[styles.creditCardBackground, styles.fullScreen, styles.container]}>
-            <View style = {{height: spacer}}>
-            <Appbar.Header>
-              <Appbar.BackAction onPress={handlePreviousPress} />
-              <Appbar.Content title="Credit Card Information" />
-              </Appbar.Header>
-              <Text style = {[styles.miniTitle, styles.content]}>Delta Inc.</Text>
-              <Text style = {[styles.title, styles.content]}>Delta Inc. Credit Card.....1234</Text>
-              <Image
-                source={{ uri: 'https://t4.ftcdn.net/jpg/03/27/87/41/360_F_327874197_zaMWlrLxEw8sbjn4jnVsmqu3K3ZB1Jur.jpg' }}
-                style={styles.centeredImage}
-              />
-
-            </View>
+            <CreditCardImage topPortion = {spacer} appBarText = {'Credit Card Information'} showText = {true} company = {'Delta Inc.'} details = {'Delta Inc. Credit Card .....1234'}></CreditCardImage>
             <View style = {[{height: cardHeight}, styles.fullWidth]}>
             <Card mode = 'elevated' style = {[styles.boxContainer, styles.largeContainer, styles.fullWidth, styles.container]}>
                   <Card.Content>
