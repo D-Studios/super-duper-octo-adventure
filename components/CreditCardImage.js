@@ -6,7 +6,7 @@ import { SafeAreaView, TouchableOpacity} from 'react-native';
 import styles from './reusable-components/styles';
 import rewardsStyles from './rewardsStyles';
 
-const CreditCardImage = ({topPortion, appBarText, showText, company, details}) => {
+const CreditCardImage = ({complex, topPortion, appBarText, showText, company, details}) => {
     const screenHeight = Dimensions.get('window').height;
     const screenWidth = Dimensions.get('window').width;
     const topHeight = screenHeight * topPortion;
@@ -18,6 +18,8 @@ const CreditCardImage = ({topPortion, appBarText, showText, company, details}) =
 
     return (
         <View>
+        {complex ? (
+            <View>
             <Appbar.Header>
             <Appbar.BackAction onPress={handlePreviousPress} />
             <Appbar.Content title={appBarText}/>
@@ -35,6 +37,17 @@ const CreditCardImage = ({topPortion, appBarText, showText, company, details}) =
     style={styles.centeredImage}
         /> 
         </View> 
+        </View>
+        ) :
+        (   
+            <View>
+                 <Image
+            source={{ uri: 'https://t4.ftcdn.net/jpg/03/27/87/41/360_F_327874197_zaMWlrLxEw8sbjn4jnVsmqu3K3ZB1Jur.jpg' }}
+            style={styles.centeredImage}
+                /> 
+                </View>
+                )
+        }
         </View>
     )
 }
