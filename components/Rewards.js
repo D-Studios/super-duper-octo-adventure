@@ -24,15 +24,15 @@ export default function Rewards() {
                     <Appbar.BackAction onPress={handlePreviousPress} />
                     <Appbar.Content title="Rewards" />
                 </Appbar.Header>
-                <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
                     {/* Top Portion */}
                     <View style={[styles.creditCardBackground, { height: topHeight, width: screenWidth }]}>
                     <Image
                 source={{ uri: 'https://t4.ftcdn.net/jpg/03/27/87/41/360_F_327874197_zaMWlrLxEw8sbjn4jnVsmqu3K3ZB1Jur.jpg' }}
                 style={styles.centeredImage}
-              /> 
-                    </View>
+                    /> 
+                    </View> 
                     {/* Bottom Portion */}
+                    <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
                     <Text style={[rewardsStyles.centeredTitle, {paddingTop: 20 }]}>Rewards & Benefits</Text>
                     <View style={{ flex: 1, width: '100%' }}>
                         <View style={[styles.fullWidth, { padding: 16 }]}>

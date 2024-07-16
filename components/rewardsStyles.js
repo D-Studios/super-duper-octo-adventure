@@ -15,6 +15,15 @@ const rewardsStyles = StyleSheet.create({
         height: '80%',
         resizeMode: 'contain',
     },
+    cornerImage: {
+        position: 'absolute',
+        top: 10,
+        right: 10,
+        width: 50,
+        height: 50,
+        resizeMode: 'stretch',
+        zIndex: 1,
+    },
     centeredTitle: {
         paddingLeft: 20,
         fontSize: 28,
