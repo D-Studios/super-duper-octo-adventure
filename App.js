@@ -15,7 +15,7 @@ const Stack = createStackNavigator();
 function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Confirm">
+      <Stack.Navigator initialRouteName="VerifyInformation">
         <Stack.Screen
           name="VerifyInformation"
           component={VerifyInformation}
