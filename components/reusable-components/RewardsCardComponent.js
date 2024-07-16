@@ -47,7 +47,7 @@ const RewardsCardComponent = ({
         <>
           {benefits.map((benefit, index) => (
             <React.Fragment key={index}>
-              <TouchableOpacity onPress={() => onBenefitPress(benefit)} style={styles.row}>
+              <TouchableOpacity onPress={() => onBenefitPress(benefit)} style={styles.listRow}>
                 <Text style={rewardsStyles.list}>{benefit}</Text>
                 <Icon name="right" size={24} style={{ marginLeft: 'auto' }} />
               </TouchableOpacity>

@@ -31,7 +31,7 @@ const CreditCardImage = ({ complex, topPortion, appBarText, showText, company, d
                 )}
                 <Image
                     source={{ uri: 'https://cdn-icons-png.freepik.com/512/9334/9334539.png'}}
-                    style={styles.centeredImage}
+                    style={styles.centeredCCImage}
                     accessibilityLabel="Credit card image"
                 />
             </View>
