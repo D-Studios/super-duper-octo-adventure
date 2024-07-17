@@ -7,6 +7,7 @@ import styles from './reusable-components/styles';
 import rewardsStyles from './rewardsStyles';
 import CreditCardImage from './CreditCardImage';
 import RewardsCardComponent from './reusable-components/RewardsCardComponent';
+import DealCardComponent from './reusable-components/DealCardComponent';
 
 export default function Rewards() {
 
@@ -93,36 +94,24 @@ export default function Rewards() {
 
                         {/* Horizontal Scroll for individual cards */}
                         <ScrollView horizontal={true} style={styles.fullWidth} contentContainerStyle={{ paddingLeft: 6, paddingBottom: 6 }}>
-                            <Card mode='elevated' style={[styles.boxContainer, { width: 200, marginRight: 16 }]}>
-                                <Card.Content>
-                                <Image
-                                    source={{ uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Chevron_Logo.svg/1836px-Chevron_Logo.svg.png' }}
-                                    style={styles.centeredImage}
-                                /> 
-                                    <Text style = {styles.regularText}>3% Cash back</Text>
-                                    <Text style={styles.miniText}>Expires 10/31/23</Text>
-                                </Card.Content>
-                            </Card>
-                            <Card mode='elevated' style={[styles.boxContainer, { width: 200, marginRight: 16 }]}>
-                                <Card.Content>
-                                <Image
-                source={{ uri: 'https://upload.wikimedia.org/wikipedia/en/thumb/d/d3/Starbucks_Corporation_Logo_2011.svg/640px-Starbucks_Corporation_Logo_2011.svg.png' }}
-                style={styles.centeredImage}
-              /> 
-                                   <Text style = {styles.regularText}>5% Cash back</Text>
-                                    <Text style={styles.miniText}>Expires 10/31/23</Text>
-                                </Card.Content>
-                            </Card>
-                            <Card mode='elevated' style={[styles.boxContainer, { width: 200, marginRight: 16 }]}>
-                                <Card.Content>
-                                <Image
-                source={{ uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbhvKe4ebnX7xrphoWADoK-wteStypzRFKWQ&s'}}
-                style={styles.centeredImage}
-              /> 
-                                     <Text style = {styles.regularText}>$5 Cash back</Text>
-                                    <Text style={styles.miniText}>8 days left</Text>
-                                </Card.Content>
-                            </Card> 
+                            <DealCardComponent 
+                                imageUri='https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Chevron_Logo.svg/1836px-Chevron_Logo.svg.png' 
+                                regularText='3% Cash back' 
+                                miniText='Expires 10/31/23' 
+                                isActivated={false}
+                            />
+                            <DealCardComponent 
+                                imageUri='https://upload.wikimedia.org/wikipedia/en/thumb/d/d3/Starbucks_Corporation_Logo_2011.svg/640px-Starbucks_Corporation_Logo_2011.svg.png' 
+                                regularText='5% Cash back' 
+                                miniText='Expires 10/31/23' 
+                                isActivated={true}
+                            />
+                            <DealCardComponent 
+                                imageUri='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbhvKe4ebnX7xrphoWADoK-wteStypzRFKWQ&s' 
+                                regularText='$5 Cash back' 
+                                miniText='8 days left' 
+                                isActivated={false}
+                            />
                         </ScrollView>
                         </View>
                     </View>
