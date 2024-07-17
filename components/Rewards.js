@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView} from 'react-native';
 import styles from './reusable-components/styles';
 import rewardsStyles from './rewardsStyles';
-import CreditCardImage from './CreditCardImage';
+import CreditCardImage from './reusable-components/CreditCardImage';
 import RewardsCardComponent from './reusable-components/RewardsCardComponent';
 import DealCardComponent from './reusable-components/DealCardComponent';
 

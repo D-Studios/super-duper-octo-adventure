@@ -4,7 +4,7 @@ import { Menu, Divider, IconButton, List, Appbar, Text, Card, ProgressBar, Provi
 import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native';
 import styles from './reusable-components/styles';
-import CreditCardImage from './CreditCardImage';
+import CreditCardImage from './reusable-components/CreditCardImage';
 import WalletManager from 'react-native-wallet-manager';
 import { AddToWalletButton, openPaymentSetup } from 'react-native-add-wallet';
 import ReactNativeBiometrics, { BiometryTypes } from 'react-native-biometrics';

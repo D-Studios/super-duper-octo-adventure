@@ -4,7 +4,7 @@ import { Appbar, Text, Card, Button, Divider } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native';
 import styles from './reusable-components/styles';
-import CreditCardImage from './CreditCardImage'
+import CreditCardImage from './reusable-components/CreditCardImage'
 
 export default function Transactions() {
   const navigation = useNavigation();

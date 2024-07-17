@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView, TouchableOpacity } from 'react-native';
 import styles from './reusable-components/styles';
 import PagerView from 'react-native-pager-view';
-import CreditCardImage from './CreditCardImage';
+import CreditCardImage from './reusable-components/CreditCardImage';
 
 import {
     LineChart,
@@ -213,7 +213,7 @@ export default function CreditCardInformation() {
     return (
         <PaperProvider style = {[styles.fullScreen, styles.container]}>
             <SafeAreaView style= {[styles.creditCardBackground, styles.fullScreen, styles.container]}>
-            <CreditCardImage complex = {true} topPortion = {spacer} appBarText = {'Credit Card Information'} showText = {false} company = {'Delta Inc.'} details = {'Delta Inc. Credit Card .....1234'}></CreditCardImage>
+            <CreditCardImage complex = {true} topPortion = {0.25} appBarText = {'Credit Card Information'} showText = {false} company = {'Delta Inc.'} details = {'Delta Inc. Credit Card .....1234'}></CreditCardImage>
             <View style = {[{height: cardHeight}, styles.fullWidth]}>
             <Card mode = 'elevated' style = {[styles.boxContainer, styles.largeContainer, styles.fullWidth, styles.container]}>
                   <Card.Content>
