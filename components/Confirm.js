@@ -17,10 +17,9 @@ import formatInputBox from './reusable-components/FormatInputBox';
 
 export default function Confirm() {
   const navigation = useNavigation();
-
-  // Previous screen.
+  
   const handlePreviousPress = useCallback(() => {
-    navigation.navigate('OTP');
+    navigation.navigate('VerifyInformation');
   }, [navigation]);
 
   // Next screen.
@@ -123,7 +122,7 @@ export default function Confirm() {
       <PaperProvider>
         <SafeAreaView style={styles.container}>
           <Appbar.Header>
-            {/* This is the back button */}
+            {/*Back button goes back to Verify Information. */}
             <Appbar.BackAction onPress={handlePreviousPress} />
             {/* This is the title */}
             <Appbar.Content title="Confirm" />

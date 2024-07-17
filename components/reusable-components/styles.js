@@ -160,6 +160,12 @@ const styles = StyleSheet.create({
     height: 200,
     resizeMode: 'contain',
   },
+  centeredCCImage: {
+    alignSelf: 'center',
+    width: 250,
+    height: 250,
+    resizeMode: 'contain',
+  },
   rightAlignedText: {
     alignSelf: 'flex-end',
     textAlign: 'right',
@@ -174,7 +180,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingHorizontal: 0, 
-    paddingVertical: 0,
+    paddingVertical: 6,
+  },
+  listRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingHorizontal: 0, 
+    paddingVertical: 10,
   },
   top_right: {
     position: 'absolute',

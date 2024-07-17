@@ -5,6 +5,10 @@ import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native';
 import styles from './reusable-components/styles';
 import CreditCardImage from './CreditCardImage';
+import WalletManager from 'react-native-wallet-manager';
+import { AddToWalletButton, openPaymentSetup } from 'react-native-add-wallet';
+import ReactNativeBiometrics, { BiometryTypes } from 'react-native-biometrics';
+import {TouchableOpacity} from 'react-native';
 
 export default function Approved() {
 
@@ -35,6 +39,14 @@ export default function Approved() {
       openMenu();
     });
   };
+
+  // const rnBiometrics = new ReactNativeBiometrics()
+
+  // const { biometryType } = await rnBiometrics.isSensorAvailable()
+  
+  // if (biometryType === BiometryTypes.Biometrics) {
+  //   //do something face id specific
+  // }
 
   return (
     <ScrollView contentContainerStyle={styles.scrollViewContent}>
@@ -86,10 +98,15 @@ export default function Approved() {
                 <Text style={[styles.rightAlignedText, styles.miniTitle]}>Credit Limit</Text>
               </View>
               {/*Placeholder text*/}
+              
               <Text>
                 Lorem ipsum dolor sit amet, consectetur{'\n'}
                 adipiscing elit, sed do eiusmod tempor
               </Text>
+
+              
+              {/* <AddToWalletButton onPress = {openPaymentSetup}/> */}
+
             </Card>
             
             {/*Dropdown menu for Card Holder Agreement*/}

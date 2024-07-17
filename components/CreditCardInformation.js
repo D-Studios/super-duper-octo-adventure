@@ -225,11 +225,11 @@ export default function CreditCardInformation() {
                             </Button>
                             <Button mode="contained" style={[styles.button, styles.additionalButtonStyling]} labelStyle = {styles.additionalButtonTextStyling}>
                                 Car Fuel
-                            </Button>
+                            </Button> 
                         </View> 
                         <Text style = {styles.title}>{'\n'}Top Category Spend</Text>
                         <View style = {styles.fullScreen}>
-                        <Card mode = 'elevated' style = {[styles.boxContainerVariation2, styles.fullScreen]}>
+                        <Card mode = 'elevated' style = {[styles.boxContainerVariation2, {height:'25%'}]}>
                         <PieChart
                             data={pieChartData}
                             width={PIE_CHART_WIDTH}
@@ -245,7 +245,7 @@ export default function CreditCardInformation() {
                      <View key = "2" style = {styles.fullScreen}>
                       <Text style = {styles.title}>{'\n'}Credit Card Usage</Text>
                         <View style = {styles.fullWidth} >
-                        <Card mode = 'elevated' style = {[styles.boxContainerVariation2, styles.fullScreen]}>
+                        <Card mode = 'elevated' style = {[styles.boxContainerVariation2, {height: '55%'}]}>
                             <Card.Content>
                             <View style = {styles.row} >
                               <TouchableOpacity 
@@ -342,7 +342,7 @@ export default function CreditCardInformation() {
                         </View>
                     <View key = "3" style = {styles.fullScreen}>
                         <Text style = {styles.title} >{'\n'}Rewards Accumulation</Text>
-                        <Card mode = 'elevated' style = {[styles.boxContainerVariation2, styles.fullHeight]}>
+                        <Card mode = 'elevated' style = {[styles.boxContainerVariation2, {height: '30%'}]}>
                            <Card.Content>
                            <View style = {styles.row} >
                               <TouchableOpacity 
