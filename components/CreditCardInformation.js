@@ -213,11 +213,11 @@ export default function CreditCardInformation() {
     return (
         <PaperProvider style = {[styles.fullScreen, styles.container]}>
             <SafeAreaView style= {[styles.creditCardBackground, styles.fullScreen, styles.container]}>
-            <CreditCardImage complex = {true} topPortion = {spacer} appBarText = {'Credit Card Information'} showText = {true} company = {'Delta Inc.'} details = {'Delta Inc. Credit Card .....1234'}></CreditCardImage>
+            <CreditCardImage complex = {true} topPortion = {spacer} appBarText = {'Credit Card Information'} showText = {false} company = {'Delta Inc.'} details = {'Delta Inc. Credit Card .....1234'}></CreditCardImage>
             <View style = {[{height: cardHeight}, styles.fullWidth]}>
             <Card mode = 'elevated' style = {[styles.boxContainer, styles.largeContainer, styles.fullWidth, styles.container]}>
                   <Card.Content>
-             <PagerView style={styles.fullScreen} initialPage={0} pageMargin={10}>
+             <PagerView style={styles.fullScreen} initialPage={0} pageMargin={10}> 
                   <View key = "1" style = {styles.fullScreen}> 
                         <View style={styles.row}>
                             <Button mode="contained" style={[styles.button, styles.additionalButtonStyling]} labelStyle = {styles.additionalButtonTextStyling}>

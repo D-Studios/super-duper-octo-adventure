@@ -87,7 +87,7 @@ export default function Approved() {
               {/*Approved text*/}
               <Text style={styles.centeredTitle}>You are Approved{'\n'}</Text>
               {/*Credit card image*/}
-              <CreditCardImage complex={false}></CreditCardImage>
+              <CreditCardImage complex={false} topPortion = {0.25}></CreditCardImage>
               {/*Credit card attribute descriptions*/}
               <View style={styles.row}>
                 <Text style={styles.title}>16 %</Text>
