@@ -9,7 +9,7 @@ const DealCardComponent = ({
 }) => {
 
   return (
-
+        <View></View>
     );
   };
 
