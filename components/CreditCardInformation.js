@@ -1,16 +1,15 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback} from 'react';
 import { View, Image, ScrollView, Dimensions} from 'react-native';
-import { Surface, Button, useTheme, Menu, Divider, IconButton, List, Appbar, Text, Card, Paragraph, ProgressBar, Provider as PaperProvider } from 'react-native-paper';
+import {Button, Appbar, Text, Card, Provider as PaperProvider } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView, TouchableOpacity } from 'react-native';
 import styles from './reusable-components/styles';
+import PagerView from 'react-native-pager-view';
+import CreditCardImage from './CreditCardImage';
+
 import {
     LineChart,
-    BarChart,
     PieChart,
-    ProgressChart,
-    ContributionGraph,
-    StackedBarChart
   } from "react-native-chart-kit";
 import { Circle } from 'react-native-svg';
 
@@ -18,11 +17,10 @@ export default function CreditCardInformation() {
 
     const navigation = useNavigation();  
     const screenHeight = Dimensions.get('window').height;
-    const screenWidth = Dimensions.get('window').width;
-    const CARD_PORTION = 0.7;
+    const CARD_PORTION = 1;
     const FULL_SCREEN = 1;
     const cardHeight = screenHeight * CARD_PORTION;
-    const spacer = (FULL_SCREEN-CARD_PORTION) * screenHeight;
+    const spacer = (FULL_SCREEN-cardHeight);
     const LEGEND_FONT_SIZE = 12;
     const LINE_CHART_WIDTH = 420;
     const LINE_CHART_HEIGHT = 180;
@@ -39,10 +37,26 @@ export default function CreditCardInformation() {
     const BOTTOM_BORDER_WIDTH = 2;
     const NO_BOTTOM_BORDER = 0;
     const THOUSAND_DOLLARS = '$K';
+    const OUTER_CIRCLE_RADIUS = 5;
+    const OUTER_CIRCLE_COLOR = "#7f78d2";
+    const LINE_STROKE = '#8625f4';
+    const STROKE_WIDTH = 2;
+    const INNER_CIRCLE_RADIUS = 3;
+    const LINE_FILL = 'none';
+    const PIE_CHART_BACKGROUND_GRADIENT_FROM = "#1E2923";
+    const PIE_CHART_BACKGROUND_GRADIENT_TO = "#08130D";
+    const TRANSPARENT = 0;
+    const PIECHART_BACKGROUND_OPACITY = 0.5;
+    const PIECHART_BAR_PERCENTAGE = 0.5;
+    const FOOD_AND_DINING_COLOR = "#355cab";
+    const TRAVEL_COLOR = "#230470";
+    const GROCERIES_COLOR = "#ff802b";
+    const CAR_FUEL_COLOR = "#0275a3";
+    const PERSONAL_COLOR = "#14a302";
 
     const [activeCreditCardUsage, setCreditCardUsage] = useState('Daily'); 
     const [activeRewardsAccumulation, setRewardsAccumulation] = useState('Weekly');
-
+    
     const handleCreditCardUsage = (chartName) => {
       setCreditCardUsage(chartName);
     };
@@ -121,14 +135,14 @@ export default function CreditCardInformation() {
             <Circle
               cx={x}
               cy={y}
-              r={5} // Outer circle radius
-              fill="#7f78d2" // Purple color
+              r={OUTER_CIRCLE_RADIUS} 
+              fill={OUTER_CIRCLE_COLOR} 
             />
             <Circle
               cx={x}
               cy={y}
-              r={3} // Inner circle radius
-              fill={WHITE}// White color
+              r={INNER_CIRCLE_RADIUS} 
+              fill={WHITE}
             />
           </React.Fragment>
         );
@@ -141,73 +155,70 @@ export default function CreditCardInformation() {
         color: (opacity = 1) => `rgba(127, 120, 210, ${opacity})`,
         labelColor: (opacity = 1) => `rgba(0,0,0, ${opacity})`, 
         propsForLines: {
-          stroke: '#8625f4', // Purple color for the line
-          strokeWidth: 2, // Stroke width of the line
-          fill: 'none', // No fill to hide the shaded area
+          stroke: LINE_STROKE, 
+          strokeWidth: STROKE_WIDTH, 
+          fill: LINE_FILL, 
         }
       }
 
       const pieChartConfig = {
-        backgroundGradientFrom: "#1E2923",
-        backgroundGradientFromOpacity: 0,
-        backgroundGradientTo: "#08130D",
-        backgroundGradientToOpacity: 0.5,
+        backgroundGradientFrom: PIE_CHART_BACKGROUND_GRADIENT_FROM,
+        backgroundGradientFromOpacity: TRANSPARENT,
+        backgroundGradientTo: PIE_CHART_BACKGROUND_GRADIENT_TO,
+        backgroundGradientToOpacity: PIECHART_BACKGROUND_OPACITY,
         color: (opacity = 1) => `rgba(26, 255, 146, ${opacity})`,
-        strokeWidth: 2, // optional, default 3
-        barPercentage: 0.5,
-        useShadowColorFromDataset: false // optional
+        strokeWidth: STROKE_WIDTH,
+        barPercentage: PIECHART_BAR_PERCENTAGE,
+        useShadowColorFromDataset: false 
       };
 
       const pieChartData = [
         {
           name: "Food & Dining",
           expenses: 30,
-          color: "#355cab",
+          color: FOOD_AND_DINING_COLOR,
           legendFontColor: BLACK_TEXT,
           legendFontSize: LEGEND_FONT_SIZE
         },
         {
           name: "Travel",
           expenses: 43,
-          color: "#230470",
+          color: TRAVEL_COLOR,
           legendFontColor: BLACK_TEXT,
           legendFontSize: LEGEND_FONT_SIZE
         },
         {
           name: "Groceries",
           expenses: 17,
-          color: "#ff802b",
+          color: GROCERIES_COLOR,
           legendFontColor: BLACK_TEXT,
           legendFontSize: LEGEND_FONT_SIZE
         },
         {
           name: "Car Fuel",
           expenses: 10,
-          color: "#0275a3",
+          color: CAR_FUEL_COLOR,
           legendFontColor: BLACK_TEXT,
           legendFontSize: LEGEND_FONT_SIZE
         },
         {
           name: "Personal",
           expenses: 0,
-          color: "#14a302",
+          color: PERSONAL_COLOR,
           legendFontColor: BLACK_TEXT,
           legendFontSize: LEGEND_FONT_SIZE
         }
       ];
 
     return (
-        <PaperProvider style = {styles.fullScreen}>
-            <SafeAreaView style= {[styles.creditCardBackground, styles.fullScreen]}>
-            <Appbar.Header>
-              <Appbar.BackAction onPress={handlePreviousPress} />
-            <Appbar.Content title="Credit Card Information" />
-            </Appbar.Header>
-            <View style = {{height: spacer}} />
+        <PaperProvider style = {[styles.fullScreen, styles.container]}>
+            <SafeAreaView style= {[styles.creditCardBackground, styles.fullScreen, styles.container]}>
+            <CreditCardImage complex = {true} topPortion = {spacer} appBarText = {'Credit Card Information'} showText = {true} company = {'Delta Inc.'} details = {'Delta Inc. Credit Card .....1234'}></CreditCardImage>
             <View style = {[{height: cardHeight}, styles.fullWidth]}>
             <Card mode = 'elevated' style = {[styles.boxContainer, styles.largeContainer, styles.fullWidth, styles.container]}>
-                <ScrollView contentContainerStyle={styles.scrollViewContent}>
-                    <Card.Content>
+                  <Card.Content>
+             <PagerView style={styles.fullScreen} initialPage={0} pageMargin={10}>
+                  <View key = "1" style = {styles.fullScreen}> 
                         <View style={styles.row}>
                             <Button mode="contained" style={[styles.button, styles.additionalButtonStyling]} labelStyle = {styles.additionalButtonTextStyling}>
                                 Groceries
@@ -215,29 +226,28 @@ export default function CreditCardInformation() {
                             <Button mode="contained" style={[styles.button, styles.additionalButtonStyling]} labelStyle = {styles.additionalButtonTextStyling}>
                                 Car Fuel
                             </Button>
-                        </View>
-
+                        </View> 
                         <Text style = {styles.title}>{'\n'}Top Category Spend</Text>
-                        <View style = {styles.fullWidth}>
-                        <Card mode = 'elevated' style = {[styles.boxContainerVariation2, styles.container, styles.fullWidth]}>
+                        <View style = {styles.fullScreen}>
+                        <Card mode = 'elevated' style = {[styles.boxContainerVariation2, styles.fullScreen]}>
                         <PieChart
                             data={pieChartData}
                             width={PIE_CHART_WIDTH}
                             height={PIE_CHART_HEIGHT}
-                            style = {styles.container}
+                            style = {styles.fullScreen}
                             chartConfig={pieChartConfig}
                             accessor={"expenses"}
                             backgroundColor={"transparent"}
                         />
                         </Card>
                         </View>
-                    
-                        <Text style = {styles.title}>{'\n'}Credit Card Usage</Text>
-
-                        <View style = {styles.fullWidth}>
-                        <Card mode = 'elevated' style = {[styles.boxContainerVariation2, styles.container, styles.fullWidth]}>
+                    </View>
+                     <View key = "2" style = {styles.fullScreen}>
+                      <Text style = {styles.title}>{'\n'}Credit Card Usage</Text>
+                        <View style = {styles.fullWidth} >
+                        <Card mode = 'elevated' style = {[styles.boxContainerVariation2, styles.fullScreen]}>
                             <Card.Content>
-                            <View style = {styles.row}>
+                            <View style = {styles.row} >
                               <TouchableOpacity 
                               onPress={() => handleCreditCardUsage(DAILY)} 
                               style = {{
@@ -287,7 +297,7 @@ export default function CreditCardInformation() {
                             ) 
                            }
                            {activeCreditCardUsage == WEEKLY && (
-                             <View style = {styles.centerAlign}>
+                             <View style = {styles.centerAlign} >
                              <ScrollView horizontal={true}>
                              <LineChart
                               data={weeklyCreditCardUsageData}
@@ -307,7 +317,7 @@ export default function CreditCardInformation() {
                             ) 
                            }
                            {activeCreditCardUsage == MONTHLY && (
-                             <View style = {styles.centerAlign}>
+                             <View style = {styles.centerAlign} >
                              <ScrollView horizontal={true}>
                              <LineChart
                               data={monthlyCreditCardUsageData}
@@ -325,13 +335,16 @@ export default function CreditCardInformation() {
                               </ScrollView>
                               </View>
                             ) 
-                           }
+                           } 
                             </Card.Content>
-                        </Card>
-                        <Text style = {styles.title}>{'\n'}Rewards Accumulation</Text>
-                        <Card mode = 'elevated' style = {[styles.boxContainerVariation2, styles.container, styles.fullWidth]}>
+                        </Card> 
+                        </View>
+                        </View>
+                    <View key = "3" style = {styles.fullScreen}>
+                        <Text style = {styles.title} >{'\n'}Rewards Accumulation</Text>
+                        <Card mode = 'elevated' style = {[styles.boxContainerVariation2, styles.fullHeight]}>
                            <Card.Content>
-                           <View style = {styles.row}>
+                           <View style = {styles.row} >
                               <TouchableOpacity 
                               onPress={() => handleRewardsAccumulation(WEEKLY)} 
                               style = {{
@@ -352,7 +365,7 @@ export default function CreditCardInformation() {
                               </TouchableOpacity>
                             </View>
                             {activeRewardsAccumulation == WEEKLY && (
-                             <View style = {styles.centerAlign}>
+                             <View style = {styles.centerAlign} >
                              <ScrollView horizontal={true}>
                              <LineChart
                               data={weeklyRewardsAccumulation}
@@ -372,7 +385,7 @@ export default function CreditCardInformation() {
                             ) 
                            }
                            {activeRewardsAccumulation == MONTHLY && (
-                             <View style = {styles.centerAlign}>
+                             <View style = {styles.centerAlign} >
                              <ScrollView horizontal={true}>
                              <LineChart
                               data={monthlyRewardsAccumulation}
@@ -394,11 +407,11 @@ export default function CreditCardInformation() {
                            </Card.Content>
                         </Card> 
                         </View>
-                    </Card.Content>
-                </ScrollView>
-            </Card> 
+                      </PagerView>
+                  </Card.Content>
+              </Card>
             </View>
             </SafeAreaView>
-        </PaperProvider>
+          </PaperProvider>
     );
 }

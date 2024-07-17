@@ -19,6 +19,9 @@ const styles = StyleSheet.create({
   },
   fullScreen: {
     width: '100%',
+    height: '100%' 
+  },
+  fullHeight: {
     height: '100%'
   },
   bixBox: {
@@ -33,6 +36,15 @@ const styles = StyleSheet.create({
   },
   progressBar: {
     marginVertical: 20,
+  },
+  scrollViewContainer: {
+    flexGrow: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  page: {
+    width: '100%',
+    height: '100%'
   },
   content: {
     padding: 20,
@@ -53,7 +65,7 @@ const styles = StyleSheet.create({
     right: 20, 
   },
   button: {
-    marginVertical: 10,
+    marginVertical: 10, 
   },
   additionalButtonStyling: {
     backgroundColor: '#ffffff',
@@ -74,7 +86,7 @@ const styles = StyleSheet.create({
     borderRadius: 8, 
     borderWidth: 1, 
     borderColor: '#dddddd', 
-    padding: 16, 
+    padding: 12, 
     margin: 16, 
     shadowColor: '#000000', 
     shadowOffset: { width: 0, height: 2 }, 
@@ -91,6 +103,20 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.8, 
     shadowRadius: 2, 
   },
+  centerAlign: {
+    justifyContent: 'center', 
+    alignItems: 'center'
+  },
+  regularText:{
+    fontSize: 14
+  },
+  miniText: {
+    fontSize: 10
+  },
+  mediumUnBoldedTitle: {
+    fontSize: 20,
+    marginBottom: 10
+  },
   noPaddingOrMargin: {
     padding: 0,
     margin: 0
@@ -104,6 +130,14 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: 'bold',
     marginBottom: 10,
+  },
+  unBoldedTitle:{
+    fontSize: 30,
+    marginBottom: 10,
+  },
+  unBoldedMiniTitle: {
+    fontSize: 15,
+    marginBottom: 10
   },
   regBold: {
     fontSize: 10,
@@ -139,8 +173,8 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingHorizontal: 16, 
-    paddingVertical: 8,
+    paddingHorizontal: 0, 
+    paddingVertical: 0,
   },
   top_right: {
     position: 'absolute',

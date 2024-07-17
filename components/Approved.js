@@ -4,6 +4,7 @@ import { Menu, Divider, IconButton, List, Appbar, Text, Card, ProgressBar, Provi
 import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native';
 import styles from './reusable-components/styles';
+import CreditCardImage from './CreditCardImage';
 
 export default function Approved() {
 
@@ -74,10 +75,7 @@ export default function Approved() {
               {/*Approved text*/}
               <Text style={styles.centeredTitle}>You are Approved{'\n'}</Text>
               {/*Credit card image*/}
-              <Image
-                source={{ uri: 'https://t4.ftcdn.net/jpg/03/27/87/41/360_F_327874197_zaMWlrLxEw8sbjn4jnVsmqu3K3ZB1Jur.jpg' }}
-                style={styles.centeredImage}
-              />
+              <CreditCardImage complex={false}></CreditCardImage>
               {/*Credit card attribute descriptions*/}
               <View style={styles.row}>
                 <Text style={styles.title}>16 %</Text>
