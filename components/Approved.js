@@ -4,7 +4,7 @@ import { Menu, Divider, IconButton, List, Appbar, Text, Card, ProgressBar, Provi
 import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native';
 import styles from './reusable-components/styles';
-import CreditCardImage from './CreditCardImage';
+import CreditCardImage from './reusable-components/CreditCardImage';
 import WalletManager from 'react-native-wallet-manager';
 import { AddToWalletButton, openPaymentSetup } from 'react-native-add-wallet';
 import ReactNativeBiometrics, { BiometryTypes } from 'react-native-biometrics';
@@ -87,7 +87,7 @@ export default function Approved() {
               {/*Approved text*/}
               <Text style={styles.centeredTitle}>You are Approved{'\n'}</Text>
               {/*Credit card image*/}
-              <CreditCardImage complex={false}></CreditCardImage>
+              <CreditCardImage complex={false} topPortion = {0.25}></CreditCardImage>
               {/*Credit card attribute descriptions*/}
               <View style={styles.row}>
                 <Text style={styles.title}>16 %</Text>

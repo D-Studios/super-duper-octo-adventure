@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Image, Dimensions } from 'react-native';
 import { Appbar, Text } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
-import styles from './reusable-components/styles';
+import styles from './styles';
 
 const CreditCardImage = ({ complex, topPortion, appBarText, showText, company, details }) => {
     const screenHeight = Dimensions.get('window').height;

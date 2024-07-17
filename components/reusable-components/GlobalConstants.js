@@ -11,7 +11,9 @@ const constants = {
     HYPHEN: '-',
     SSN_LENGTH: 9,
     PHONE_MAX_LENGTH: 12, // Adjusted to account for '-' characters
-    SSN_MAX_LENGTH: 11 // Adjusted to account for '-' characters
+    SSN_MAX_LENGTH: 11, // Adjusted to account for '-' characters
+    CREDIT_CARD_IMAGE_PORTION : 0.25
+
 }
 
 export default constants;

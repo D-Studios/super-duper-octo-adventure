@@ -5,21 +5,19 @@ import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView} from 'react-native';
 import styles from './reusable-components/styles';
 import rewardsStyles from './rewardsStyles';
-import CreditCardImage from './CreditCardImage';
+import CreditCardImage from './reusable-components/CreditCardImage';
 import RewardsCardComponent from './reusable-components/RewardsCardComponent';
 import DealCardComponent from './reusable-components/DealCardComponent';
+import constants from './reusable-components/GlobalConstants';
 
 export default function Rewards() {
-
-    const TOP_PORTION = 0.25;
-
     return (
         <PaperProvider>
             <SafeAreaView style={styles.container}>
                 {/* Top Portion */}
                 <CreditCardImage 
                     complex = {true} 
-                    topPortion = {TOP_PORTION} appBarText = {'Rewards'} 
+                    topPortion = {constants.CREDIT_CARD_IMAGE_PORTION} appBarText = {'Rewards'} 
                     showText={false}>
                 </CreditCardImage>
 
