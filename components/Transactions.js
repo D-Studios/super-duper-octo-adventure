@@ -4,6 +4,7 @@ import { Appbar, Text, Card, Button, Divider } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native';
 import styles from './reusable-components/styles';
+import CreditCardImage from './CreditCardImage'
 
 export default function Transactions() {
   const navigation = useNavigation();
@@ -19,7 +20,12 @@ export default function Transactions() {
   return (
     <ScrollView contentContainerStyle={styles.scrollViewContent}>
       <SafeAreaView style={styles.container}>
-        <Appbar.Header>
+      <CreditCardImage 
+                    complex = {true} 
+                    topPortion = {0.25} appBarText = {'Rewards'} 
+                    showText={false}>
+                </CreditCardImage>
+        {/* <Appbar.Header>
           <Appbar.BackAction onPress={handlePreviousPress} />
           <Appbar.Content title="Delta Inc." />
         </Appbar.Header>
@@ -32,7 +38,7 @@ export default function Transactions() {
             source={{ uri: 'https://t4.ftcdn.net/jpg/03/27/87/41/360_F_327874197_zaMWlrLxEw8sbjn4jnVsmqu3K3ZB1Jur.jpg' }}
             style={styles.creditCardImage}
           />
-        </View>
+        </View> */}
 
         <View style={styles.content}>
           <Card mode="elevated" style={styles.boxContainer}>
