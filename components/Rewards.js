@@ -80,7 +80,7 @@ export default function Rewards() {
 
                         <View>
                             <View style={[styles.row, rewardsStyles.dealsHeader]}>
-                                <Text style={styles.title}>My Delta Inc. Deals</Text>
+                                <Text style={rewardsStyles.title}>My Delta Inc. Deals</Text>
                                 <Button 
                                     mode="text" 
                                     style={rewardsStyles.viewAllButton} 
@@ -110,7 +110,7 @@ export default function Rewards() {
                                 imageUri='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbhvKe4ebnX7xrphoWADoK-wteStypzRFKWQ&s' 
                                 regularText='$5 Cash back' 
                                 miniText='8 days left' 
-                                isActivated={false}
+                                isActivated={true}
                             />
                         </ScrollView>
                         </View>

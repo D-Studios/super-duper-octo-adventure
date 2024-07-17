@@ -7,7 +7,7 @@ const dealCardStyles = StyleSheet.create({
     width: 100,
     height: 100,
     resizeMode: 'contain',
-    marginBottom: 10
+    marginBottom: 10,
   },
   regularText: {
     fontSize: 16,
@@ -28,8 +28,9 @@ const dealCardStyles = StyleSheet.create({
   icon: {
     marginRight: 10,
   },
-  button: {
-    justifyContent: 'center',
+  buttonText: {
+    fontSize: 16,
+    color: '#5a5a5a',
   },
 });
 
