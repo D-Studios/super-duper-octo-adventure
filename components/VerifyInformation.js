@@ -67,23 +67,22 @@ export default function VerifyInformation() {
       Alert.alert('Permission Denied', 'Camera access is required to take a photo');
       return;
     }
-  
+
     let result = await ImagePicker.launchCameraAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.Images,
       allowsEditing: true,
       aspect: [4, 3],
       quality: 1,
     });
-  
+
     console.log("Camera result:", result);  // Debug statement
-  
+
     if (!result.canceled && result.assets && result.assets.length > 0) {
       const uri = result.assets[0].uri;
       setSecondaryId({ uri });
       console.log("Secondary ID set to:", uri);  // Debug statement
     }
   };
-  
 
   return (
     <PaperProvider>
@@ -141,8 +140,8 @@ export default function VerifyInformation() {
 
           {secondaryId && (
             <View style={styles.imageContainer}>
-              <Image source={secondaryId} style={styles.image} />
-              {console.log("Rendering image with URI:", secondaryId.uri)} 
+              <Image source={{ uri: secondaryId.uri }} style={styles.image} />
+              {console.log("Rendering image with URI:", secondaryId.uri)}
             </View>
           )}
         </View>

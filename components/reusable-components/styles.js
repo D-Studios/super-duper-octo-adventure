@@ -276,11 +276,10 @@ const styles = StyleSheet.create({
     marginTop: 16,
     alignItems: 'center',
   },
-  landscapeImage: {
-    width: 320,
+  image: {
+    width: 200,
     height: 200,
     borderRadius: 8,
-    resizeMode: 'contain',
   },
 });
 
