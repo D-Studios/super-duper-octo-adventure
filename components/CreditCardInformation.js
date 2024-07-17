@@ -207,12 +207,13 @@ export default function CreditCardInformation() {
       ];
 
     return (
-        <PaperProvider style = {[styles.fullScreen, styles.container]}>
-            <SafeAreaView style= {[styles.creditCardBackground, styles.fullScreen, styles.container]}>
-            <CreditCardImage complex = {true} topPortion = {constants.CREDIT_CARD_IMAGE_PORTION} appBarText = {'Credit Card Information'} showText = {false} company = {'Delta Inc.'} details = {'Delta Inc. Credit Card .....1234'}></CreditCardImage>
-            <View style = {[{height: '100%'}, styles.fullWidth]}>
-            <Card mode = 'elevated' style = {[styles.boxContainer, styles.largeContainer, styles.fullWidth, styles.container]}>
-                  <Card.Content>
+        <PaperProvider>
+            <SafeAreaView style={styles.container}>
+            <CreditCardImage complex = {true} topPortion = {constants.CREDIT_CARD_IMAGE_PORTION} appBarText = {'Credit Card Information'} showText = {false}></CreditCardImage>
+            {/* <View style = {[{height: '100%'}, styles.fullWidth]}> */}
+            {/* <Card mode = 'elevated' style = {[styles.boxContainer, styles.largeContainer, styles.fullWidth, styles.container]}>
+                  <Card.Content> */}
+             <View style = {styles.content}>
              <PagerView style={styles.fullScreen} initialPage={0} pageMargin={10}> 
                   <View key = "1" style = {styles.fullScreen}> 
                         <View style={styles.row}>
@@ -225,7 +226,7 @@ export default function CreditCardInformation() {
                         </View> 
                         <Text style = {styles.title}>{'\n'}Top Category Spend</Text>
                         <View style = {styles.fullScreen}>
-                        <Card mode = 'elevated' style = {[styles.boxContainerVariation2, {height:'25%'}]}>
+                        <Card mode = 'elevated' style = {[styles.boxContainer, {height:'25%'}]}>
                         <PieChart
                             data={pieChartData}
                             width={PIE_CHART_WIDTH}
@@ -241,7 +242,7 @@ export default function CreditCardInformation() {
                      <View key = "2" style = {styles.fullScreen}>
                       <Text style = {styles.title}>{'\n'}Credit Card Usage</Text>
                         <View style = {styles.fullWidth} >
-                        <Card mode = 'elevated' style = {[styles.boxContainerVariation2, {height: '55%'}]}>
+                        <Card mode = 'elevated' style = {[styles.boxContainer, {height: '55%'}]}>
                             <Card.Content>
                             <View style = {styles.row} >
                               <TouchableOpacity 
@@ -338,7 +339,7 @@ export default function CreditCardInformation() {
                         </View>
                     <View key = "3" style = {styles.fullScreen}>
                         <Text style = {styles.title} >{'\n'}Rewards Accumulation</Text>
-                        <Card mode = 'elevated' style = {[styles.boxContainerVariation2, {height: '30%'}]}>
+                        <Card mode = 'elevated' style = {[styles.boxContainer, {height: '30%'}]}>
                            <Card.Content>
                            <View style = {styles.row} >
                               <TouchableOpacity 
@@ -404,8 +405,9 @@ export default function CreditCardInformation() {
                         </Card> 
                         </View>
                       </PagerView>
-                  </Card.Content>
-              </Card>
+                  {/* </Card.Content>
+              </Card> */}
+            {/* </View> */}
             </View>
             </SafeAreaView>
           </PaperProvider>
