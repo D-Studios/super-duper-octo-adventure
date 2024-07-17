@@ -22,24 +22,9 @@ export default function Transactions() {
       <SafeAreaView style={styles.container}>
       <CreditCardImage 
                     complex = {true} 
-                    topPortion = {0.25} appBarText = {'Rewards'} 
+                    topPortion = {constants.CREDIT_CARD_IMAGE_PORTION} appBarText = {'Transactions'} 
                     showText={false}>
                 </CreditCardImage>
-        {/* <Appbar.Header>
-          <Appbar.BackAction onPress={handlePreviousPress} />
-          <Appbar.Content title="Delta Inc." />
-        </Appbar.Header>
-
-        <View style={styles.topPane}>
-          <View style={styles.cardTextContainer}>
-            <Text style={styles.creditCardTitle}>Delta Inc. Credit Card.....1234</Text>
-          </View>
-          <Image
-            source={{ uri: 'https://t4.ftcdn.net/jpg/03/27/87/41/360_F_327874197_zaMWlrLxEw8sbjn4jnVsmqu3K3ZB1Jur.jpg' }}
-            style={styles.creditCardImage}
-          />
-        </View> */}
-
         <View style={styles.content}>
           <Card mode="elevated" style={styles.boxContainer}>
             <Text style={styles.balanceTitle}>Outstanding Balance</Text>

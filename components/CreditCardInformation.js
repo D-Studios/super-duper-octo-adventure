@@ -6,6 +6,7 @@ import { SafeAreaView, TouchableOpacity } from 'react-native';
 import styles from './reusable-components/styles';
 import PagerView from 'react-native-pager-view';
 import CreditCardImage from './reusable-components/CreditCardImage';
+import constants from './reusable-components/GlobalConstants';
 
 import {
     LineChart,
@@ -16,11 +17,6 @@ import { Circle } from 'react-native-svg';
 export default function CreditCardInformation() {
 
     const navigation = useNavigation();  
-    const screenHeight = Dimensions.get('window').height;
-    const CARD_PORTION = 1;
-    const FULL_SCREEN = 1;
-    const cardHeight = screenHeight * CARD_PORTION;
-    const spacer = (FULL_SCREEN-cardHeight);
     const LEGEND_FONT_SIZE = 12;
     const LINE_CHART_WIDTH = 420;
     const LINE_CHART_HEIGHT = 180;
@@ -213,8 +209,8 @@ export default function CreditCardInformation() {
     return (
         <PaperProvider style = {[styles.fullScreen, styles.container]}>
             <SafeAreaView style= {[styles.creditCardBackground, styles.fullScreen, styles.container]}>
-            <CreditCardImage complex = {true} topPortion = {0.25} appBarText = {'Credit Card Information'} showText = {false} company = {'Delta Inc.'} details = {'Delta Inc. Credit Card .....1234'}></CreditCardImage>
-            <View style = {[{height: cardHeight}, styles.fullWidth]}>
+            <CreditCardImage complex = {true} topPortion = {constants.CREDIT_CARD_IMAGE_PORTION} appBarText = {'Credit Card Information'} showText = {false} company = {'Delta Inc.'} details = {'Delta Inc. Credit Card .....1234'}></CreditCardImage>
+            <View style = {[{height: '100%'}, styles.fullWidth]}>
             <Card mode = 'elevated' style = {[styles.boxContainer, styles.largeContainer, styles.fullWidth, styles.container]}>
                   <Card.Content>
              <PagerView style={styles.fullScreen} initialPage={0} pageMargin={10}> 

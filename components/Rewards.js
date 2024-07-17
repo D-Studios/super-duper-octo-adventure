@@ -10,16 +10,13 @@ import RewardsCardComponent from './reusable-components/RewardsCardComponent';
 import DealCardComponent from './reusable-components/DealCardComponent';
 
 export default function Rewards() {
-
-    const TOP_PORTION = 0.25;
-
     return (
         <PaperProvider>
             <SafeAreaView style={styles.container}>
                 {/* Top Portion */}
                 <CreditCardImage 
                     complex = {true} 
-                    topPortion = {TOP_PORTION} appBarText = {'Rewards'} 
+                    topPortion = {constants.CREDIT_CARD_IMAGE_PORTION} appBarText = {'Rewards'} 
                     showText={false}>
                 </CreditCardImage>
 
