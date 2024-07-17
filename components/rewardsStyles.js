@@ -62,6 +62,10 @@ const rewardsStyles = StyleSheet.create({
     button: {
         marginVertical: 8, 
     },
+    viewAllButton: {
+        marginBottom: 10,
+        padding: 0,
+    },
     buttonLabel: {
         fontSize: 17, 
     },
@@ -83,6 +87,9 @@ const rewardsStyles = StyleSheet.create({
     },
     list: {
         fontSize: 17,
+    },
+    dealsHeader: {
+        marginHorizontal: 28,
     }
 });
 
