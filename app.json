@@ -12,16 +12,31 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSCameraUsageDescription": "We need access to your camera to capture the secondary ID",
+        "NSPhotoLibraryUsageDescription": "We need access to your photo library to save the captured image",
+        "NSFaceIDUsageDescription": "We need access to Face ID for authentication purposes"
+      },
+      "bundleIdentifier": "com.rmalhotra853.ReactNativePaperProject"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "permissions": [
+        "CAMERA",
+        "WRITE_EXTERNAL_STORAGE"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "f6524184-8354-4597-85cb-77ed2e86f51a"
+      }
     }
   }
 }

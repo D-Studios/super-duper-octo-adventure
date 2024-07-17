@@ -5,7 +5,6 @@ import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native';
 import styles from './reusable-components/styles';
 import CreditCardImage from './CreditCardImage';
-import WalletManager from 'react-native-wallet-manager';
 import { AddToWalletButton, openPaymentSetup } from 'react-native-add-wallet';
 import ReactNativeBiometrics, { BiometryTypes } from 'react-native-biometrics';
 import {TouchableOpacity} from 'react-native';

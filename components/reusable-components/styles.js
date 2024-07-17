@@ -271,7 +271,17 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: 'gray',
     marginVertical: 8,
-  }
+  },
+  imageContainer: {
+    marginTop: 16,
+    alignItems: 'center',
+  },
+  landscapeImage: {
+    width: 320,
+    height: 200,
+    borderRadius: 8,
+    resizeMode: 'contain',
+  },
 });
 
 export default styles;
