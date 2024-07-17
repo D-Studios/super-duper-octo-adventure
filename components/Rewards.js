@@ -8,6 +8,7 @@ import rewardsStyles from './rewardsStyles';
 import CreditCardImage from './reusable-components/CreditCardImage';
 import RewardsCardComponent from './reusable-components/RewardsCardComponent';
 import DealCardComponent from './reusable-components/DealCardComponent';
+import constants from './reusable-components/GlobalConstants';
 
 export default function Rewards() {
     return (

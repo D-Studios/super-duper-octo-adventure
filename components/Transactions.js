@@ -5,6 +5,7 @@ import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native';
 import styles from './reusable-components/styles';
 import CreditCardImage from './reusable-components/CreditCardImage'
+import constants from './reusable-components/GlobalConstants';
 
 export default function Transactions() {
   const navigation = useNavigation();
