@@ -34,7 +34,7 @@ const rewardsStyles = StyleSheet.create({
         paddingBottom: 0,
     },
     title: {
-        fontSize: 18,
+        fontSize: 22,
         fontWeight: 'bold',
     },
     unBoldedTitle: {
@@ -63,7 +63,6 @@ const rewardsStyles = StyleSheet.create({
         marginVertical: 8, 
     },
     viewAllButton: {
-        marginBottom: 10,
         padding: 0,
     },
     buttonLabel: {

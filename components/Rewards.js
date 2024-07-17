@@ -5,20 +5,19 @@ import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView} from 'react-native';
 import styles from './reusable-components/styles';
 import rewardsStyles from './rewardsStyles';
-import CreditCardImage from './CreditCardImage';
+import CreditCardImage from './reusable-components/CreditCardImage';
 import RewardsCardComponent from './reusable-components/RewardsCardComponent';
+import DealCardComponent from './reusable-components/DealCardComponent';
+import constants from './reusable-components/GlobalConstants';
 
 export default function Rewards() {
-
-    const TOP_PORTION = 0.25;
-
     return (
         <PaperProvider>
             <SafeAreaView style={styles.container}>
                 {/* Top Portion */}
                 <CreditCardImage 
                     complex = {true} 
-                    topPortion = {TOP_PORTION} appBarText = {'Rewards'} 
+                    topPortion = {constants.CREDIT_CARD_IMAGE_PORTION} appBarText = {'Rewards'} 
                     showText={false}>
                 </CreditCardImage>
 
@@ -79,7 +78,7 @@ export default function Rewards() {
 
                         <View>
                             <View style={[styles.row, rewardsStyles.dealsHeader]}>
-                                <Text style={styles.title}>My Delta Inc. Deals</Text>
+                                <Text style={rewardsStyles.title}>My Delta Inc. Deals</Text>
                                 <Button 
                                     mode="text" 
                                     style={rewardsStyles.viewAllButton} 
@@ -93,36 +92,24 @@ export default function Rewards() {
 
                         {/* Horizontal Scroll for individual cards */}
                         <ScrollView horizontal={true} style={styles.fullWidth} contentContainerStyle={{ paddingLeft: 6, paddingBottom: 6 }}>
-                            <Card mode='elevated' style={[styles.boxContainer, { width: 200, marginRight: 16 }]}>
-                                <Card.Content>
-                                <Image
-                                    source={{ uri: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Chevron_Logo.svg/1836px-Chevron_Logo.svg.png' }}
-                                    style={styles.centeredImage}
-                                /> 
-                                    <Text style = {styles.regularText}>3% Cash back</Text>
-                                    <Text style={styles.miniText}>Expires 10/31/23</Text>
-                                </Card.Content>
-                            </Card>
-                            <Card mode='elevated' style={[styles.boxContainer, { width: 200, marginRight: 16 }]}>
-                                <Card.Content>
-                                <Image
-                source={{ uri: 'https://upload.wikimedia.org/wikipedia/en/thumb/d/d3/Starbucks_Corporation_Logo_2011.svg/640px-Starbucks_Corporation_Logo_2011.svg.png' }}
-                style={styles.centeredImage}
-              /> 
-                                   <Text style = {styles.regularText}>5% Cash back</Text>
-                                    <Text style={styles.miniText}>Expires 10/31/23</Text>
-                                </Card.Content>
-                            </Card>
-                            <Card mode='elevated' style={[styles.boxContainer, { width: 200, marginRight: 16 }]}>
-                                <Card.Content>
-                                <Image
-                source={{ uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbhvKe4ebnX7xrphoWADoK-wteStypzRFKWQ&s'}}
-                style={styles.centeredImage}
-              /> 
-                                     <Text style = {styles.regularText}>$5 Cash back</Text>
-                                    <Text style={styles.miniText}>8 days left</Text>
-                                </Card.Content>
-                            </Card> 
+                            <DealCardComponent 
+                                imageUri='https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Chevron_Logo.svg/1836px-Chevron_Logo.svg.png' 
+                                regularText='3% Cash back' 
+                                miniText='Expires 10/31/23' 
+                                isActivated={false}
+                            />
+                            <DealCardComponent 
+                                imageUri='https://upload.wikimedia.org/wikipedia/en/thumb/d/d3/Starbucks_Corporation_Logo_2011.svg/640px-Starbucks_Corporation_Logo_2011.svg.png' 
+                                regularText='5% Cash back' 
+                                miniText='Expires 10/31/23' 
+                                isActivated={true}
+                            />
+                            <DealCardComponent 
+                                imageUri='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbhvKe4ebnX7xrphoWADoK-wteStypzRFKWQ&s' 
+                                regularText='$5 Cash back' 
+                                miniText='8 days left' 
+                                isActivated={true}
+                            />
                         </ScrollView>
                         </View>
                     </View>
