@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { View, Linking, TouchableOpacity, Alert } from 'react-native';
+import { View, Linking, TouchableOpacity, Alert, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import styles from './reusable-components/styles';
 import constants from './reusable-components/GlobalConstants';
@@ -15,6 +15,7 @@ import { SafeAreaView } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import formatInputBox from './reusable-components/FormatInputBox';
 import { sendOtp } from './twilio';
+import * as ImagePicker from 'expo-image-picker';
 
 export default function VerifyInformation() {
   const navigation = useNavigation();
@@ -22,12 +23,13 @@ export default function VerifyInformation() {
   const [formattedPhone, setFormattedPhone] = useState(constants.EMPTY_STRING);
   const [unformattedPhone, setUnformattedPhone] = useState(constants.EMPTY_STRING);
   const [ssn, setSsn] = useState(constants.EMPTY_STRING);
+  const [secondaryId, setSecondaryId] = useState(null);
 
   const clearPhone = () => {
     setFormattedPhone(constants.EMPTY_STRING);
     setUnformattedPhone(constants.EMPTY_STRING);
   };
-  
+
   const clearSsn = () => setSsn(constants.EMPTY_STRING);
 
   const handlePhoneChange = (text) => {
@@ -58,6 +60,30 @@ export default function VerifyInformation() {
     }
   }, [unformattedPhone, navigation]);
 
+  const handleAddSecondaryId = async () => {
+    const { status } = await ImagePicker.requestCameraPermissionsAsync();
+    console.log("Camera permission status:", status);  // Debug statement
+    if (status !== 'granted') {
+      Alert.alert('Permission Denied', 'Camera access is required to take a photo');
+      return;
+    }
+
+    let result = await ImagePicker.launchCameraAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    console.log("Camera result:", result);  // Debug statement
+
+    if (!result.canceled && result.assets && result.assets.length > 0) {
+      const uri = result.assets[0].uri;
+      setSecondaryId({ uri });
+      console.log("Secondary ID set to:", uri);  // Debug statement
+    }
+  };
+
   return (
     <PaperProvider>
       <SafeAreaView style={styles.container}>
@@ -86,14 +112,6 @@ export default function VerifyInformation() {
             )}
           </View>
 
-          <View style={styles.content}>
-            <Text>
-              We ask for your Social Security number or Individual Tax Identification Number (ITIN) to{'\n'}
-              help prefill your information in this application process, verify your identity, and obtain your{'\n'}
-              credit history for processing your application.
-            </Text>
-          </View>
-
           <View style={styles.inputContainer}>
             <TextInput
               label="Social Security Number"
@@ -112,20 +130,20 @@ export default function VerifyInformation() {
             )}
           </View>
 
-          <View style={styles.content}>
-            <Text>
-              By providing your number, you agree to receive a one-time text message from ***** *****{'\n'}
-              with a link to verify your identity. Message and data rates may apply.{'\n'}
-              You authorize your wireless carrier to use or disclose information about your account and{'\n'}
-              your wireless device, if available, to ***** *****, its Affiliates, or its service provider for the{'\n'}
-              duration of your business relationship, solely to help them identify you or your wireless{'\n'}
-              device and to prevent fraud. See our <Text style={styles.url} onPress={handlePrivacyPolicy}>Privacy Policy</Text> for how we treat your data.{'\n'}
-            </Text>
-          </View>
-
           <Button mode="contained" style={styles.button} onPress={handleNextPress}>
             Next
           </Button>
+
+          <Button mode="contained" style={styles.button} onPress={handleAddSecondaryId}>
+            Add Secondary ID
+          </Button>
+
+          {secondaryId && (
+            <View style={styles.imageContainer}>
+              <Image source={{ uri: secondaryId.uri }} style={styles.image} />
+              {console.log("Rendering image with URI:", secondaryId.uri)}
+            </View>
+          )}
         </View>
       </SafeAreaView>
     </PaperProvider>
