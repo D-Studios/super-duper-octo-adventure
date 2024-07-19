@@ -5,7 +5,6 @@ import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native';
 import styles from './reusable-components/styles';
 import CreditCardImage from './reusable-components/CreditCardImage';
-import WalletManager from 'react-native-wallet-manager';
 import { AddToWalletButton, openPaymentSetup } from 'react-native-add-wallet';
 import ReactNativeBiometrics, { BiometryTypes } from 'react-native-biometrics';
 import {TouchableOpacity} from 'react-native';
@@ -79,6 +78,7 @@ export default function Approved() {
                   anchor={{ x: iconButtonPosition.x + X_OFFSET, y: iconButtonPosition.y + iconButtonPosition.height + Y_OFFSET }}
                 >
                   <Menu.Item onPress={() => navigation.navigate("CreditCardInformation")} title="Credit Card Information" />
+                  <Divider />
                   <Menu.Item onPress={() => navigation.navigate("Rewards")} title="Rewards" />
                   <Divider />
                   <Menu.Item onPress={() => navigation.navigate("Transactions")} title="Transactions" />

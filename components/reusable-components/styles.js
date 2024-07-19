@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     right: 20, 
   },
   button: {
-    marginVertical: 10,
+    marginVertical: 10, 
   },
   additionalButtonStyling: {
     backgroundColor: '#ffffff',
@@ -271,7 +271,16 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: 'gray',
     marginVertical: 8,
-  }
+  },
+  imageContainer: {
+    marginTop: 16,
+    alignItems: 'center',
+  },
+  image: {
+    width: 200,
+    height: 200,
+    borderRadius: 8,
+  },
 });
 
 export default styles;
