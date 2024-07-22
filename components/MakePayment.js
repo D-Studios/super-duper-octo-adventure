@@ -4,6 +4,9 @@ import { Appbar, Text, RadioButton, Button, Card, Provider as PaperProvider } fr
 import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native';
 import styles from './reusable-components/styles';
+import transactionsStyles from './transactionsStyles';
+import TransactionsCardComponent from './reusable-components/TransactionsCardComponent';
+
 
 export default function MakePayment() {
   const navigation = useNavigation();
@@ -23,29 +26,49 @@ export default function MakePayment() {
           </Appbar.Header>
 
           <View style={styles.content}>
-            <Card mode="elevated" style={styles.boxContainer}>
-              <Text style={styles.balanceTitle}>Payment Method</Text>
-              <Text style={styles.paymentMethod}>Sample Bank Checking</Text>
-              <Text style={styles.paymentMethodDetails}>Ending in.....3421</Text>
-              <Button mode="outlined" onPress={() => {}}>Change Payment Method</Button>
+            <TransactionsCardComponent
+              title="Payment Method"
+              leftBigText="Sample Checking"
+              leftBigTextLabel="Ending in.....3421"
+              buttonText="Change Payment Method"
+              onClick={() => { /* Action */ }}
+            />
+
+            <Card mode="elevated" style={[styles.boxContainer, { marginBottom: 16, alignSelf: 'center', width: '100%' }]}>
+              <Card.Content style={transactionsStyles.cardMargins}>
+                <Text style={styles.title}>Payment Amount</Text>
+                <RadioButton.Group onValueChange={value => setChecked(value)} value={checked}>
+                  <View style={styles.radioButtonItem}>
+                    <RadioButton value="statement" />
+                    <Text style={styles.label}>Statement Balance</Text>
+                    <Text style={styles.amount}>$2,456.05</Text>
+                  </View>
+                  <View style={styles.radioButtonItem}>
+                    <RadioButton value="minimum" />
+                    <Text style={styles.label}>Total Minimum Balance</Text>
+                    <Text style={styles.amount}>$1,456.05</Text>
+                  </View>
+                  <View style={styles.radioButtonItem}>
+                    <RadioButton value="last" />
+                    <Text style={styles.label}>Last Statement Balance</Text>
+                    <Text style={styles.amount}>$1,895.76</Text>
+                  </View>
+                  <View style={styles.radioButtonItem}>
+                    <RadioButton value="other" />
+                    <Text style={styles.label}>Other</Text>
+                  </View>
+                </RadioButton.Group>
+              </Card.Content>
             </Card>
 
-            <Card mode="elevated" style={styles.boxContainer}>
-              <Text style={styles.balanceTitle}>Payment Amount</Text>
-              <RadioButton.Group onValueChange={value => setChecked(value)} value={checked}>
-                <RadioButton.Item label="Statement Balance $2,456.05" value="statement" />
-                <RadioButton.Item label="Total Minimum Balance $1,456.05" value="minimum" />
-                <RadioButton.Item label="Last Statement Balance $1,895.76" value="last" />
-                <RadioButton.Item label="Other" value="other" />
-              </RadioButton.Group>
-            </Card>
+            <TransactionsCardComponent
+              title="Deliver by"
+              leftBigText="July 10, 2023"
+              leftBigTextLabel="Earlier delivery by July 10, 2023"
+              buttonText="Change delivery date"
+              onClick={() => { /* Action */ }}
+            />
 
-            <Card mode="elevated" style={styles.boxContainer}>
-              <Text style={styles.balanceTitle}>Deliver by</Text>
-              <Text style={styles.paymentMethod}>July 10, 2023</Text>
-              <Text style={styles.paymentMethodDetails}>Earlier delivery by July 10, 2023</Text>
-              <Button mode="outlined" onPress={() => {}}>Change delivery date</Button>
-            </Card>
           </View>
         </SafeAreaView>
       </PaperProvider>
