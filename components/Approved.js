@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { View, Image, ScrollView } from 'react-native';
+import { View, Image, ScrollView, Alert, Button } from 'react-native';
 import { Menu, Divider, IconButton, List, Appbar, Text, Card, ProgressBar, Provider as PaperProvider } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native';
@@ -7,7 +7,9 @@ import styles from './reusable-components/styles';
 import CreditCardImage from './reusable-components/CreditCardImage';
 import { AddToWalletButton, openPaymentSetup } from 'react-native-add-wallet';
 import ReactNativeBiometrics, { BiometryTypes } from 'react-native-biometrics';
-import {TouchableOpacity} from 'react-native';
+import { NativeModules } from 'react-native';
+
+const { AddToWallet } = NativeModules;
 
 export default function Approved() {
 
@@ -39,13 +41,15 @@ export default function Approved() {
     });
   };
 
-  // const rnBiometrics = new ReactNativeBiometrics()
-
-  // const { biometryType } = await rnBiometrics.isSensorAvailable()
-  
-  // if (biometryType === BiometryTypes.Biometrics) {
-  //   //do something face id specific
-  // }
+  const handleAddToWallet = () => {
+    AddToWallet.addCardToWallet('John Doe', '1234567890123456', '12/25')
+      .then(() => {
+        Alert.alert('Success', 'Card added to wallet');
+      })
+      .catch((error) => {
+        Alert.alert('Error', `An error occurred: ${error.message}`);
+      });
+  };
 
   return (
     <ScrollView contentContainerStyle={styles.scrollViewContent}>
@@ -103,8 +107,10 @@ export default function Approved() {
                 adipiscing elit, sed do eiusmod tempor
               </Text>
 
-              
-              {/* <AddToWalletButton onPress = {openPaymentSetup}/> */}
+              {/* Add to Wallet Button */}
+              <View style={{ marginTop: 20 }}>
+                <Button title="Add to Wallet" onPress={handleAddToWallet} />
+              </View>
 
             </Card>
             

@@ -16,7 +16,7 @@ import styles from './components/reusable-components/styles';
 const Stack = createStackNavigator();
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  /* const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -70,10 +70,10 @@ function App() {
   if (!isAuthenticated) {
     return null;
   }
-
+ */
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="VerifyInformation">
+      <Stack.Navigator initialRouteName="Confirm">
         <Stack.Screen
           name="VerifyInformation"
           component={VerifyInformation}
