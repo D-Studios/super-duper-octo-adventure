@@ -282,6 +282,23 @@ const styles = StyleSheet.create({
     height: 200,
     borderRadius: 8,
   },
+  radioButtonItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingVertical: 8,
+  },
+  label: {
+    flex: 1,
+    textAlign: 'left',
+    marginRight: 8,
+    fontSize: 17,
+  },
+  amount: {
+    textAlign: 'right',
+    marginLeft: 8,
+    fontSize: 17,
+  },
 });
 
 export default styles;
