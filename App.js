@@ -111,7 +111,7 @@ function App() {
           component={CreditCardInformation}
           options={{ 
             headerShown: false,
-            ...TransitionPresets.RevealFromBottomAndroid
+            ...TransitionPresets.FadeFromBottomAndroid
           }}
         />
         <Stack.Screen
@@ -119,7 +119,7 @@ function App() {
           component={Transactions}
           options={{ 
             headerShown: false,
-            ...TransitionPresets.RevealFromBottomAndroid
+            ...TransitionPresets.ModalSlideFromBottomIOS
           }}
         />
         <Stack.Screen
@@ -127,7 +127,7 @@ function App() {
           component={MakePayment} 
           options={{ 
             headerShown: false,
-            ...TransitionPresets.RevealFromBottomAndroid
+            ...TransitionPresets.SlideFromRightIOS
           }}
         />
         <Stack.Screen

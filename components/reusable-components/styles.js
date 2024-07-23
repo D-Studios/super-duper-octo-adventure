@@ -92,6 +92,7 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 2 }, 
     shadowOpacity: 0.8, 
     shadowRadius: 2, 
+    zIndex: 1,
   },
   boxContainerVariation2: {
     backgroundColor: '#ffffff', 

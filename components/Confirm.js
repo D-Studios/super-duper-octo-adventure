@@ -1,8 +1,8 @@
-import React, { useState, useCallback } from 'react';
-import { View, ScrollView } from 'react-native';
+import React, { useState, useCallback, useEffect} from 'react';
+import { View, ScrollView} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import styles from './reusable-components/styles';
-import { SegmentedButtons, Card } from 'react-native-paper';
+import { SegmentedButtons, Card, TouchableOpacity } from 'react-native-paper';
 import {
   Provider as PaperProvider,
   Appbar,
@@ -15,6 +15,11 @@ import InputField from './reusable-components/InputField';
 import constants from './reusable-components/GlobalConstants';
 import formatInputBox from './reusable-components/FormatInputBox';
 
+import formatDate from './reusable-components/FormatDate';
+import {DatePickerInput} from 'react-native-paper-dates';
+
+import StateDropdownPicker from './reusable-components/StateDropdownPicker';
+
 export default function Confirm() {
   const navigation = useNavigation();
   
@@ -22,31 +27,37 @@ export default function Confirm() {
     navigation.navigate('VerifyInformation');
   }, [navigation]);
 
-  // Next screen.
-  const handleNextPress = useCallback(() => {
-    navigation.navigate('Approved');
-  }, [navigation]);
-
   const [firstName, setFirstName] = useState(constants.EMPTY_STRING);
   const [middleName, setMiddleName] = useState(constants.EMPTY_STRING);
   const [lastName, setLastName] = useState(constants.EMPTY_STRING);
   const [ssn, setSsn] = useState(constants.EMPTY_STRING);
   const [phone, setPhone] = useState(constants.EMPTY_STRING);
-  const [dob, setDOB] = useState(constants.EMPTY_STRING);
+  const [dob, setDOB] = useState(new Date());
   const [addr1, setAddr1] = useState(constants.EMPTY_STRING);
   const [addr2, setAddr2] = useState(constants.EMPTY_STRING);
   const [city, setCity] = useState(constants.EMPTY_STRING);
-  const [state, setState] = useState(constants.EMPTY_STRING);
   const [zip, setZip] = useState(constants.EMPTY_STRING);
   const [income, setIncome] = useState(constants.EMPTY_STRING);
   const [housing, setHousing] = useState(constants.EMPTY_STRING);
   const [citizen, setCitizen] = useState(constants.EMPTY_STRING);
+  const [formattedDate, setFormattedDate] = useState('date');
 
-  const SLASH = '/';
-  const DEFAULT_DATE = 'mm/dd/yyyy';
-  const DATE_MAX_LENGTH = 10;
-  const DATE_SLASH_FIRST_POS = 2;
-  const DATE_SLASH_SECOND_POS = 4;
+  const [selectedState, setSelectedState] = useState('Select a state');
+
+
+  const handleStateSelect = (state) => {
+    setSelectedState(state);
+    // Handle state selection logic here
+  };
+
+  useEffect(() => {
+    console.log("Selected State: " + selectedState);
+  }, [selectedState]);
+
+  // Next screen.
+  const handleNextPress = useCallback(() => {
+    navigation.navigate('Approved');
+  }, [navigation]);
 
   const handleFirstName = (text) => {
     setFirstName(text);
@@ -69,8 +80,13 @@ export default function Confirm() {
   };
 
   const handleDOB = (text) => {
-    setDOB(formatInputBox(text, DATE_MAX_LENGTH, SLASH, DATE_SLASH_FIRST_POS, DATE_SLASH_SECOND_POS));
+    setDOB(text);
+    setFormattedDate(formatDate(text));
   };
+
+  useEffect(() => {
+    console.log("Value of formattedDate : " + formattedDate);
+  }, [formattedDate]);
 
   const handleAddr1 = (text) => {
     setAddr1(text);
@@ -84,9 +100,6 @@ export default function Confirm() {
     setCity(text);
   };
 
-  const handleState = (text) => {
-    setState(text);
-  };
 
   const handleZip = (text) => {
     setZip(text);
@@ -109,11 +122,9 @@ export default function Confirm() {
   const clearLastName = () => setLastName(constants.EMPTY_STRING);
   const clearSsn = () => setSsn(constants.EMPTY_STRING);
   const clearPhone = () => setPhone(constants.EMPTY_STRING);
-  const clearDOB = () => setDOB(constants.EMPTY_STRING);
   const clearAddr1 = () => setAddr1(constants.EMPTY_STRING);
   const clearAddr2 = () => setAddr2(constants.EMPTY_STRING);
   const clearCity = () => setCity(constants.EMPTY_STRING);
-  const clearState = () => setState(constants.EMPTY_STRING);
   const clearZip = () => setZip(constants.EMPTY_STRING);
   const clearIncome = () => setIncome(constants.EMPTY_STRING);
 
@@ -191,16 +202,18 @@ export default function Confirm() {
                 placeholder={constants.DEFAULT_PHONE}
                 onClear={clearPhone}
               />
-              {/* Input for Date of Birth */}
-              <InputField
-                label="Date of Birth"
-                value={dob}
-                onChangeText={handleDOB}
-                keyboardType="numeric"
-                placeholder={DEFAULT_DATE}
-                maxLength = {DATE_MAX_LENGTH}
-                onClear={clearDOB}
-              />
+
+
+      <DatePickerInput
+      locale = "en"
+      label="Date of Birth"
+      value = {dob}
+      onChange={handleDOB}
+      inputMode="start" 
+      style = {{width: 200}}
+      mode = "outlined"
+      />
+
             </Card>
 
             {/* Address Box */}
@@ -233,15 +246,11 @@ export default function Confirm() {
                 placeholder={constants.EMPTY_STRING}
                 onClear={clearCity}
               />
-              {/* Input for State */}
-              <InputField
-                label="State"
-                value={state}
-                onChangeText={handleState}
-                keyboardType="default"
-                placeholder={constants.EMPTY_STRING}
-                onClear={clearState}
-              />
+
+<View style={styles.container}>
+      <Text style={styles.title}>Select a State</Text>
+      <StateDropdownPicker selectedValue={selectedState} onSelect={handleStateSelect} />
+    </View>
               {/* Input for Zip Code*/}
               <InputField
                 label="Zip"
@@ -250,6 +259,7 @@ export default function Confirm() {
                 keyboardType="numeric"
                 placeholder={constants.EMPTY_STRING}
                 onClear={clearZip}
+                maxLength={constants.ZIP_CODE_LENGTH}
               />
             </Card>
 
@@ -257,9 +267,9 @@ export default function Confirm() {
             <Card mode='elevated' style={styles.boxContainer}>
               <Text style={styles.title}>Other</Text>
               {/* Input for Annual Income (In Thousands)*/}
-              <Text style = {styles.miniTitle}>Annual Income (In Thousands)</Text>
+              <Text style = {styles.miniTitle}>Annual Income ($)</Text>
               <InputField
-                label="Annual Income (In Thousands)"
+                label="Annual Income ($)"
                 value={income}
                 onChangeText={handleIncome}
                 keyboardType="numeric"

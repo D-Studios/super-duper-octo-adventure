@@ -12,7 +12,10 @@ const constants = {
     SSN_LENGTH: 9,
     PHONE_MAX_LENGTH: 12, // Adjusted to account for '-' characters
     SSN_MAX_LENGTH: 11, // Adjusted to account for '-' characters
-    CREDIT_CARD_IMAGE_PORTION : 0.25
+    CREDIT_CARD_IMAGE_PORTION : 0.25,
+    ERROR_TEXT: 'Error',
+    ZIP_CODE_LENGTH : 5,
+    NO_VALID_VALUES_IN_MANDATORY_FIELDS: 'Please enter valid values for all mandatory fields.'
 
 }
 

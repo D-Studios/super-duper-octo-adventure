@@ -51,6 +51,10 @@ export default function VerifyInformation() {
   };
 
   const handleNextPress = useCallback(async () => {
+    // if(unformattedPhone.length != constants.PHONE_NUMBER_LENGTH || ssn.length!=constants.SSN_LENGTH){
+    //   Alert.alert(constants.ERROR_TEXT, constants.NO_VALID_VALUES_IN_MANDATORY_FIELDS);
+    //   return;
+    // }
     try {
       await sendOtp(unformattedPhone);
       Alert.alert('Success', 'OTP sent successfully');
