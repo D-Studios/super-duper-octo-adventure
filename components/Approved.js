@@ -5,11 +5,9 @@ import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native';
 import styles from './reusable-components/styles';
 import CreditCardImage from './reusable-components/CreditCardImage';
-import { AddToWalletButton, openPaymentSetup } from 'react-native-add-wallet';
-import ReactNativeBiometrics, { BiometryTypes } from 'react-native-biometrics';
 import { NativeModules } from 'react-native';
 
-const { AddToWallet } = NativeModules;
+// const { AddToWallet } = NativeModules;
 
 export default function Approved() {
 
@@ -41,15 +39,15 @@ export default function Approved() {
     });
   };
 
-  const handleAddToWallet = () => {
-    AddToWallet.addCardToWallet('John Doe', '1234567890123456', '12/25')
-      .then(() => {
-        Alert.alert('Success', 'Card added to wallet');
-      })
-      .catch((error) => {
-        Alert.alert('Error', `An error occurred: ${error.message}`);
-      });
-  };
+  // const handleAddToWallet = () => {
+  //   AddToWallet.addCardToWallet('John Doe', '1234567890123456', '12/25')
+  //     .then(() => {
+  //       Alert.alert('Success', 'Card added to wallet');
+  //     })
+  //     .catch((error) => {
+  //       Alert.alert('Error', `An error occurred: ${error.message}`);
+  //     });
+  // };
 
   return (
     <ScrollView contentContainerStyle={styles.scrollViewContent}>
@@ -95,7 +93,7 @@ export default function Approved() {
               {/*Credit card attribute descriptions*/}
               <View style={styles.row}>
                 <Text style={styles.title}>16 %</Text>
-                <Text style={[styles.rightAlignedText, styles.title]}>$10.000</Text>
+                <Text style={[styles.rightAlignedText, styles.title]}>$10,000</Text>
               </View>
               <View style={styles.row}>
                 <Text style={styles.miniTitle}>Purchase APR</Text>
@@ -110,7 +108,7 @@ export default function Approved() {
 
               {/* Add to Wallet Button */}
               <View style={{ marginTop: 20 }}>
-                <Button title="Add to Wallet" onPress={handleAddToWallet} />
+                <Button title="Add to Wallet"/>
               </View>
 
             </Card>

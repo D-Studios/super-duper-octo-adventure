@@ -1,18 +1,32 @@
-rootProject.name = 'React-Native-Paper-Project'
-
-dependencyResolutionManagement {
-  versionCatalogs {
-    reactAndroidLibs {
-      from(files(new File(["node", "--print", "require.resolve('react-native/package.json')"].execute(null, rootDir).text.trim(), "../gradle/libs.versions.toml")))
+pluginManagement {
+    repositories {
+        google {
+            content {
+                includeGroupByRegex("com\\.android.*")
+                includeGroupByRegex("com\\.google.*")
+                includeGroupByRegex("androidx.*")
+            }
+        }
+        mavenCentral()
+        maven {
+            // All of React Native (JS, Android binaries) is installed from npm
+            url ("/Users/rheashah/Documents/integratedShoppingAppWFCC/node_modules/react-native/android")
+        }
+        maven {
+            // Android JSC is installed from npm
+            url("/Users/rheashah/Documents/integratedShoppingAppWFCC/node_modules/jsc-android/dist")
+        }
+        gradlePluginPortal()
     }
-  }
 }
+//dependencyResolutionManagement {
+//    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+//    repositories {
+//        google()
+//        mavenCentral()
+//    }
+//}
 
-apply from: new File(["node", "--print", "require.resolve('expo/package.json')"].execute(null, rootDir).text.trim(), "../scripts/autolinking.gradle");
-useExpoModules()
-
-apply from: new File(["node", "--print", "require.resolve('@react-native-community/cli-platform-android/package.json', { paths: [require.resolve('react-native/package.json')] })"].execute(null, rootDir).text.trim(), "../native_modules.gradle");
-applyNativeModulesSettingsGradle(settings)
-
+rootProject.name = "Chipotle"
 include ':app'
-includeBuild(new File(["node", "--print", "require.resolve('@react-native/gradle-plugin/package.json', { paths: [require.resolve('react-native/package.json')] })"].execute(null, rootDir).text.trim()).getParentFile())
+apply from: file("/Users/rheashah/Documents/integratedShoppingAppWFCC/node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesSettingsGradle(settings)

@@ -1,5 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react';
-import { View, Alert, ActivityIndicator } from 'react-native';
+import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator, TransitionPresets } from '@react-navigation/stack';
 import * as LocalAuthentication from 'expo-local-authentication';
@@ -11,7 +10,6 @@ import CreditCardInformation from './components/CreditCardInformation.js';
 import Transactions from './components/Transactions';
 import MakePayment from './components/MakePayment';
 import Rewards from './components/Rewards';
-import styles from './components/reusable-components/styles';
 
 const Stack = createStackNavigator();
 

@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { View, Linking, TouchableOpacity, Alert, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import styles from './reusable-components/styles';
@@ -14,12 +14,13 @@ import {
 import { SafeAreaView } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import formatInputBox from './reusable-components/FormatInputBox';
-import { sendOtp } from './twilio';
-import * as ImagePicker from 'expo-image-picker';
+ import { sendOtp } from './twilio';
+// import * as ImagePicker from 'expo-image-picker';
 
 export default function VerifyInformation() {
   const navigation = useNavigation();
 
+  console.log("Loaded react navigator");
   const [formattedPhone, setFormattedPhone] = useState(constants.EMPTY_STRING);
   const [unformattedPhone, setUnformattedPhone] = useState(constants.EMPTY_STRING);
   const [ssn, setSsn] = useState(constants.EMPTY_STRING);
@@ -60,35 +61,35 @@ export default function VerifyInformation() {
     }
   }, [unformattedPhone, navigation]);
 
-  const handleAddSecondaryId = async () => {
-    const { status } = await ImagePicker.requestCameraPermissionsAsync();
-    console.log("Camera permission status:", status);  // Debug statement
-    if (status !== 'granted') {
-      Alert.alert('Permission Denied', 'Camera access is required to take a photo');
-      return;
-    }
+  // const handleAddSecondaryId = async () => {
+  //   const { status } = await ImagePicker.requestCameraPermissionsAsync();
+  //   console.log("Camera permission status:", status);  // Debug statement
+  //   if (status !== 'granted') {
+  //     Alert.alert('Permission Denied', 'Camera access is required to take a photo');
+  //     return;
+  //   }
 
-    let result = await ImagePicker.launchCameraAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.Images,
-      allowsEditing: true,
-      aspect: [4, 3],
-      quality: 1,
-    });
+  //   let result = await ImagePicker.launchCameraAsync({
+  //     mediaTypes: ImagePicker.MediaTypeOptions.Images,
+  //     allowsEditing: true,
+  //     aspect: [4, 3],
+  //     quality: 1,
+  //   });
 
-    console.log("Camera result:", result);  // Debug statement
+  //   console.log("Camera result:", result);  // Debug statement
 
-    if (!result.canceled && result.assets && result.assets.length > 0) {
-      const uri = result.assets[0].uri;
-      setSecondaryId({ uri });
-      console.log("Secondary ID set to:", uri);  // Debug statement
-    }
-  };
+  //   if (!result.canceled && result.assets && result.assets.length > 0) {
+  //     const uri = result.assets[0].uri;
+  //     setSecondaryId({ uri });
+  //     console.log("Secondary ID set to:", uri);  // Debug statement
+  //   }
+  // };
 
   return (
     <PaperProvider>
       <SafeAreaView style={styles.container}>
         <Appbar.Header>
-          <Appbar.BackAction onPress={() => navigation.navigate('PreviousScreen')} />
+          {/* <Appbar.BackAction onPress={() => navigation.navigate('PreviousScreen')} /> */}
           <Appbar.Content title="Verify and Pre-fill Application" />
         </Appbar.Header>
 
@@ -134,7 +135,7 @@ export default function VerifyInformation() {
             Next
           </Button>
 
-          <Button mode="contained" style={styles.button} onPress={handleAddSecondaryId}>
+          {/* <Button mode="contained" style={styles.button} onPress={handleAddSecondaryId}>
             Add Secondary ID
           </Button>
 
@@ -143,9 +144,26 @@ export default function VerifyInformation() {
               <Image source={{ uri: secondaryId.uri }} style={styles.image} />
               {console.log("Rendering image with URI:", secondaryId.uri)}
             </View>
-          )}
+          )}  */}
         </View>
       </SafeAreaView>
     </PaperProvider>
   );
 }
+
+
+// const VerifyInformation = () => {
+//   useEffect(() => {
+//     console.log("VerifyInformation mounted");
+//     // Any other initialization logic
+//   }, []);
+
+//   return (
+//     <View>
+//       <Text>Verify Information Screen</Text>
+//     </View>
+//   );
+// };
+
+// export default VerifyInformation;
+

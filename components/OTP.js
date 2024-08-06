@@ -88,3 +88,22 @@ export default function OTP() {
     </PaperProvider>
   );
 }
+
+
+// import React, { useEffect } from 'react';
+// import { View, Text } from 'react-native';
+
+// const OTP = () => {
+//   useEffect(() => {
+//     console.log("OTP mounted");
+//     // Any other initialization logic
+//   }, []);
+
+//   return (
+//     <View>
+//       <Text>OTP Screen</Text>
+//     </View>
+//   );
+// };
+
+// export default OTP;
