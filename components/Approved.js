@@ -53,7 +53,9 @@ export default function Approved() {
         <SafeAreaView style={styles.container}>
           <Appbar.Header>
             {/* This is the back button */}
+            <View testID = "Back Button" >
             <Appbar.BackAction onPress={handlePreviousPress} />
+            </View>
             {/* This is the title */}
             <Appbar.Content title="Approved" />
           </Appbar.Header>
@@ -65,23 +67,31 @@ export default function Approved() {
           {/*Creating box*/}
           <Card mode='elevated' style={styles.boxContainer}>
              {/*Three dots menu on upper right corner of box*/}
+             <View testID = "Approved Menu">
               <IconButton
                 icon="dots-vertical"
                 onPress={(event) => measureIconButton(event)}
                 size={24}
                 style={styles.top_right}
               />
+              </View>
               {iconButtonPosition && (
                 <Menu
                   visible={menuVisible}
                   onDismiss={closeMenu}
                   anchor={{ x: iconButtonPosition.x + X_OFFSET, y: iconButtonPosition.y + iconButtonPosition.height + Y_OFFSET }}
                 >
+                  <View testID = "Credit Card Information">
                   <Menu.Item onPress={() => navigation.navigate("CreditCardInformation")} title="Credit Card Information" />
+                  </View>
                   {/* <Divider /> */}
+                  <View testID = "Rewards">
                   <Menu.Item onPress={() => navigation.navigate("Rewards")} title="Rewards" />
+                  </View>
                   {/* <Divider /> */}
+                  <View testID = "Transactions">
                   <Menu.Item onPress={() => navigation.navigate("Transactions")} title="Transactions" />
+                  </View>
                 </Menu>
               )}
               {/*Approved text*/}
@@ -111,7 +121,9 @@ export default function Approved() {
             
             {/*Dropdown menu for Card Holder Agreement*/}
             <View style={styles.container}>
+            
               <List.Section>
+              <View testID = "Card Holder Agreement" >
                 <List.Accordion
                   title="Card Holder Agreement"
                   expanded={cardHolderAgreement}
@@ -119,12 +131,14 @@ export default function Approved() {
                 >
                   <List.Item title="This is some expandable text 1." />
                 </List.Accordion>
+                </View>
               </List.Section>
             </View>
             
             {/*Dropdown menu for Privacy Notice*/}
             <View style={styles.container}>
               <List.Section>
+              <View testID = "Privacy Notice" >
                 <List.Accordion
                   title="Privacy Notice"
                   expanded={privacyNotice}
@@ -132,12 +146,14 @@ export default function Approved() {
                 >
                   <List.Item title="This is some expandable text 2." />
                 </List.Accordion>
+                </View>
               </List.Section>
             </View>
 
             {/*Dropdown menu for Rewards Agreement*/}
             <View style={styles.container}>
               <List.Section>
+              <View testID = "Rewards Agreement" >
                 <List.Accordion
                   title="Rewards Agreement"
                   expanded={rewardsAgreement}
@@ -145,6 +161,7 @@ export default function Approved() {
                 >
                   <List.Item title="This is some expandable text 3." />
                 </List.Accordion>
+                </View>
               </List.Section>
             </View>
           </View>

@@ -90,9 +90,13 @@ const StateDropdownPicker = ({ selectedValue, onSelect }) => {
 
   return (
     <View style={styles.container}>
+      <View testID = "State Dropdown">
       <TouchableOpacity onPress={handleModalShow}>
+        <View testID = "State Text">
         <Text style={styles.selectedValue}>{selectedValue}</Text>
+        </View>
       </TouchableOpacity>
+      </View>
 
       <Modal
         animationType="fade"
@@ -104,7 +108,9 @@ const StateDropdownPicker = ({ selectedValue, onSelect }) => {
           <Animated.View style={[styles.modalContainer, { transform: [{ translateY }] }]}>
             <ScrollView>
               {states.map((state) => (
+                <View testID = {state.value}>
                 <Menu.Item onPress={() => handleSelect(state.value)} title={state.label} />
+                </View>
               ))}
             </ScrollView>
           </Animated.View>

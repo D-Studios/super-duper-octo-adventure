@@ -31,7 +31,7 @@ envConfig[GATEWAY_USER_ID_STRING] = CryptoJS.AES.encrypt(process.argv[GATEWAY_US
 envConfig[GATEWAY_ENTITY_ID_STRING] = CryptoJS.AES.encrypt(process.argv[GATEWAY_ENTITY_ID_ARG].toString(CryptoJS.enc.Utf8), config.GATEWAY_ENTITY_ID_KEY).toString();
 
 const updatedEnv = Object.keys(envConfig).map(key => `${key}=${envConfig[key]}`).join('\n');
-
+ 
 fs.writeFileSync('.env', updatedEnv);
 
 envConfig = dotenv.parse(fs.readFileSync('.env'));

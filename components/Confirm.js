@@ -45,6 +45,7 @@ export default function Confirm() {
   const [selectedState, setSelectedState] = useState('Select a state');
 
 
+
   const handleStateSelect = (state) => {
     setSelectedState(state);
     // Handle state selection logic here
@@ -102,7 +103,7 @@ export default function Confirm() {
 
 
   const handleZip = (text) => {
-    setZip(text);
+    setZip(text.slice(0,5));
   };
 
   const handleIncome = (val) => {
@@ -134,7 +135,9 @@ export default function Confirm() {
         <SafeAreaView style={styles.container}>
           <Appbar.Header>
             {/*Back button goes back to Verify Information. */}
+            <View testID = "Back Button" >
             <Appbar.BackAction onPress={handlePreviousPress} />
+            </View>
             {/* This is the title */}
             <Appbar.Content title="Confirm" />
           </Appbar.Header>
@@ -147,16 +150,21 @@ export default function Confirm() {
             <Card mode='elevated' style={styles.boxContainer}>
               <Text style={styles.title}>Basic</Text>
 
+            <View testID="First Name" >
               {/* First Name */}
               <InputField
                 label="First Name"
+                accessibilityLabel = "First Name"
+              
                 value={firstName}
                 onChangeText={handleFirstName}
                 keyboardType="default"
                 placeholder={constants.EMPTY_STRING}
                 onClear={clearFirstName}
               />
+              </View>
 
+            <View testID = "Middle Name" >
               {/* Middle Name */}
               <InputField
                 label="Middle Name"
@@ -166,7 +174,10 @@ export default function Confirm() {
                 placeholder={constants.EMPTY_STRING}
                 onClear={clearMiddleName}
               />
+            </View>
 
+
+            <View testID = "Last Name" >
               {/* Last Name */}
               <InputField
                 label="Last Name"
@@ -176,12 +187,14 @@ export default function Confirm() {
                 placeholder={constants.EMPTY_STRING}
                 onClear={clearLastName}
               />
+            </View>
             </Card>
 
             {/* Identity box */}
             <Card mode='elevated' style={styles.boxContainer}>
               <Text style={styles.title}>Identity</Text>
               {/* Input for Social Security Number */}
+              <View testID = "Social Security Number" >
               <InputField
                 label="Social Security Number"
                 value={ssn}
@@ -192,6 +205,8 @@ export default function Confirm() {
                 secureTextEntry={true} 
                 onClear={clearSsn}
               />
+              </View>
+              <View testID = "Mobile Phone Number">
               {/* Input for Mobile Phone Number */}
               <InputField
                 label="Mobile Phone Number"
@@ -202,8 +217,9 @@ export default function Confirm() {
                 placeholder={constants.DEFAULT_PHONE}
                 onClear={clearPhone}
               />
+              </View>
 
-
+    <View testID = "Date of Birth">
       <DatePickerInput
       locale = "en"
       label="Date of Birth"
@@ -213,13 +229,14 @@ export default function Confirm() {
       style = {{width: 200}}
       mode = "outlined"
       />
-
+  </View>
             </Card>
 
             {/* Address Box */}
             <Card mode='elevated' style={styles.boxContainer}>
               <Text style={styles.title}>Address</Text>
               {/* Input for Address 1 */}
+              <View testID = "Address 1">
               <InputField
                 label="Address 1"
                 value={addr1}
@@ -228,7 +245,9 @@ export default function Confirm() {
                 placeholder={constants.EMPTY_STRING}
                 onClear={clearAddr1}
               />
+              </View>
               {/* Input for Address 2 */}
+              <View testID = "Address 2">
               <InputField
                 label="Address 2"
                 value={addr2}
@@ -237,6 +256,8 @@ export default function Confirm() {
                 placeholder={constants.EMPTY_STRING}
                 onClear={clearAddr2}
               />
+              </View>
+              <View testID = "City">
               {/* Input for City*/}
               <InputField
                 label="City"
@@ -246,11 +267,13 @@ export default function Confirm() {
                 placeholder={constants.EMPTY_STRING}
                 onClear={clearCity}
               />
+              </View>
 
 <View style={styles.container}>
       <Text style={styles.title}>Select a State</Text>
       <StateDropdownPicker selectedValue={selectedState} onSelect={handleStateSelect} />
     </View>
+             <View testID = "Zip">
               {/* Input for Zip Code*/}
               <InputField
                 label="Zip"
@@ -261,6 +284,7 @@ export default function Confirm() {
                 onClear={clearZip}
                 maxLength={constants.ZIP_CODE_LENGTH}
               />
+              </View>
             </Card>
 
             {/* Other Box */}
@@ -268,6 +292,7 @@ export default function Confirm() {
               <Text style={styles.title}>Other</Text>
               {/* Input for Annual Income (In Thousands)*/}
               <Text style = {styles.miniTitle}>Annual Income ($)</Text>
+              <View testID = "Annual Income ($)">
               <InputField
                 label="Annual Income ($)"
                 value={income}
@@ -276,6 +301,7 @@ export default function Confirm() {
                 placeholder={constants.EMPTY_STRING}
                 onClear={clearIncome}
               />
+              </View>
               <View>
                 <Text style={styles.miniTitle}>Housing</Text>
                 {/* Input for Housing (Rent or Own)*/}

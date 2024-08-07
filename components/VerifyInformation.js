@@ -3,6 +3,7 @@ import { View, Linking, TouchableOpacity, Alert, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import styles from './reusable-components/styles';
 import constants from './reusable-components/GlobalConstants';
+import { NavigationContainer } from '@react-navigation/native';
 import {
   Provider as PaperProvider,
   Appbar,

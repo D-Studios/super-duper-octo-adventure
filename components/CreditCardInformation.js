@@ -339,7 +339,7 @@ export default function CreditCardInformation() {
                         </View>
                     <View key = "3" style = {styles.fullScreen}>
                         <Text style = {styles.title} >{'\n'}Rewards Accumulation</Text>
-                        <Card mode = 'elevated' style = {[styles.boxContainer, {height: '30%'}]}>
+                        <Card mode = 'elevated' style = {[styles.boxContainer, {height: '35%'}]}>
                            <Card.Content>
                            <View style = {styles.row} >
                               <TouchableOpacity 
